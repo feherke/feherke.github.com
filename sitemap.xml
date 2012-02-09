@@ -1,0 +1,12 @@
+---
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{% for page in site.pages %}
+  <url>{% capture chopurl %}{{ page.url | remove_first: 'index.html' }}{% endcapture %}
+    <loc>http://feherke.github.com{{ chopurl }}</loc>
+{% if page.date %}    <lastmod>{{ page.date | date_to_xmlschema }}</lastmod>
+{% endif %}    <priority>{% if chopurl == page.url %}0.1{% else %}0.2{% endif %}</priority>
+  </url>
+{% endfor %}
+</urlset>
