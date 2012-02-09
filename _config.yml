@@ -7,7 +7,7 @@ baseurl:     /
 
 source:      ./
 destination: ./_site/
-plugins:     ./_plugin
+plugins:     ./_plugins
 
 future:      true
 lsi:         true
