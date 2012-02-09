@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+<meta charset=UTF-8>
+<title>[Popup,Hybrid] Copy URL and Title</title>
+<meta name=description content="Displays a list of formats and copies a link to the clipboard">
+<meta name=author content="Feherke">
+<meta name=copyright content="copyright (c) 2012, Feherke">
+<meta name=generator content="Jekyll 0.11.2">
+<!--[if IE]>
+<script src="/html5fordummies.js"></script>
+<![endif]-->
+<link rel=stylesheet href="/style.css">
+<link rel=icon href="/favicon.ico">
+</head>
+
+<body>
+
+<header>
+
+<div id=skip>
+<a href="#content" accesskey=c>skip to content</a>
+</div>
+
+<div class=title>
+Feherke's GitHub Site == glue between Feherke's GitHub hosted projects
+</div>
+
+</header>
+
+<div id=wrapper>
+
+<section id=content>
+
+
+
+<div id=breadcrumb>
+<p><a href="/">Feherke&rsquo;s GitHub Site</a> / <a href="/javascript/">JavaScript</a> / <a href="/javascript/firegestures/">FireGestures</a> / </p>
+
+</div>
+
+
+
+
+<div class=clear></div>
+
+<h1 id="popuphybrid-copy-url-and-title">[Popup,Hybrid] Copy URL and Title</h1>
+
+<p>Displays a list of formats and copies a link to the clipboard.</p>
+
+<p>Currently the following formats are included :</p>
+
+<ul>
+  <li><a href="http://methods.co.nz/asciidoc/">AsciiDoc</a></li>
+  <li><a href="http://bbcode.org/">BBCode</a> ( Bulletin Board Code )</li>
+  <li><a href="http://docs.oasis-open.org/docbook/">DocBook</a></li>
+  <li><a href="http://haml-lang.com/">#haml</a> ( HTML Abstraction Markup Language )</li>
+  <li><a href="http://w3.org/standards/techs/html">HTML</a> ( HyperText Markup Language )</li>
+  <li><a href="http://daringfireball.net/projects/markdown/">Markdown</a></li>
+  <li><a href="http://orgmode.org/">Org-Mode</a> ( Org Emacs Mode )</li>
+  <li>Plain text</li>
+  <li><a href="http://perldoc.perl.org/perlpod.html">POD</a> ( Plain Old Documentation )</li>
+  <li><a href="http://rdoc.rubyforge.org/">RDoc</a> ( Ruby Document )</li>
+  <li><a href="http://textile.thresholdstate.com/">Textile</a></li>
+  <li><a href="http://tipmaster.com/includes/tgmlinfo.cfm">TGML</a> ( Tecumseh Group Markup Language )</li>
+  <li><a href="http://txt2tags.org/">txt2tags</a></li>
+  <li><a href="http://wikicreole.org/">WikiCreole</a></li>
+</ul>
+
+<p>If the gesture was performed on an <code>a</code> element, the link will point to its <code>href</code>, otherwise to the current document.
+If there is selected text, that will be the link text, otherwise the link <code>text</code> or the document <code>title</code> respectively.</p>
+
+<h2 id="usage">Usage</h2>
+
+<p>Perform a gesture anywhere on a document to get a list of formats and select the one to apply before copying the link into the clipboard.</p>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>Configuration not really supported.</p>
+
+<p>But adding new formats is pretty simple. The formats are enumerated in <code>FireGestures.API_copyURLTitle.format</code> and the filters in <code>FireGestures.API_copyURLTitle.filter</code>.</p>
+
+<p>The format strings are somehow Liquid-like templates, where :</p>
+
+<ul>
+  <li>field placeholders are enclosed in double pair of braces ( <code>{}</code> )</li>
+  <li>field names can be followed by any number of filters separated by pipe ( <code>|</code> )</li>
+  <li>filter parameters are separated from the filter name by colon ( <code>:</code> )</li>
+</ul>
+
+<p>However there is no intention to completely reproduce Liquid, so filters can have at most one parameter, filter parameters are not enclosed in quotes and white spaces
+inside the placeholders are not allowed. Only two fields exist : url and text. I bet you guess what they are.</p>
+
+<h2 id="versions">Versions</h2>
+
+<ul>
+  <li>0.0 - April 2011 - Initial release.</li>
+  <li>0.1 - May 2011 - Excluded the <code>a</code> tags without <code>href</code> attribute from being handled as links.</li>
+  <li>0.2 - May 2011 - Added POD link format.</li>
+  <li>0.3 - May 2011 - Added RDoc link format.</li>
+  <li>0.4 - February 2012 - Added DocBook link format. Possibility to escape special characters.</li>
+</ul>
+
+<h2 id="plans">Plans</h2>
+
+<ul>
+  <li>Escape the special characters specific for each markup.</li>
+  <li>Maybe conditional escaping for <kbd>Shift</kbd>-gesture.</li>
+</ul>
+
+<h2 id="download">Download</h2>
+
+<p>You can find the related files on GitHub in my <a href="http://github.com/feherke/firegestures-script">firegestures-script repository</a>  :</p>
+
+<ul>
+  <li><a href="http://github.com/feherke/firegestures-script/blob/master/copy-url-title.js">copy-url-title.js</a> - script</li>
+</ul>
+
+
+
+</section>
+
+</div> <!-- #wrapper -->
+
+<div id=sidebar>
+
+<nav>
+
+<ul>
+  <li><a href="/javascript/">JavaScript</a>
+    <ul>
+      <li><a href="/javascript/firegestures/">FireGestures</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+</nav>
+
+<div id=tagcloud title="Tag cloud">
+<p><a href="/tag.html#search" title="1" style="font-size: 8pt">search</a></p>
+
+</div>
+
+</div> <!-- #sidebar -->
+
+<footer>
+
+<ul>
+<li>Powered by <a href="http://ruby-lang.org/">Ruby</a> 1.9.2</li>
+<li>Generated by <a href="http://jekyllrb.com/">Jekyll</a> 0.11.2</li>
+<li>Processed by <a href="http://kramdown.rubyforge.org/">kramdown</a></li>
+</ul>
+
+<ul>
+<li>Edited with <a href="http://midnight-commander.org/">MCEdit</a></li>
+<li>Hosted on <a href="http://github.com/">GitHub</a></li>
+</ul>
+
+<ul>
+<li>Valid <a href="http://w3c.org/TR/html5/">HTML 5</a></li>
+<li>Valid <a href="http://w3c.org/TR/CSS/#css3">CSS 3</a></li>
+<li>Valid <a href="http://w3c.org/WAI/">WAI AA</a></li>
+</ul>
+
+<ul>
+<li>Page popup-hybrid-copy-url-and-title last modified 2011-05-08.</li>
+<li>Copyright &copy; 2012, <a href="/about.html">Feherke</a></li>
+</ul>
+
+<div class=logo>F<sup>G</sup><sub>H</sub>S</div>
+
+<div class=clear></div>
+
+</footer>
+
+<!--[if lte IE 6]>
+<p>
+Please consider changing your Explorer 6 to a newer and/or better browser.
+For reasons and guidance read "<a href="http://quirksmode.org/upgrade.html">Upgrade your browser!</a>" by Peter-Paul Koch.
+</p>
+<![endif]-->
+
+</body>
+
+</html>

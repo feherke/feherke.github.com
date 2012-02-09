@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+<meta charset=UTF-8>
+<title>1 Click 2 Search 4 Word</title>
+<meta name=description content="Searches for the previously single-clicked word">
+<meta name=author content="Feherke">
+<meta name=copyright content="copyright (c) 2012, Feherke">
+<meta name=generator content="Jekyll 0.11.2">
+<!--[if IE]>
+<script src="/html5fordummies.js"></script>
+<![endif]-->
+<link rel=stylesheet href="/style.css">
+<style>
+table.nowrap1 td:first-child {
+  white-space: nowrap;
+}
+strong.cursor {
+  color: red;
+}
+
+</style>
+<link rel=icon href="/favicon.ico">
+</head>
+
+<body>
+
+<header>
+
+<div id=skip>
+<a href="#content" accesskey=c>skip to content</a>
+</div>
+
+<div class=title>
+Feherke's GitHub Site == glue between Feherke's GitHub hosted projects
+</div>
+
+</header>
+
+<div id=wrapper>
+
+<section id=content>
+
+
+
+<div id=breadcrumb>
+<p><a href="/">Feherke&rsquo;s GitHub Site</a> / <a href="/javascript/">JavaScript</a> / <a href="/javascript/firegestures/">FireGestures</a> / </p>
+
+</div>
+
+
+
+<div id=taglist>
+Tag :
+<a href="/tag.html#search">search</a>
+</div>
+
+
+<div class=clear></div>
+
+<h1 id="click-2-search-4-word">1 Click 2 Search 4 Word</h1>
+
+<p>Previously I used the Search for Selection (in foreground tab) script for fast and simple searches on terms found in the visited pages. This way mostly I search for
+only one word at a time. And the fastest way to select one word is to double click it.</p>
+
+<p>But I also use the <a href="https://addons.mozilla.org/en-us/firefox/addon/dictionary-tooltip/">Dictionary Tooltip</a> extension with double click enabled, so after double click
+it displays its icon near the selected word. If I am in a hurry, sometimes I accidentally move the mouse over the Dictionary Tooltip icon and it pops up its window.</p>
+
+<p>This script helps avoiding such situations by considering the word at the caret the search term. ( Note that I am talking about the text cursor, the visible by turning
+Caret Browsing ( <kbd>F7</kbd> ) on. )</p>
+
+<p>Some examples will explain it better ( cursor symbolized with a pipe ( <strong class="cursor">|</strong> ) character ) :</p>
+
+<table class="nowrap1">
+  <thead>
+    <tr>
+      <th>Text</th>
+      <th>Selection</th>
+      <th>Explanation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>- Hello * Wor<strong class="cursor">|</strong>ld !</td>
+      <td>World</td>
+      <td>cursor inside the word - word characters on both sides</td>
+    </tr>
+    <tr>
+      <td>- Hello * <strong class="cursor">|</strong>World !</td>
+      <td>World</td>
+      <td>cursor at the beginning of the word - word characters after the cursor</td>
+    </tr>
+    <tr>
+      <td>- Hello<strong class="cursor">|</strong> * World !</td>
+      <td>Hello</td>
+      <td>cursor at the end of the word - word characters before the cursor</td>
+    </tr>
+    <tr>
+      <td>-<strong class="cursor">|</strong> Hello * World !</td>
+      <td>Hello</td>
+      <td>cursor at the beginning of text - no word characters on either side, just somewhere after</td>
+    </tr>
+    <tr>
+      <td>- Hello * World <strong class="cursor">|</strong>!</td>
+      <td>World</td>
+      <td>cursor at the end of text - no word characters on either side, just somewhere before</td>
+    </tr>
+    <tr>
+      <td>- Hello <strong class="cursor">|</strong>* World !</td>
+      <td>World</td>
+      <td>cursor between words - no word characters on either side, just somewhere around</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>So always considers the closest word, excepting the last case where first looks after the cursor.</p>
+
+<p>Note that HTML markup separates the document into text nodes and this script looks the word only inside the given text node. So for example for the input text
+“some spell <strong class="cursor">|</strong>colo<u>u</u>r” only “colo” will be selected.</p>
+
+<h2 id="usage">Usage</h2>
+
+<p>Click on or near the world you want to search for <em>then</em> perform the gesture to search.</p>
+
+<p>Click on or near the world you want to search for <em>then</em> perform <kbd>Shift</kbd>-gesture to copy the work into the search bar.</p>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>Configuration not really supported.</p>
+
+<p>But changing the list of separators is pretty simple. Just locate the following fragment in the stript and change the string value :</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="nx">FireGestures</span><span class="p">.</span><span class="nx">API_1click2search4word</span><span class="o">=</span><span class="p">{</span>
+  <span class="nx">separator</span><span class="o">:</span> <span class="s1">&#39; .‧…!¡?¿,;:\&#39;&quot;`´¨“”„‹›«»/\\\\|¦+±\\-–—*×÷=()\\[\\]{}&lt;&gt;@#$%‰‱^&amp;&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><!-- _ --></p>
+
+<h2 id="versions">Versions</h2>
+
+<ul>
+  <li>0.0 - May 2011 - Initial release.</li>
+  <li>0.1 - February 2012 - Use better regular expression than <code>\W</code> for word separator. <kbd>Shift</kbd>-gesture copy the term into the search bar.</li>
+</ul>
+
+<h2 id="plans">Plans</h2>
+
+<ul>
+  <li>Would be nice to make it work even without the single click.</li>
+</ul>
+
+<h2 id="download">Download</h2>
+
+<p>You can find the related files on GitHub in my <a href="http://github.com/feherke/firegestures-script">firegestures-script repository</a>  :</p>
+
+<ul>
+  <li><a href="http://github.com/feherke/firegestures-script/blob/master/click-search-word.js">click-search-word.js</a> - script</li>
+</ul>
+
+
+
+</section>
+
+</div> <!-- #wrapper -->
+
+<div id=sidebar>
+
+<nav>
+
+<ul>
+  <li><a href="/javascript/">JavaScript</a>
+    <ul>
+      <li><a href="/javascript/firegestures/">FireGestures</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+</nav>
+
+<div id=tagcloud title="Tag cloud">
+<p><a href="/tag.html#search" title="1" style="font-size: 8pt">search</a></p>
+
+</div>
+
+</div> <!-- #sidebar -->
+
+<footer>
+
+<ul>
+<li>Powered by <a href="http://ruby-lang.org/">Ruby</a> 1.9.2</li>
+<li>Generated by <a href="http://jekyllrb.com/">Jekyll</a> 0.11.2</li>
+<li>Processed by <a href="http://kramdown.rubyforge.org/">kramdown</a></li>
+</ul>
+
+<ul>
+<li>Edited with <a href="http://midnight-commander.org/">MCEdit</a></li>
+<li>Hosted on <a href="http://github.com/">GitHub</a></li>
+</ul>
+
+<ul>
+<li>Valid <a href="http://w3c.org/TR/html5/">HTML 5</a></li>
+<li>Valid <a href="http://w3c.org/TR/CSS/#css3">CSS 3</a></li>
+<li>Valid <a href="http://w3c.org/WAI/">WAI AA</a></li>
+</ul>
+
+<ul>
+<li>Page 1-click-2-search-4-word last modified 2012-02-02.</li>
+<li>Copyright &copy; 2012, <a href="/about.html">Feherke</a></li>
+</ul>
+
+<div class=logo>F<sup>G</sup><sub>H</sub>S</div>
+
+<div class=clear></div>
+
+</footer>
+
+<!--[if lte IE 6]>
+<p>
+Please consider changing your Explorer 6 to a newer and/or better browser.
+For reasons and guidance read "<a href="http://quirksmode.org/upgrade.html">Upgrade your browser!</a>" by Peter-Paul Koch.
+</p>
+<![endif]-->
+
+</body>
+
+</html>

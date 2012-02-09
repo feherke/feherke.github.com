@@ -1,12 +1,63 @@
----
----
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-{% for page in site.pages %}
-  <url>{% capture chopurl %}{{ page.url | remove_first: 'index.html' }}{% endcapture %}
-    <loc>http://feherke.github.com{{ chopurl }}</loc>
-{% if page.date %}    <lastmod>{{ page.date | date_to_xmlschema }}</lastmod>
-{% endif %}    <priority>{% if chopurl == page.url %}0.1{% else %}0.2{% endif %}</priority>
+
+  <url>
+    <loc>http://feherke.github.com/sitemap.xml</loc>
+    <priority>0.1</priority>
   </url>
-{% endfor %}
+
+  <url>
+    <loc>http://feherke.github.com/about.html</loc>
+    <lastmod>2012-02-04</lastmod>
+    <priority>0.1</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.com/javascript/firegestures/popup-change-protocol.html</loc>
+    <lastmod>2012-02-07</lastmod>
+    <priority>0.1</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.com/javascript/firegestures/1-click-2-search-4-word.html</loc>
+    <lastmod>2012-02-02</lastmod>
+    <priority>0.1</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.com/javascript/firegestures/change-http-https.html</loc>
+    <lastmod>2011-05-07</lastmod>
+    <priority>0.1</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.com/javascript/firegestures/popup-hybrid-copy-url-and-title.html</loc>
+    <lastmod>2011-05-08</lastmod>
+    <priority>0.1</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.com/javascript/firegestures/</loc>
+    <lastmod>2011-05-07</lastmod>
+    <priority>0.2</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.com/javascript/</loc>
+    <lastmod>2012-02-07</lastmod>
+    <priority>0.2</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.com/tag.html</loc>
+    <lastmod>2012-02-04</lastmod>
+    <priority>0.1</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.com/</loc>
+    <lastmod>2012-02-07</lastmod>
+    <priority>0.2</priority>
+  </url>
+
 </urlset>
