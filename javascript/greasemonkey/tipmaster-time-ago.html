@@ -3,9 +3,9 @@
 
 <head>
 <meta charset=UTF-8>
-<title>[Popup] Change Protocol</title>
-<meta name=description content="Changes the protocol of the currently viewed URL">
-<meta name=keyword content="switch, protocol, http, httpd">
+<title>TipMaster - Time Ago</title>
+<meta name=description content="Adds relative approximate equivalent after dates.">
+<meta name=keyword content="time ago">
 <meta name=author content="Feherke">
 <meta name=copyright content="copyright (c) 2012, Feherke">
 <meta name=generator content="Jekyll 0.11.2">
@@ -37,56 +37,72 @@ Feherke's GitHub Site == glue between Feherke's GitHub hosted projects
 
 
 <div id=breadcrumb>
-<p><a href="/">Feherke&rsquo;s GitHub Site</a> / <a href="/javascript/">JavaScript</a> / <a href="/javascript/firegestures/">FireGestures</a> / </p>
+<p><a href="/">Feherke&rsquo;s GitHub Site</a> / <a href="/javascript/">JavaScript</a> / <a href="/javascript/greasemonkey/">Greasemonkey</a> / </p>
 
 </div>
 
 
 
+<div id=taglist>
+Tag :
+<a href="/tag.html#tipmaster">tipmaster</a>
+</div>
+
 
 <div class=clear></div>
 
-<h1 id="change-protocol">Change Protocol</h1>
+<h1 id="tipmaster---time-ago">TipMaster - Time Ago</h1>
 
-<p>Once called <strong>Change http: / https:</strong> changed the protocol from/to <code>http:</code> and <code>https:</code>.</p>
+<p>Improves the <a href="http://tipmaster.com/">TipMaster</a>&rsquo;s forums, <a href="http://tek-tips.com/">Tek-Tips</a> and <a href="http://eng-tips.com/">Eng-Tips</a>, by adding a relative fuzzy explanation
+after dates on the following pages :</p>
 
-<p>The old behavior was kept, but if you perform <kbd>Shift</kbd>-gesture, a popup list with the following protocols is displayed : <code>http:</code>, <code>https:</code>, <code>spdy:</code> and <code>ftp:</code>.</p>
+<ul>
+  <li>Thread list</li>
+  <li>Thread</li>
+  <li>FAQ list</li>
+  <li>MVP list</li>
+  <li>Search result</li>
+  <li>Started thread list</li>
+  <li>Replied to thread list</li>
+</ul>
 
-<p>Not so important script, I posted it because a catch : <code>window</code> refers to the chrome. To get the same <code>window</code> object as JavaScript gets in the document&rsquo;s context, you
-have to use <code>window.content</code>.</p>
+<p>The script does its best to correctly calculate the time. On the thread pages both date and time are specified, but on the other pages only the date. When time is known,
+the script calculates with the prcision of minutes otherwise with days.</p>
+
+<p>On the thread pages the current server time specified in tooltips is used, otherwise is calculated knowing that TipMaster servers are located at GMT-5. An alternative
+would be to use <code>document.lastModified</code> to avoid calculations exposed to errors due to unsynchronized daylight saving times around the world. <code>document.lastModified</code>
+will certainly contain wrong data when the pages are reused from the browser cache, but as far as I observed, that happens only when the browser restores the previous
+session.</p>
 
 <h2 id="usage">Usage</h2>
 
-<p>Perform a gesture to instantly change the current URL&rsquo;s protocol between <code>http:</code> and <code>https:</code>.</p>
-
-<p>Perform <kbd>Shift</kbd>-gesture to get a list of protocols and select the one to which you want to change the current URL&rsquo;s protocol.</p>
+<p>None. There is nothing interactive.</p>
 
 <h2 id="configuration">Configuration</h2>
 
 <p>Configuration not really supported.</p>
 
-<p>But new protocols for the <kbd>Shift</kbd>-gesture&rsquo;s popup list can be easily added.</p>
-
-<p>Just copy &amp; paste a line of the <code>FireGestures.generatePopup()</code>&rsquo;s parameter array and edit it.</p>
+<p>But you could add ( or remove ) some of the time amounts declared in the <code>unit</code> array.</p>
 
 <h2 id="versions">Versions</h2>
 
 <ul>
-  <li>0.0 - May 2011 - Initial release, as <a href="change-http-https.html">Change http: / https:</a>.</li>
-  <li>0.1 - February 2012 - Renamed to [Popup] Change Protocol. Added popup list.</li>
+  <li>0.0 - February 2012 - Initial release.</li>
 </ul>
 
 <h2 id="plans">Plans</h2>
 
-<p>None. Maybe should cut off the path when changing to <code>ftp:</code> protocol. Maybe the same should be done for <code>spdy:</code> too. Undecided.</p>
+<ul>
+  <li>If other pages with dates are found, make the script to work on those too.</li>
+  <li>Maybe add an exact alternative of the original date in a tooltip.</li>
+</ul>
 
 <h2 id="download">Download</h2>
 
-<p>You can find the related files on GitHub in my <a href="http://github.com/feherke/firegestures-script">firegestures-script repository</a>  :</p>
+<p>You can find the related files on GitHub in my <a href="http://github.com/feherke/Greasemonkey-script">Greasemonkey-script repository</a>  :</p>
 
 <ul>
-  <li><a href="http://github.com/feherke/firegestures-script/blob/master//popup-change-protocol.js">popup-change-protocol.js</a> - script</li>
-  <li><a href="http://github.com/feherke/firegestures-script/blob/master//change-http-https.js">change-http-https.js</a> - old script</li>
+  <li><a href="http://github.com/feherke/Greasemonkey-script/blob/master/Time Ago/TipMaster_-_Time_Ago.user.js">TipMaster_-_Time_Ago.user.js</a> - script</li>
 </ul>
 
 
@@ -139,7 +155,7 @@ have to use <code>window.content</code>.</p>
 </ul>
 
 <ul>
-<li>Page popup-change-protocol last modified 2012-02-07.</li>
+<li>Page tipmaster-time-ago last modified 2012-02-16.</li>
 <li>Copyright &copy; 2012, <a href="/about.html">Feherke</a></li>
 </ul>
 

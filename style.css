@@ -151,11 +151,24 @@ th {
   border-image: -o-linear-gradient(bottom,red,transparent) 1 100%;
   border-image: -ms-linear-gradient(bottom,red,transparent) 1 100%;
   border-image: linear-gradient(bottom,red,transparent) 1 100%;
-  border-width: 2px;
+  border-width: 1px;
   padding: 5px;
 }
 
 .note {
+  border-style: solid;
+  border-color: green;
+  border-image: -moz-linear-gradient(bottom,green,transparent) 1 100%;
+  border-image: -webkit-gradient(linear,left bottom,left top,from(green),to(transparent)) 1 100%;
+  border-image: -webkit-linear-gradient(bottom,green,transparent) 1 100%;
+  border-image: -o-linear-gradient(bottom,green,transparent) 1 100%;
+  border-image: -ms-linear-gradient(bottom,green,transparent) 1 100%;
+  border-image: linear-gradient(bottom,green,transparent) 1 100%;
+  border-width: 1px;
+  padding: 5px;
+}
+
+.info {
   background-image: -moz-repeating-linear-gradient(-45deg,black,#339 1px,black 2px,black 5px);
   background-image: -webkit-repeating-linear-gradient(-45deg,black,#339 1px,black 2px,black 5px);
   background-image: -o-repeating-linear-gradient(-45deg,black,#339 1px,black 2px,black 5px);

@@ -3,9 +3,9 @@
 
 <head>
 <meta charset=UTF-8>
-<title>Change http: / https:</title>
-<meta name=description content="Changes the protocol between plain and secure HTTP">
-<meta name=keyword content="switch, protocol, http, httpd">
+<title>TipMaster - Reply with Quote</title>
+<meta name=description content="Adds a reply link below each post to easily quote the answered message.">
+<meta name=keyword content="reply, quote, conversion, html2tgml">
 <meta name=author content="Feherke">
 <meta name=copyright content="copyright (c) 2012, Feherke">
 <meta name=generator content="Jekyll 0.11.2">
@@ -37,40 +37,60 @@ Feherke's GitHub Site == glue between Feherke's GitHub hosted projects
 
 
 <div id=breadcrumb>
-<p><a href="/">Feherke&rsquo;s GitHub Site</a> / <a href="/javascript/">JavaScript</a> / <a href="/javascript/firegestures/">FireGestures</a> / </p>
+<p><a href="/">Feherke&rsquo;s GitHub Site</a> / <a href="/javascript/">JavaScript</a> / <a href="/javascript/greasemonkey/">Greasemonkey</a> / </p>
 
 </div>
 
 
 
+<div id=taglist>
+Tag :
+<a href="/tag.html#tipmaster">tipmaster</a>
+</div>
+
 
 <div class=clear></div>
 
-<h1 id="change-http--https">Change http: / https:</h1>
+<h1 id="tipmaster---reply-with-quote">TipMaster - Reply with Quote</h1>
 
-<p class="info">This script was replaced by <a href="popup-change-protocol.html">[Popup] Change Protocol</a>.</p>
+<p>Improves the <a href="http://tipmaster.com/">TipMaster</a>&rsquo;s forums, <a href="http://tek-tips.com/">Tek-Tips</a> and <a href="http://eng-tips.com/">Eng-Tips</a>, by adding a link below each post on the
+thread pages to copy the given post&rsquo;s content into the reply form&rsquo;s message field. The quote&rsquo;s parameter is the post&rsquo;s author&rsquo;s handle. The signature is not included.</p>
 
-<p>Changes the protocol from/to http: and https:.</p>
+<p>The quoted message is converted back from HTML to TGML.</p>
 
-<p>Not so important script, I posted it because a catch : <code>window</code> refers to the chrome. To get the same <code>window</code> object as JavaScript gets in the document&rsquo;s context, you
-have to use <code>window.content</code>.</p>
+<p>Protecting verbatim TGML as [ignore][valid TGML tag][/ignore] is not implemented yet. ( Actually there is an implementation, but is not public as it is less
+optimal than could be, so I am looking for a better idea. )</p>
+
+<h2 id="usage">Usage</h2>
+
+<p>Click the &ldquo;Reply with quote to this post&rdquo; link below the message you want to reply to.</p>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>Configuration not really supported.</p>
+
+<p>But you could add ( or remove ) some of the tag conversion rules declared in the <code>markup</code> array.</p>
 
 <h2 id="versions">Versions</h2>
 
 <ul>
-  <li>0.0 - May 2011 - Initial release.</li>
+  <li>0.0 - February 2012 - Initial release.</li>
 </ul>
 
 <h2 id="plans">Plans</h2>
 
-<p>None.</p>
+<ul>
+  <li>Implement adding the [ignore] tag.</li>
+  <li>Make difference between [spoiler] and [hide] tags.</li>
+  <li>Provide a way to convert to lighter markup, like *bold* instead of [b]bold[/b].</li>
+</ul>
 
 <h2 id="download">Download</h2>
 
-<p>You can find the related files on GitHub in my <a href="http://github.com/feherke/FireGestures-script">FireGestures-script repository</a>  :</p>
+<p>You can find the related files on GitHub in my <a href="http://github.com/feherke/Greasemonkey-script">Greasemonkey-script repository</a>  :</p>
 
 <ul>
-  <li><a href="http://github.com/feherke/FireGestures-script/blob/master/Change Protocol/change-http-https.js">change-http-https.js</a> - script</li>
+  <li><a href="http://github.com/feherke/Greasemonkey-script/blob/master/Time Ago/TipMaster_-_Reply_with_Quote.user.js">TipMaster_-_Reply_with_Quote.user.js</a> - script</li>
 </ul>
 
 
@@ -123,7 +143,7 @@ have to use <code>window.content</code>.</p>
 </ul>
 
 <ul>
-<li>Page change-http-https last modified 2011-05-07.</li>
+<li>Page tipmaster-reply-with-quote last modified 2012-02-17.</li>
 <li>Copyright &copy; 2012, <a href="/about.html">Feherke</a></li>
 </ul>
 
