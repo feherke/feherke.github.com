@@ -2,6 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
+    <loc>http://feherke.github.com/ruby/jekyll/debug.html</loc>
+    <lastmod>2012-02-20</lastmod>
+    <priority>0.1</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.com/ruby/jekyll/</loc>
+    <lastmod>2012-02-09</lastmod>
+    <priority>0.2</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.com/ruby/jekyll/version.html</loc>
+    <lastmod>2012-02-20</lastmod>
+    <priority>0.1</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.com/ruby/</loc>
+    <lastmod>2012-02-09</lastmod>
+    <priority>0.2</priority>
+  </url>
+
+  <url>
     <loc>http://feherke.github.com/sitemap.xml</loc>
     <priority>0.1</priority>
   </url>

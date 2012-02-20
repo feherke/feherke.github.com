@@ -3,9 +3,9 @@
 
 <head>
 <meta charset=UTF-8>
-<title>TipMaster - Reply with Quote</title>
-<meta name=description content="Adds a reply link below each post to easily quote the answered message.">
-<meta name=keyword content="reply, quote, conversion, html2tgml">
+<title>Debug</title>
+<meta name=description content="Allows calling any method of the template variables.">
+<meta name=keyword content="debug">
 <meta name=author content="Feherke">
 <meta name=copyright content="copyright (c) 2012, Feherke">
 <meta name=generator content="Jekyll 0.11.2">
@@ -37,60 +37,59 @@ Feherke's GitHub Site == glue between Feherke's GitHub hosted projects
 
 
 <div id=breadcrumb>
-<p><a href="/">Feherke&rsquo;s GitHub Site</a> / <a href="/javascript/">JavaScript</a> / <a href="/javascript/greasemonkey/">Greasemonkey</a> / </p>
+<p><a href="/">Feherke&rsquo;s GitHub Site</a> / <a href="/ruby/">Ruby</a> / <a href="/ruby/jekyll/">Jekyll</a> / </p>
 
 </div>
 
 
-
-<div id=taglist>
-Tag :
-<a href="/tag.html#tipmaster">tipmaster</a>
-</div>
 
 
 <div class=clear></div>
 
-<h1 id="tipmaster---reply-with-quote">TipMaster - Reply with Quote</h1>
+<h1 id="debug">Debug</h1>
 
-<p>Improves the <a href="http://tipmaster.com/">TipMaster</a>&rsquo;s forums, <a href="http://tek-tips.com/">Tek-Tips</a> and <a href="http://eng-tips.com/">Eng-Tips</a>, by adding a link below each post on the
-thread pages to copy the given post&rsquo;s content into the reply form&rsquo;s message field. The quote&rsquo;s parameter is the post&rsquo;s author&rsquo;s handle. The signature is not included.</p>
+<p>Sometimes is not simple to guess why the variable set in the YAML front matter is not inserted as expected in the generated document. This plugin was initially written
+to just display the class name of a variable.</p>
 
-<p>The quoted message is converted back from HTML to TGML.</p>
+<p>Most of the time looking at output of the generator is easier than looking into the generated document. And always is easier to look at one generator output that looking
+in all generated documents to check one value in each. That is why this plugin got its second filter, to <code>puts</code> the value to the output.</p>
 
-<p>Protecting verbatim TGML as [ignore][valid TGML tag][/ignore] is not implemented yet. ( Actually there is an implementation, but is not public as it is less
-optimal than could be, so I am looking for a better idea. )</p>
+<p>But the Ruby objects have many handy methods and the Liquid template allows using only a couple of them. So I just deleted everything and wrote a single filter : <code>send</code>.</p>
 
 <h2 id="usage">Usage</h2>
 
-<p>Click the &ldquo;Reply with quote to this post&rdquo; link below the message you want to reply to.</p>
+<p><code>send</code> is a Liquid filter, so you just put it after the <code>{{</code> and <code>}}</code> enclosed variable. The first parameter is the method name, the remaining
+parameters are passed forward to the called method :</p>
+
+<pre><code>Type of variable is {{ variable | send: 'class' | send: 'name' }}
+3rd letter of variable is {{ variable | send: '[]', 2 }}
+Print variable to stdout {{ variable | send: 'display' }}
+</code></pre>
 
 <h2 id="configuration">Configuration</h2>
 
-<p>Configuration not really supported.</p>
-
-<p>But you could add ( or remove ) some of the tag conversion rules declared in the <code>markup</code> array.</p>
+<p>None.</p>
 
 <h2 id="versions">Versions</h2>
 
 <ul>
-  <li>0.0 - February 2012 - Initial release.</li>
+  <li>0.0 - October 2011 - Initial release.</li>
+  <li>0.1 - February 2012 - Added the <code>puts</code> filter.</li>
+  <li>0.2 - February 2012 - Removed the <code>debug</code> and <code>puts</code> filter and added the <code>send</code> filter.</li>
 </ul>
 
 <h2 id="plans">Plans</h2>
 
 <ul>
-  <li>Implement adding the [ignore] tag.</li>
-  <li>Make difference between [spoiler] and [hide] tags.</li>
-  <li>Provide a way to convert to lighter markup, like *bold* instead of [b]bold[/b].</li>
+  <li>Maybe some <em>really</em> pretty printing. ( Sorry, not fan of <code>pp</code>. For now I will use <code>to_yaml</code>. )</li>
 </ul>
 
 <h2 id="download">Download</h2>
 
-<p>You can find the related files on GitHub in my <a href="http://github.com/feherke/Greasemonkey-script">Greasemonkey-script repository</a>  :</p>
+<p>You can find the related files on GitHub in my <a href="http://github.com/feherke/Jekyll-plugin">Jekyll-plugin repository</a>  :</p>
 
 <ul>
-  <li><a href="http://github.com/feherke/Greasemonkey-script/blob/master/tipmaster-reply-with-quote/TipMaster_-_Reply_with_Quote.user.js">TipMaster_-_Reply_with_Quote.user.js</a> - script</li>
+  <li><a href="http://github.com/feherke/Jekyll-plugin/blob/master/debug/debug.rb">debug.rb</a> - script</li>
 </ul>
 
 
@@ -148,7 +147,7 @@ optimal than could be, so I am looking for a better idea. )</p>
 </ul>
 
 <ul>
-<li>Page tipmaster-reply-with-quote last modified 2012-02-17.</li>
+<li>Page debug last modified 2012-02-20.</li>
 <li>Copyright &copy; 2012, <a href="/about.html">Feherke</a></li>
 </ul>
 
