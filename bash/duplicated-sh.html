@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+<meta charset=UTF-8>
+<title>duplicated.sh</title>
+<meta name=description content="Create a list of all duplicated files based on comparing their checksums.">
+<meta name=author content="Feherke">
+<meta name=generator content="Jekyll 0.11.2">
+<!--[if IE]>
+<script src="/html5fordummies.js"></script>
+<![endif]-->
+<link rel=stylesheet href="/style.css">
+<link rel=icon href="/favicon.ico">
+</head>
+
+<body>
+
+<header>
+
+<div id=skip>
+<a href="#content" accesskey=c>skip to content</a>
+</div>
+
+<div class=title>
+Feherke's GitHub Site == glue between Feherke's GitHub hosted projects
+</div>
+
+</header>
+
+<div id=wrapper>
+
+<section id=content>
+
+
+
+<div id=breadcrumb>
+<p><a href="/">Feherke&rsquo;s GitHub Site</a> / <a href="/bash/">Bash</a> / </p>
+
+</div>
+
+
+
+<div id=taglist>
+Tag :
+<a href="/tag.html#cleanup">cleanup</a>
+</div>
+
+
+<div class=clear></div>
+
+<h1 id="duplicatedsh---search-for-duplicated-files">duplicated.sh - search for duplicated files</h1>
+
+<p>An e-friend wanted to search for duplicated files on his machine, but did not know how. He wrote me this : &ldquo;Although I know you have a shell script for this purpose,
+that does not help me too much on xp.&rdquo;
+Two mistakes : 1) no, I did not had such script; 2) yes, shell scripts can help on market leader operating system too.</p>
+
+<p>So I wrote duplicated.sh and run it in <a href="http://cygwin.com/">CygWin</a>. Works perfectly. Sadly, I can not tell the same about my other two tries :</p>
+
+<ul>
+  <li>Perl - unstable. When did not like something, crashes.</li>
+  <li>Java - slooow. With 32 Mb input buffer size works abit faster, but still not a champion.</li>
+</ul>
+
+<p>duplicated.sh had to deal with 27.67 Gb data. At the end it displays the execution time. And I am satisfied by it.</p>
+
+<h2 id="usage">Usage</h2>
+
+<p class="precaption">sample output - duplicated.sh --help</p>
+
+<pre><samp class="cli">duplicated.sh   version 1.4   august 2008   written by Feherke
+search for multiple files with the same content
+
+Syntax :
+  duplicate.sh [-s size] [-a algorithm] [directory [...]]
+
+Parameters :
+  -s size | --size=size  - file size in bytes, smallers are not checked ( 0 )
+  -a algorithm | --algo=algorithm  - checksum algorithm : MD5 or SHA1 ( MD5 )
+  directory  - directory with path to include in the search ( . )
+
+All searches are recursive.
+</samp></pre>
+
+<p>It only generates a duplication list, dealing with the duplicates is left to the user :</p>
+
+<p class="precaption">sample output - duplicated.sh</p>
+
+<pre><samp class="cli">duplicate.sh   version 1.2   march 2007   written by Feherke
+searches for multiple files with the same content
+creating temporary directory... Ok ( tmp.oDYUuq2932 )
+creating file list... Ok ( 890340, error 7707 )
+searching for duplicated file sizes... Ok ( 25028 )
+creating list of potential duplicated files... Ok ( 872781 )
+collecting MD5 checksums... Ok ( 871992, error 789 )
+searching for duplicated checksums... Ok ( 98577 )
+creating list of duplicated files... Ok ( 725121 )
+creating result list... Ok ( duplicate.txt )
+cleaning up temporary data... Ok ( 352M )
+all done in 1 hours 50 minutes 28 seconds.
+</samp></pre>
+
+<p>The numbers mentioned as errors above, are the caused by files and directories not accessible for any kind of user.</p>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>None.</p>
+
+<p>The only way duplicated.sh&rsquo;s activity can be influenced, are the command line parameters.</p>
+
+<h2 id="versions">Versions</h2>
+
+<ul class="changelog">
+  <li>1.0 - 2006
+    <ul>
+      <li class="added">Initial release, just a proof of concept compared to similar Java and Perl implementations.</li>
+    </ul>
+  </li>
+  <li>1.1
+    <ul>
+      <li class="changed">Transformed into usable script.</li>
+    </ul>
+  </li>
+  <li>
+    <p>1.2 - April 2007</p>
+  </li>
+  <li>1.3 - March 2007
+    <ul>
+      <li class="changed">Changed to work with older <code>md5sum</code> versions too.</li>
+      <li class="added">New <code>-s</code> size parameter to exclude small files</li>
+      <li class="added">New <code>-a</code> algorithm parameter to set the checksum algorithm used for comparing ( MD5 and SHA1 supported )</li>
+    </ul>
+  </li>
+  <li>1.4 - August 2008
+    <ul>
+      <li class="changed">Minor optimizations.</li>
+      <li class="changed">Portable sh code replaced with Bash specific alternatives.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="plans">Plans</h2>
+
+<ul>
+  <li>Work with more checksum tools, for example <code>openssl</code>.</li>
+  <li>Add another comparison before calculating checksums. Either directly compare <code>head</code> output or the checksum of <code>head</code>.</li>
+</ul>
+
+<h2 id="download">Download</h2>
+
+<p>You can find the related files on GitHub in my <a href="http://github.com/feherke/Bash-script">Bash-script repository</a>  :</p>
+
+<ul>
+  <li><a href="http://github.com/feherke/Bash-script/blob/master/duplicated/duplicated.sh">duplicated.sh</a> - script</li>
+  <li><a href="http://github.com/feherke/Bash-script/blob/master/duplicated/duplicated.sh.1">duplicated.sh.1</a> - man page</li>
+</ul>
+
+
+
+</section>
+
+</div> <!-- #wrapper -->
+
+<div id=sidebar>
+
+<nav>
+
+<ul>
+  <li><a href="/bash/">Bash</a></li>
+  <li><a href="/javascript/">JavaScript</a>
+    <ul>
+      <li><a href="/javascript/firegestures/">FireGestures</a></li>
+      <li><a href="/javascript/greasemonkey/">Greasemonkey</a></li>
+    </ul>
+  </li>
+  <li><a href="/perl/">Perl</a>
+    <ul>
+      <li><a href="/perl/irssi/">Irssi</a></li>
+    </ul>
+  </li>
+  <li><a href="/ruby/">Ruby</a>
+    <ul>
+      <li><a href="/ruby/jekyll/">Jekyll</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+</nav>
+
+<div id=tagcloud title="Tag cloud">
+<p><a href="/tag.html#BitlBee" title="1" style="font-size: 8pt">BitlBee</a>
+<a href="/tag.html#TipMaster" title="2" style="font-size: 13pt">TipMaster</a>
+<a href="/tag.html#cleanup" title="3" style="font-size: 18pt">cleanup</a>
+<a href="/tag.html#notification" title="2" style="font-size: 13pt">notification</a>
+<a href="/tag.html#search" title="2" style="font-size: 13pt">search</a></p>
+
+</div>
+
+</div> <!-- #sidebar -->
+
+<footer>
+
+<ul>
+<li>Powered by <a href="http://ruby-lang.org/">Ruby</a> 1.9.2</li>
+<li>Generated by <a href="http://jekyllrb.com/">Jekyll</a> 0.11.2</li>
+<li>Processed by <a href="http://kramdown.rubyforge.org/">kramdown</a> 0.13.4</li>
+</ul>
+
+<ul>
+<li>Edited with <a href="http://midnight-commander.org/">MCEdit</a></li>
+<li>Hosted on <a href="http://github.com/">GitHub</a></li>
+</ul>
+
+<ul>
+<li>Valid <a href="http://w3c.org/TR/html5/">HTML 5</a></li>
+<li>Valid <a href="http://w3c.org/TR/CSS/#css3">CSS 3</a></li>
+<li>Valid <a href="http://w3c.org/WAI/">WAI AA</a></li>
+</ul>
+
+<ul>
+<li>Page duplicated-sh last modified 2007-03-26.</li>
+<li>Copyright &copy; 2012, <a href="/about.html">Feherke</a></li>
+</ul>
+
+<div class=logo>F<sup>G</sup><sub>H</sub>S</div>
+
+<div class=clear></div>
+
+</footer>
+
+<!--[if lte IE 6]>
+<p>
+Please consider changing your Explorer 6 to a newer and/or better browser.
+For reasons and guidance read "<a href="http://quirksmode.org/upgrade.html">Upgrade your browser!</a>" by Peter-Paul Koch.
+</p>
+<![endif]-->
+
+</body>
+
+</html>

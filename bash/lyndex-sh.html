@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+<meta charset=UTF-8>
+<title>lyndex.sh</title>
+<meta name=description content="Create a word index from the Lynx traversal crawl files.">
+<meta name=author content="Feherke">
+<meta name=generator content="Jekyll 0.11.2">
+<!--[if IE]>
+<script src="/html5fordummies.js"></script>
+<![endif]-->
+<link rel=stylesheet href="/style.css">
+<link rel=icon href="/favicon.ico">
+</head>
+
+<body>
+
+<header>
+
+<div id=skip>
+<a href="#content" accesskey=c>skip to content</a>
+</div>
+
+<div class=title>
+Feherke's GitHub Site == glue between Feherke's GitHub hosted projects
+</div>
+
+</header>
+
+<div id=wrapper>
+
+<section id=content>
+
+
+
+<div id=breadcrumb>
+<p><a href="/">Feherke&rsquo;s GitHub Site</a> / <a href="/bash/">Bash</a> / </p>
+
+</div>
+
+
+
+<div id=taglist>
+Tag :
+<a href="/tag.html#search">search</a>
+</div>
+
+
+<div class=clear></div>
+
+<h1 id="lyndexsh---lynx-based-site-indexer">lyndex.sh - Lynx-based site indexer</h1>
+
+<p>I was impressed by the <a href="http://lynx.isc.org/">Lynx</a>&rsquo;s crawling ability so much, that I write this indexer script to process it&rsquo;s result. Not much theory, just a glimpse
+at the <a href="http://lynx.isc.org/release/lynx2-8-5/docs/CRAWL.announce">CRAWL.announce</a> then a nice job of text processing. Fortunately Lynx does all the hard job, of
+extracting <abbr title="Uniform Resource Locator">URL</abbr> and stripping the <abbr title="HyperText Markup Language">HTML</abbr> tags, but sadly, some useful information is going away too. Like keywords and description <code>meta</code> tag values and the distinction of
+heading elements. So this is just a simple solution, not a good one.</p>
+
+<p>Currently my site is quite small, but the ratio says to me that is effective enough. Ok, I know, my English is poor and I use a limited amount of words, so is not a
+big deal to index them. But I hope this ratio will worsen in time.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Stage</th>
+      <th style="text-align: right">Files</th>
+      <th style="text-align: right">Size</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>full site</td>
+      <td style="text-align: right">62</td>
+      <td style="text-align: right">594 Kb</td>
+    </tr>
+    <tr>
+      <td>crawled text</td>
+      <td style="text-align: right">48</td>
+      <td style="text-align: right">242 Kb</td>
+    </tr>
+    <tr>
+      <td>temporary data</td>
+      <td style="text-align: right">1</td>
+      <td style="text-align: right">95 Kb</td>
+    </tr>
+    <tr>
+      <td>resulted info</td>
+      <td style="text-align: right">5</td>
+      <td style="text-align: right">44 Kb</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>lyndex.sh spent only a few seconds on my site, but may work for long time. During the work it writes something about it&rsquo;s activity :</p>
+
+<h2 id="usage">Usage</h2>
+
+<p>lyndex.sh is expects no instructions directly. Usually there should be one configuration file for each site you want to index, then you just pass the configuration
+file&rsquo;s name to work with :</p>
+
+<p class="precaption">sample output - lyndex --help</p>
+
+<pre><samp class="cli">Lyndex   version 1.0b   october 2005   written by Feherke
+create a word index from the Lynx traversal crawl files
+
+Syntax :
+  lyndex.sh [inifile]
+
+Parameter :
+  inifile  - crawling settings file ( lyndex.ini )
+</samp></pre>
+
+<p>lyndex.sh only builds some indexes then lets the user to do whatever he wants with them :</p>
+
+<p class="precaption">sample output - lyndex.sh</p>
+
+<pre><samp class="cli">Lyndex   version 1.0b   october 2005   written by Feherke
+Reading settings... Ok ( ./lyndex.ini )
+Creating work directory... Ok ( lnkyLVdys )
+Setting up restrictions... Ok ( 1 )
+Composing user-agent... Ok ( Lyndex/1.0 Lynx/2.8.4rel.1 (Linux 2.4.19-4GB i686; console) )
+Crawling http://rootshell/ ... Ok ( 234K )
+Removing old data... Ok ( 5 files )
+Generating checksums... Ok ( 44 entries )
+Excluding duplicates... Ok ( 2 pieces )
+Creating file list... Ok ( 42 files )
+Extracting words... Ok ( 5252 entries )
+Calculating maximum relevance... Ok ( 22 )
+Parsing words... Ok ( 1351 words )
+Creating table of contents... OK ( 26 letters )
+Creating general file... OK ( 2 items )
+Checking for spelling errors... OK ( 268 occurences )
+Removing temporary data... Ok ( 322K )
+Removing work directory... Ok ( lnkyLVdys )
+Done ( 10 seconds )
+</samp></pre>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>The configuration file</p>
+
+<ul>
+  <li>is mandatory</li>
+  <li>can be specified in command line</li>
+  <li>by default is located in the same directory with the script</li>
+  <li>by default has the same name with the script, with <em>.sh</em> extension removed and <em>.ini</em> extension added</li>
+  <li>is sourceable shell script</li>
+</ul>
+
+<p class="precaption">lyndex.ini - sample configuration</p>
+
+<div class="highlight"><pre><code class="ini"><span class="c"># Lyndex   version 1.0b   october 2005   written by Feherke</span>
+<span class="c"># create a word index from the Lynx traversal crawl files</span>
+<span class="c"># settings file</span>
+
+<span class="c"># base url and starting point for crawl from</span>
+<span class="c"># should be the highest level directory from the structure</span>
+<span class="na">starturl</span><span class="o">=</span><span class="s">&quot;http://example.com/&quot;</span>
+
+<span class="c"># minimum word length</span>
+<span class="c"># words with less then this many characters will be excluded</span>
+<span class="na">minword</span><span class="o">=</span><span class="s">3</span>
+
+<span class="c"># maximum ASCII-art length</span>
+<span class="c"># words containing one character more then this many time will be excluded</span>
+<span class="na">maxaart</span><span class="o">=</span><span class="s">3</span>
+
+<span class="c"># maximum percent of pages, including a relevant word</span>
+<span class="c"># if more then this many pages contains it, the word is not relevant</span>
+<span class="c"># the word could be irrelevant only if all pages contain it in same count</span>
+<span class="na">maxrele</span><span class="o">=</span><span class="s">90</span>
+
+<span class="c"># decrement almost irrelevant word scoring</span>
+<span class="c"># for the words above relevance limit, but with different count per page</span>
+<span class="c"># the count could be</span>
+<span class="na">decirel</span><span class="o">=</span><span class="s">&quot;yes&quot;</span>
+
+<span class="c"># size of page sample in characters</span>
+<span class="c"># will be displayed in the page list</span>
+<span class="na">sample</span><span class="o">=</span><span class="s">250</span>
+
+<span class="c"># directory to exclude from crawling</span>
+<span class="c"># more then one directories can be specified in an array :</span>
+<span class="c"># nocrawl=( &quot;http://example.com/sample/&quot; &quot;http://example.com/temp/&quot; )</span>
+<span class="na">nocrawl</span><span class="o">=</span><span class="s">&quot;http://example.com/private/&quot;</span>
+
+<span class="c"># checksum calculation tool</span>
+<span class="c"># used to detect multiple instances of a page</span>
+<span class="c"># some possible values :</span>
+<span class="c">#   cksum | md5sum | sha1sum | sum</span>
+<span class="c">#   du -b | wc -c</span>
+<span class="na">checksum</span><span class="o">=</span><span class="s">&quot;md5sum&quot;</span>
+
+<span class="c"># spelling verification tool</span>
+<span class="c"># if specified, will be used to check the word list</span>
+<span class="c"># some possible values :</span>
+<span class="c">#   ispell -a | aspell -a</span>
+<span class="na">shellcheck</span><span class="o">=</span><span class="s">&quot;ispell -a&quot;</span>
+</code></pre>
+</div>
+
+<h2 id="versions">Versions</h2>
+
+<ul class="changelog">
+  <li>1.0 - September 2005
+    <ul>
+      <li class="added">Initial release.</li>
+    </ul>
+  </li>
+  <li>1.0b - October 2005
+    <ul>
+      <li class="changed">Exclude duplications when more URLs are pointing to the same content.</li>
+      <li class="added">Exclude too short words ( option <code>minword</code> ).</li>
+      <li class="added">Poor ASCII art recognition by watching characters repeated multiple times ( option <code>maxaart</code> ).</li>
+      <li class="added">Spell checking ( option <code>spellcheck</code> ).</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="plans">Plans</h2>
+
+<ul>
+  <li>Documentation.</li>
+</ul>
+
+<h2 id="download">Download</h2>
+
+<p>You can find the related files on GitHub in my <a href="http://github.com/feherke/Bash-script"><abbr title="Bourne-Again SHell">Bash</abbr>-script repository</a>  :</p>
+
+<ul>
+  <li><a href="http://github.com/feherke/Bash-script/blob/master/lyndex/lyndex.sh">lyndex.sh</a> - script</li>
+  <li><a href="http://github.com/feherke/Bash-script/blob/master/lyndex/lyndex.ini">lyndex.ini</a> - configuration</li>
+  <li><a href="http://github.com/feherke/Bash-script/blob/master/lyndex/lyndex.sh.1">lyndex.sh.1</a> - man page</li>
+</ul>
+
+
+
+</section>
+
+</div> <!-- #wrapper -->
+
+<div id=sidebar>
+
+<nav>
+
+<ul>
+  <li><a href="/bash/">Bash</a></li>
+  <li><a href="/javascript/">JavaScript</a>
+    <ul>
+      <li><a href="/javascript/firegestures/">FireGestures</a></li>
+      <li><a href="/javascript/greasemonkey/">Greasemonkey</a></li>
+    </ul>
+  </li>
+  <li><a href="/perl/">Perl</a>
+    <ul>
+      <li><a href="/perl/irssi/">Irssi</a></li>
+    </ul>
+  </li>
+  <li><a href="/ruby/">Ruby</a>
+    <ul>
+      <li><a href="/ruby/jekyll/">Jekyll</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+</nav>
+
+<div id=tagcloud title="Tag cloud">
+<p><a href="/tag.html#BitlBee" title="1" style="font-size: 8pt">BitlBee</a>
+<a href="/tag.html#TipMaster" title="2" style="font-size: 13pt">TipMaster</a>
+<a href="/tag.html#cleanup" title="3" style="font-size: 18pt">cleanup</a>
+<a href="/tag.html#notification" title="2" style="font-size: 13pt">notification</a>
+<a href="/tag.html#search" title="2" style="font-size: 13pt">search</a></p>
+
+</div>
+
+</div> <!-- #sidebar -->
+
+<footer>
+
+<ul>
+<li>Powered by <a href="http://ruby-lang.org/">Ruby</a> 1.9.2</li>
+<li>Generated by <a href="http://jekyllrb.com/">Jekyll</a> 0.11.2</li>
+<li>Processed by <a href="http://kramdown.rubyforge.org/">kramdown</a> 0.13.4</li>
+</ul>
+
+<ul>
+<li>Edited with <a href="http://midnight-commander.org/">MCEdit</a></li>
+<li>Hosted on <a href="http://github.com/">GitHub</a></li>
+</ul>
+
+<ul>
+<li>Valid <a href="http://w3c.org/TR/html5/">HTML 5</a></li>
+<li>Valid <a href="http://w3c.org/TR/CSS/#css3">CSS 3</a></li>
+<li>Valid <a href="http://w3c.org/WAI/">WAI AA</a></li>
+</ul>
+
+<ul>
+<li>Page lyndex-sh last modified 2005-10-05.</li>
+<li>Copyright &copy; 2012, <a href="/about.html">Feherke</a></li>
+</ul>
+
+<div class=logo>F<sup>G</sup><sub>H</sub>S</div>
+
+<div class=clear></div>
+
+</footer>
+
+<!--[if lte IE 6]>
+<p>
+Please consider changing your Explorer 6 to a newer and/or better browser.
+For reasons and guidance read "<a href="http://quirksmode.org/upgrade.html">Upgrade your browser!</a>" by Peter-Paul Koch.
+</p>
+<![endif]-->
+
+</body>
+
+</html>

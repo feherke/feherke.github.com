@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+<meta charset=UTF-8>
+<title>buzz.sh</title>
+<meta name=description content="Schedules an at job to pop up a message using various commands.">
+<meta name=author content="Feherke">
+<meta name=generator content="Jekyll 0.11.2">
+<!--[if IE]>
+<script src="/html5fordummies.js"></script>
+<![endif]-->
+<link rel=stylesheet href="/style.css">
+<link rel=icon href="/favicon.ico">
+</head>
+
+<body>
+
+<header>
+
+<div id=skip>
+<a href="#content" accesskey=c>skip to content</a>
+</div>
+
+<div class=title>
+Feherke's GitHub Site == glue between Feherke's GitHub hosted projects
+</div>
+
+</header>
+
+<div id=wrapper>
+
+<section id=content>
+
+
+
+<div id=breadcrumb>
+<p><a href="/">Feherke&rsquo;s GitHub Site</a> / <a href="/bash/">Bash</a> / </p>
+
+</div>
+
+
+
+<div id=taglist>
+Tag :
+<a href="/tag.html#notification">notification</a>
+</div>
+
+
+<div class=clear></div>
+
+<h1 id="buzzsh---displays-a-predefined-message-at-a-given-time">buzz.sh - displays a predefined message at a given time</h1>
+
+<p>There are all kind of scheduling and alerting tools. For example <a href="https://addons.mozilla.org/en-US/firefox/addon/1191">ReminderFox</a>, which I actually use.
+But most of them are quite feature full and usually even if you can omit many of the details you still have to specify at least a message. Often I want an alert the same
+day, just to make me look at the clock and remember that I planed to do something. Using the usual tools for such simple task is like shooting sparrow with cannon.</p>
+
+<p>When using buzz.sh only the time is mandatory. The time format is very flexible, due to the <code>at</code> command&rsquo;s flexibility.</p>
+
+<p>The message can be displayed with the first command found in the list. Currently : <code>xmessage</code>, <code>Xdialog</code>, <code>kdialog</code>, <code>gdialog</code>, <code>zenity</code>, <code>yad</code>, <code>xterm</code>, <code>eterm</code>,
+<code>aterm</code>, <code>terminal</code>, <code>konsole</code>, <code>vte</code>, <code>rxvt</code>. If none of the commands is found, the message will be simply output, so the <code>atd</code> will send it to the local mailbox.</p>
+
+<h2 id="usage">Usage</h2>
+
+<p class="precaption">sample output - buzz.sh --help</p>
+
+<pre><samp class="cli">Buzz !   version 1.2   november 2010   written by Feherke
+displays a predefined message at a given time
+
+Syntax :
+  buzz time
+
+Parameters :
+  time  - absolute or relative time, as required by at :
+    H day-part
+    HH:MM [month-name DD [YY[YY]]]
+    HH:MM DD.MM.YY
+    now + count time-unit
+</samp></pre>
+
+<p>The script&rsquo;s only functionality is scheduling a buzz. For scheduled job list manipulation use the <code>at</code>&rsquo;s utilities : <code>atq</code> for listing, <code>atrm</code> for revoking.</p>
+
+<p class="precaption">sample output - buzz.sh 18:45</p>
+
+<pre><samp class="cli">Buzz !   version 1.1   september 2008   written by Feherke
+The message will be displayed using xmessage
+warning: commands will be executed using /bin/sh
+job 75 at Sat Aug 30 18:45:00 2008
+</samp></pre>
+
+<p>The last two lines may vary as they are the output of the <code>at</code> command.</p>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>Configuration not really supported.</p>
+
+<p>But you could edit the order of preferred commands and the predefined message. Note that you can remove items from <code>commandlist</code>, but adding will not work.</p>
+
+<p class="precaption">buzz.sh - fragment with hardcoded configuration</p>
+
+<div class="highlight"><pre><code class="bash"><span class="c"># order of preferred commands</span>
+<span class="nv">commandlist</span><span class="o">=(</span> <span class="s1">&#39;xmessage&#39;</span> <span class="s1">&#39;Xdialog&#39;</span> <span class="s1">&#39;kdialog&#39;</span> <span class="s1">&#39;gdialog&#39;</span> <span class="s1">&#39;zenity&#39;</span> <span class="s1">&#39;yad&#39;</span> <span class="s1">&#39;xterm&#39;</span> <span class="s1">&#39;eterm&#39;</span> <span class="s1">&#39;aterm&#39;</span> <span class="s1">&#39;terminal&#39;</span> <span class="s1">&#39;konsole&#39;</span> <span class="s1">&#39;vte&#39;</span> <span class="s1">&#39;rxvt&#39;</span> <span class="o">)</span>
+
+<span class="c"># predefined message</span>
+<span class="nv">title</span><span class="o">=</span><span class="s1">&#39;Buzz !&#39;</span>
+<span class="nv">button</span><span class="o">=</span><span class="s1">&#39;Yes, thank You&#39;</span>
+<span class="nv">message</span><span class="o">=</span><span class="s2">&quot; Excuse me Sir, this is Your</span>
+<span class="s2">|~|_    _  _   ___   ___  |~|</span>
+<span class="s2">| / \  | || | |__ | |__ | | |</span>
+<span class="s2">|  O ) | || |  / /   / /  |_|</span>
+<span class="s2">|_\_/  \__/_| |___| |___| (_)</span>
+
+<span class="s2"> *   --==[ \$( date +%H:%M:%S ) ]=--   *</span>
+
+<span class="s2">( Buzz was set at $( date +%H:%M:%S ). )&quot;</span>
+</code></pre>
+</div>
+
+<h2 id="versions">Versions</h2>
+
+<ul class="changelog">
+  <li>1.0 - May 2004
+    <ul>
+      <li class="added">Initial release.</li>
+    </ul>
+  </li>
+  <li>1.1 - September 2008
+    <ul>
+      <li class="added">Alerts with the first tool found in a list of 10 notification tools :
+    <code>xmessage</code>, <code>Xdialog</code>, <code>kdialog</code>, <code>gdialog</code>, <code>zenity</code>, <code>xterm</code>, <code>eterm</code>, <code>aterm</code>, <code>terminal</code>, <code>konsole</code></li>
+    </ul>
+  </li>
+  <li>1.2 - November 2010
+    <ul>
+      <li class="added">Added 3 more notification tools :
+    <code>yad</code>, <code>vte</code>, <code>rxvt</code></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="plans">Plans</h2>
+
+<ul>
+  <li>Add more tools, for example <code>gaffel</code>.</li>
+</ul>
+
+<h2 id="download">Download</h2>
+
+<p>You can find the related files on GitHub in my <a href="http://github.com/feherke/bash-script">bash-script repository</a>  :</p>
+
+<ul>
+  <li><a href="http://github.com/feherke/bash-script/blob/master/buzz/buzz.sh">buzz.sh</a> - script</li>
+  <li><a href="http://github.com/feherke/bash-script/blob/master/buzz/buzz.sh.1">buzz.sh.1</a> - man page</li>
+</ul>
+
+
+
+</section>
+
+</div> <!-- #wrapper -->
+
+<div id=sidebar>
+
+<nav>
+
+<ul>
+  <li><a href="/bash/">Bash</a></li>
+  <li><a href="/javascript/">JavaScript</a>
+    <ul>
+      <li><a href="/javascript/firegestures/">FireGestures</a></li>
+      <li><a href="/javascript/greasemonkey/">Greasemonkey</a></li>
+    </ul>
+  </li>
+  <li><a href="/perl/">Perl</a>
+    <ul>
+      <li><a href="/perl/irssi/">Irssi</a></li>
+    </ul>
+  </li>
+  <li><a href="/ruby/">Ruby</a>
+    <ul>
+      <li><a href="/ruby/jekyll/">Jekyll</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+</nav>
+
+<div id=tagcloud title="Tag cloud">
+<p><a href="/tag.html#BitlBee" title="1" style="font-size: 8pt">BitlBee</a>
+<a href="/tag.html#TipMaster" title="2" style="font-size: 13pt">TipMaster</a>
+<a href="/tag.html#cleanup" title="3" style="font-size: 18pt">cleanup</a>
+<a href="/tag.html#notification" title="2" style="font-size: 13pt">notification</a>
+<a href="/tag.html#search" title="2" style="font-size: 13pt">search</a></p>
+
+</div>
+
+</div> <!-- #sidebar -->
+
+<footer>
+
+<ul>
+<li>Powered by <a href="http://ruby-lang.org/">Ruby</a> 1.9.2</li>
+<li>Generated by <a href="http://jekyllrb.com/">Jekyll</a> 0.11.2</li>
+<li>Processed by <a href="http://kramdown.rubyforge.org/">kramdown</a> 0.13.4</li>
+</ul>
+
+<ul>
+<li>Edited with <a href="http://midnight-commander.org/">MCEdit</a></li>
+<li>Hosted on <a href="http://github.com/">GitHub</a></li>
+</ul>
+
+<ul>
+<li>Valid <a href="http://w3c.org/TR/html5/">HTML 5</a></li>
+<li>Valid <a href="http://w3c.org/TR/CSS/#css3">CSS 3</a></li>
+<li>Valid <a href="http://w3c.org/WAI/">WAI AA</a></li>
+</ul>
+
+<ul>
+<li>Page buzz-sh last modified 2008-09-02.</li>
+<li>Copyright &copy; 2012, <a href="/about.html">Feherke</a></li>
+</ul>
+
+<div class=logo>F<sup>G</sup><sub>H</sub>S</div>
+
+<div class=clear></div>
+
+</footer>
+
+<!--[if lte IE 6]>
+<p>
+Please consider changing your Explorer 6 to a newer and/or better browser.
+For reasons and guidance read "<a href="http://quirksmode.org/upgrade.html">Upgrade your browser!</a>" by Peter-Paul Koch.
+</p>
+<![endif]-->
+
+</body>
+
+</html>

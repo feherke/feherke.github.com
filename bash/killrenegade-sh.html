@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+<meta charset=UTF-8>
+<title>killrenegade.sh</title>
+<meta name=description content="Kill the processes with given name which use to much resources.">
+<meta name=author content="Feherke">
+<meta name=generator content="Jekyll 0.11.2">
+<!--[if IE]>
+<script src="/html5fordummies.js"></script>
+<![endif]-->
+<link rel=stylesheet href="/style.css">
+<link rel=icon href="/favicon.ico">
+</head>
+
+<body>
+
+<header>
+
+<div id=skip>
+<a href="#content" accesskey=c>skip to content</a>
+</div>
+
+<div class=title>
+Feherke's GitHub Site == glue between Feherke's GitHub hosted projects
+</div>
+
+</header>
+
+<div id=wrapper>
+
+<section id=content>
+
+
+
+<div id=breadcrumb>
+<p><a href="/">Feherke&rsquo;s GitHub Site</a> / <a href="/bash/">Bash</a> / </p>
+
+</div>
+
+
+
+<div id=taglist>
+Tag :
+<a href="/tag.html#cleanup">cleanup</a>
+</div>
+
+
+<div class=clear></div>
+
+<h1 id="killrenegadesh---kill-processes-exceeding-limits">killrenegade.sh - kill processes exceeding limits</h1>
+
+<p>First was the operamotifwrapper, then the nerves. The first is a program which sometimes spins up the processor to 100%, affecting seriously the second. With short
+<a href="http://google.com/search?q=operamotifwrapper" title="search : operamotifwrapper">googling</a> on this subject, seems to be a plugin problem and Opera has nothing to do. The
+usual solution shared on forums was to kill it manually, because anyway it occurs only after closing the browser. No, it does not. The operamotifwrapper rampage is a
+daily incident even without closing the browser. So I needed something to check it periodically and kill it as necessary.</p>
+
+<h2 id="usage">Usage</h2>
+
+<p>Was designed to run daemonically, so is not interactive. The hunting is controlled through a setting file, and the activity is logged.</p>
+
+<p class="precaption">sample output - killrenegade.sh --help</p>
+
+<pre><samp class="cli">killrenegade   version 1.2   august 2008   written by Feherke
+kill the processes with given name which use to much resources
+Syntax :
+  killrenegade.sh [-i inifile] [-V]
+Parameters :
+  -i inifile | --ini=inifile  - settings file to be read ( killrenegade.ini )
+  -V | --verbose  - verbose mode, use twice for more verbose ( no )
+</samp></pre>
+
+<p>By default killrenegade.sh is not too conversational :</p>
+
+<p class="precaption">sample output - killrenegade.sh</p>
+
+<pre><samp class="cli">killrenegade   version 1.1   july 2005   written by Feherke
+reading settings... ok, 3 sections found
+verifying settings... ok, defaults used where needed
+running as feherke, restrictions applied
+started on Mon Jul 25 13:09:18 EEST 2005, Ctrl-C to stop...
+</samp></pre>
+
+<p>Anyway, it&rsquo;s more then killstatistic.awk&rsquo;s output. Which spokes none but works well. Transforms a 10000 record log of 15 users, 20 commands and 31 signals in bit more
+then 5 seconds. During this, reads 1 file of 0.5 Mbytes and creates 512 files of totally 8 Mbytes. ( And this is the reason why I do not post a statistic sample. )</p>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>The configuration file</p>
+
+<ul>
+  <li>is mandatory</li>
+  <li>can be specified in command line</li>
+  <li>by default is located in the same directory with the script</li>
+  <li>by default has the same name with the script, with <em>.sh</em> extension removed and <em>.ini</em> extension added</li>
+  <li>has <a href="http://en.wikipedia.org/wiki/INI_file">INI</a> format</li>
+</ul>
+
+<p class="precaption">killrenegade.ini - sample configuration</p>
+
+<div class="highlight"><pre><code class="ini"><span class="c"># killrenegade   version 1.1   july 2005   written by Feherke</span>
+<span class="c"># kill the processes with given name which use to much resources</span>
+
+<span class="c"># general options</span>
+<span class="k">[general]</span>
+<span class="c"># plain text log file of the kills</span>
+<span class="c"># empty means no log</span>
+<span class="na">logfile</span><span class="o">=</span><span class="s">killrenegade.log</span>
+<span class="c"># directory for HTML version of the kill log</span>
+<span class="c"># empty means no statistics</span>
+<span class="na">htmldir</span><span class="o">=</span><span class="s">public_html/killrenegade</span>
+<span class="c"># rebuild the HTML statistics after this time</span>
+<span class="c"># units : seconds</span>
+<span class="na">build</span><span class="o">=</span><span class="s">30</span>
+
+<span class="c"># default settings for values not set in sections</span>
+<span class="k">[default]</span>
+<span class="c"># command name to kill</span>
+<span class="c"># can not be empty</span>
+<span class="c"># default : none</span>
+<span class="na">command</span><span class="o">=</span>
+<span class="c"># list of users distinguished from others</span>
+<span class="c"># dash ( &#39;-&#39; ) means empty list</span>
+<span class="c"># separator : space</span>
+<span class="c"># default : root</span>
+<span class="na">user</span><span class="o">=</span><span class="s">root</span>
+<span class="c"># ownership relation of users and processes</span>
+<span class="c">#  yes : kill only processes owned by users is list</span>
+<span class="c">#  no : do not kill processes owned by users in list</span>
+<span class="c"># default : no</span>
+<span class="na">belong</span><span class="o">=</span><span class="s">no</span>
+<span class="c"># percentage of processor used</span>
+<span class="c"># type : integer</span>
+<span class="c"># default : 10</span>
+<span class="na">processor</span><span class="o">=</span><span class="s">10</span>
+<span class="c"># percentage of memory used</span>
+<span class="c"># type : integer</span>
+<span class="c"># default : 25</span>
+<span class="na">memory</span><span class="o">=</span><span class="s">25</span>
+<span class="c"># list of signals to send to the processes</span>
+<span class="c"># separator : space</span>
+<span class="c"># type : number or name</span>
+<span class="c"># default : SIGTERM</span>
+<span class="na">signal</span><span class="o">=</span><span class="s">SIGTERM</span>
+<span class="c"># sleeping interval between checks</span>
+<span class="c"># units : seconds</span>
+<span class="c"># default : 60</span>
+<span class="na">interval</span><span class="o">=</span><span class="s">60</span>
+
+<span class="k">[omw]</span>
+<span class="na">command</span><span class="o">=</span><span class="s">operamotifwrapper</span>
+<span class="na">processor</span><span class="o">=</span><span class="s">15</span>
+<span class="na">memory</span><span class="o">=</span><span class="s">30</span>
+<span class="na">signal</span><span class="o">=</span><span class="s">SIGKILL</span>
+<span class="na">interval</span><span class="o">=</span><span class="s">3</span>
+</code></pre>
+</div>
+
+<h2 id="versions">Versions</h2>
+
+<ul class="changelog">
+  <li>1.0
+    <ul>
+      <li class="added">Initial release, as killoperamotifwrapper.sh .</li>
+    </ul>
+  </li>
+  <li>1.1 - July 2005
+    <ul>
+      <li class="added">Made configurable and able to kill any process.</li>
+    </ul>
+  </li>
+  <li>1.2 - August 2008
+    <ul>
+      <li class="changed">Minor optimizations.</li>
+      <li class="changed">Portable sh code replaced with Bash specific alternatives.</li>
+      <li class="added">Added GNU-style long option alternatives.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="plans">Plans</h2>
+
+<ul>
+  <li>Maybe a clemency option, to not kill processes the first time they are caught over limit.</li>
+</ul>
+
+<h2 id="download">Download</h2>
+
+<p>You can find the related files on GitHub in my <a href="http://github.com/feherke/Bash-script">Bash-script repository</a>  :</p>
+
+<ul>
+  <li><a href="http://github.com/feherke/Bash-script/blob/master/killrenegade/killrenegade.sh">killrenegade.sh</a> - script</li>
+  <li><a href="http://github.com/feherke/Bash-script/blob/master/killrenegade/killstatistic.awk">killstatistic.awk</a> - script</li>
+  <li><a href="http://github.com/feherke/Bash-script/blob/master/killrenegade/killrenegade.ini">killrenegade.ini</a> - configuration</li>
+  <li><a href="http://github.com/feherke/Bash-script/blob/master/killrenegade/killrenegade.sh.1">killrenegade.sh.1</a> - man page</li>
+</ul>
+
+
+
+</section>
+
+</div> <!-- #wrapper -->
+
+<div id=sidebar>
+
+<nav>
+
+<ul>
+  <li><a href="/bash/">Bash</a></li>
+  <li><a href="/javascript/">JavaScript</a>
+    <ul>
+      <li><a href="/javascript/firegestures/">FireGestures</a></li>
+      <li><a href="/javascript/greasemonkey/">Greasemonkey</a></li>
+    </ul>
+  </li>
+  <li><a href="/perl/">Perl</a>
+    <ul>
+      <li><a href="/perl/irssi/">Irssi</a></li>
+    </ul>
+  </li>
+  <li><a href="/ruby/">Ruby</a>
+    <ul>
+      <li><a href="/ruby/jekyll/">Jekyll</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+</nav>
+
+<div id=tagcloud title="Tag cloud">
+<p><a href="/tag.html#BitlBee" title="1" style="font-size: 8pt">BitlBee</a>
+<a href="/tag.html#TipMaster" title="2" style="font-size: 13pt">TipMaster</a>
+<a href="/tag.html#cleanup" title="3" style="font-size: 18pt">cleanup</a>
+<a href="/tag.html#notification" title="2" style="font-size: 13pt">notification</a>
+<a href="/tag.html#search" title="2" style="font-size: 13pt">search</a></p>
+
+</div>
+
+</div> <!-- #sidebar -->
+
+<footer>
+
+<ul>
+<li>Powered by <a href="http://ruby-lang.org/">Ruby</a> 1.9.2</li>
+<li>Generated by <a href="http://jekyllrb.com/">Jekyll</a> 0.11.2</li>
+<li>Processed by <a href="http://kramdown.rubyforge.org/">kramdown</a> 0.13.4</li>
+</ul>
+
+<ul>
+<li>Edited with <a href="http://midnight-commander.org/">MCEdit</a></li>
+<li>Hosted on <a href="http://github.com/">GitHub</a></li>
+</ul>
+
+<ul>
+<li>Valid <a href="http://w3c.org/TR/html5/">HTML 5</a></li>
+<li>Valid <a href="http://w3c.org/TR/CSS/#css3">CSS 3</a></li>
+<li>Valid <a href="http://w3c.org/WAI/">WAI AA</a></li>
+</ul>
+
+<ul>
+<li>Page killrenegade-sh last modified 2005-07-24.</li>
+<li>Copyright &copy; 2012, <a href="/about.html">Feherke</a></li>
+</ul>
+
+<div class=logo>F<sup>G</sup><sub>H</sub>S</div>
+
+<div class=clear></div>
+
+</footer>
+
+<!--[if lte IE 6]>
+<p>
+Please consider changing your Explorer 6 to a newer and/or better browser.
+For reasons and guidance read "<a href="http://quirksmode.org/upgrade.html">Upgrade your browser!</a>" by Peter-Paul Koch.
+</p>
+<![endif]-->
+
+</body>
+
+</html>

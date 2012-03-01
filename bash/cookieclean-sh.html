@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+<meta charset=UTF-8>
+<title>cookieclean.sh</title>
+<meta name=description content="Cleans up the Mozilla cookie file removing unwanted items.">
+<meta name=author content="Feherke">
+<meta name=generator content="Jekyll 0.11.2">
+<!--[if IE]>
+<script src="/html5fordummies.js"></script>
+<![endif]-->
+<link rel=stylesheet href="/style.css">
+<link rel=icon href="/favicon.ico">
+</head>
+
+<body>
+
+<header>
+
+<div id=skip>
+<a href="#content" accesskey=c>skip to content</a>
+</div>
+
+<div class=title>
+Feherke's GitHub Site == glue between Feherke's GitHub hosted projects
+</div>
+
+</header>
+
+<div id=wrapper>
+
+<section id=content>
+
+
+
+<div id=breadcrumb>
+<p><a href="/">Feherke&rsquo;s GitHub Site</a> / <a href="/bash/">Bash</a> / </p>
+
+</div>
+
+
+
+<div id=taglist>
+Tag :
+<a href="/tag.html#cleanup">cleanup</a>
+</div>
+
+
+<div class=clear></div>
+
+<h1 id="cookiecleansh---deletes-cookies-except-a-whitelist">cookieclean.sh - deletes cookies, except a whitelist</h1>
+
+<p>Newer Mozillas have an option to permit cookies from certain site only for one session. This is closer to what I want, but still not exactly the same. I want to accept
+cookies from all sites and keep them all day long. Then the next day to start navigation without those cookies, excepting a few of them which I want to keep.</p>
+
+<p>The cookieclean.sh script cleans up the cookies.txt files, and starting with FireFox 3 the cookies.sqlite files, leaving only those cookies I want to keep.</p>
+
+<p>For cleaning cookies.sqlite file, the <code>sqlite3</code> tool is needed. Its existence is not checked, I consider it part of a standard distribution, so like I not check for the
+existence of <code>grep</code>, I will not check neither for <code>sqlite3</code>.</p>
+
+<h2 id="usage">Usage</h2>
+
+<p>This script was designed to be run from <code>cron</code>, so it outputs its messages to a log file. Excepting of course unexpected and unhandled errors&hellip;</p>
+
+<p>It is as least communicative as possible. It does not accept any parameter and outputs nothing to the standard output or error.</p>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>The configuration file</p>
+
+<ul>
+  <li>is mandatory</li>
+  <li>can be specified in command line</li>
+  <li>by default is located in the same directory with the script</li>
+  <li>by default has the same name with the script, with <em>.sh</em> extension removed and <em>.ini</em> extension added</li>
+  <li>has <a href="http://en.wikipedia.org/wiki/INI_file">INI</a> format without sections</li>
+</ul>
+
+<p class="precaption">cookieclean.ini - sample configuration</p>
+
+<div class="highlight"><pre><code class="ini"><span class="c"># Cookie Clean   version 1.3   august 2008   written by Feherke</span>
+<span class="c"># cleans up the Mozilla cookie file removing unwanted items</span>
+<span class="c"># - configuration file -</span>
+
+<span class="c"># all values are subject of variable expansion :</span>
+<span class="c">#  - $scriptname - the name of the script without .sh extension</span>
+<span class="c">#  - $scriptdir - the directory where the script resides</span>
+<span class="c">#  - $HOME, $TEMP, ... - usual environment variables</span>
+
+<span class="c"># path to the profile directory ( deprecated, use profile key )</span>
+<span class="c">#mozilla=/home/master/.mozilla/default/v5rkwo4n.slt/</span>
+
+<span class="c"># path to the profile directory</span>
+<span class="c"># you can use multiple profile keys</span>
+<span class="na">profile</span><span class="o">=</span><span class="s">/home/master/.mozilla/firefox/xie5eflf.default/</span>
+<span class="na">profile</span><span class="o">=</span><span class="s">/home/master/.mozilla/seamonkey/e81zpwiz.default/</span>
+<span class="na">profile</span><span class="o">=</span><span class="s">/home/master/.phoenix/default/10z08gzf.slt/</span>
+<span class="na">profile</span><span class="o">=</span><span class="s">/home/master/.gnome2/epiphany/</span>
+
+<span class="c"># list of permitted hosts</span>
+<span class="na">okfile</span><span class="o">=</span><span class="s">${scriptdir}/cookieclean.ok</span>
+
+<span class="c"># found unpermitted hosts</span>
+<span class="na">badfile</span><span class="o">=</span><span class="s">${scriptdir}/cookies---.bad</span>
+
+<span class="c"># activity log</span>
+<span class="na">logfile</span><span class="o">=</span><span class="s">${scriptdir}/${scriptname}.log</span>
+
+<span class="c"># permitted hosts cache file</span>
+<span class="na">cachefile</span><span class="o">=</span><span class="s">/tmp/${scriptname}-cache.txt</span>
+<span class="na">cachefile3</span><span class="o">=</span><span class="s">/tmp/${scriptname}-cache3.txt</span>
+</code></pre>
+</div>
+
+<p>The white list is an enumeration of allowed domains. I mean, the <em>exact</em> domains, as set by the cookies. So no wildcard, regular expression or partial name is available.</p>
+
+<p class="precaption">cookieclean.ok - sample configuration</p>
+
+<div class="highlight"><pre><code class="ini"><span class="c"># Cookie Clean   version 1.3   august 2008   written by Feherke</span>
+<span class="c"># cleans up the Mozilla cookie file removing unwanted items</span>
+<span class="c"># - accepted hosts list -</span>
+
+<span class="c"># empty lines are discarded, use a single dash ( - ) to say no host</span>
+
+<span class="err">-</span>
+<span class="err">.google.com</span>
+<span class="err">.google.ro</span>
+
+<span class="err">tek-tips.com</span>
+<span class="err">.tek-tips.com</span>
+<span class="err">www.tek-tips.com</span>
+</code></pre>
+</div>
+
+<h2 id="versions">Versions</h2>
+
+<ul class="changelog">
+  <li>1.0 - July 2004
+    <ul>
+      <li class="added">Initial release as AWK script.</li>
+    </ul>
+  </li>
+  <li>1.1 - 2008
+    <ul>
+      <li class="changed">Complete rewrite as Bash script.</li>
+    </ul>
+  </li>
+  <li>1.2 - 2008
+    <ul>
+      <li class="added">Added FireFox 3 support, to clean up cookies stored in SQLite database.</li>
+    </ul>
+  </li>
+  <li>1.3 - August 2008
+    <ul>
+      <li class="added">Cache the expressions built from the allowed hosts list.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="plans">Plans</h2>
+
+<p>In meantime Mozillas&rsquo; cookie handling and the available extensions evolved, so this script became somehow deprecated. There is good chance the plans will remain plans
+forever.</p>
+
+<ul>
+  <li>Protection against SQL injection.</li>
+  <li>Maybe an automatically generated cleaning statistic.</li>
+</ul>
+
+<h2 id="download">Download</h2>
+
+<p>You can find the related files on GitHub in my <a href="http://github.com/feherke/Bash-script">Bash-script repository</a>  :</p>
+
+<ul>
+  <li><a href="http://github.com/feherke/Bash-script/blob/master/cookieclean/cookieclean.sh">cookieclean.sh</a> - script</li>
+  <li><a href="http://github.com/feherke/Bash-script/blob/master/cookieclean/cookieclean.ini">cookieclean.ini</a> - configuration</li>
+  <li><a href="http://github.com/feherke/Bash-script/blob/master/cookieclean/cookieclean.ok">cookieclean.ok</a> - whitelist</li>
+  <li><a href="http://github.com/feherke/Bash-script/blob/master/cookieclean/cookieclean.sh.1">cookieclean.sh.1</a> - man page</li>
+</ul>
+
+
+
+</section>
+
+</div> <!-- #wrapper -->
+
+<div id=sidebar>
+
+<nav>
+
+<ul>
+  <li><a href="/bash/">Bash</a></li>
+  <li><a href="/javascript/">JavaScript</a>
+    <ul>
+      <li><a href="/javascript/firegestures/">FireGestures</a></li>
+      <li><a href="/javascript/greasemonkey/">Greasemonkey</a></li>
+    </ul>
+  </li>
+  <li><a href="/perl/">Perl</a>
+    <ul>
+      <li><a href="/perl/irssi/">Irssi</a></li>
+    </ul>
+  </li>
+  <li><a href="/ruby/">Ruby</a>
+    <ul>
+      <li><a href="/ruby/jekyll/">Jekyll</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+</nav>
+
+<div id=tagcloud title="Tag cloud">
+<p><a href="/tag.html#BitlBee" title="1" style="font-size: 8pt">BitlBee</a>
+<a href="/tag.html#TipMaster" title="2" style="font-size: 13pt">TipMaster</a>
+<a href="/tag.html#cleanup" title="3" style="font-size: 18pt">cleanup</a>
+<a href="/tag.html#notification" title="2" style="font-size: 13pt">notification</a>
+<a href="/tag.html#search" title="2" style="font-size: 13pt">search</a></p>
+
+</div>
+
+</div> <!-- #sidebar -->
+
+<footer>
+
+<ul>
+<li>Powered by <a href="http://ruby-lang.org/">Ruby</a> 1.9.2</li>
+<li>Generated by <a href="http://jekyllrb.com/">Jekyll</a> 0.11.2</li>
+<li>Processed by <a href="http://kramdown.rubyforge.org/">kramdown</a> 0.13.4</li>
+</ul>
+
+<ul>
+<li>Edited with <a href="http://midnight-commander.org/">MCEdit</a></li>
+<li>Hosted on <a href="http://github.com/">GitHub</a></li>
+</ul>
+
+<ul>
+<li>Valid <a href="http://w3c.org/TR/html5/">HTML 5</a></li>
+<li>Valid <a href="http://w3c.org/TR/CSS/#css3">CSS 3</a></li>
+<li>Valid <a href="http://w3c.org/WAI/">WAI AA</a></li>
+</ul>
+
+<ul>
+<li>Page cookieclean-sh last modified 2008-09-05.</li>
+<li>Copyright &copy; 2012, <a href="/about.html">Feherke</a></li>
+</ul>
+
+<div class=logo>F<sup>G</sup><sub>H</sub>S</div>
+
+<div class=clear></div>
+
+</footer>
+
+<!--[if lte IE 6]>
+<p>
+Please consider changing your Explorer 6 to a newer and/or better browser.
+For reasons and guidance read "<a href="http://quirksmode.org/upgrade.html">Upgrade your browser!</a>" by Peter-Paul Koch.
+</p>
+<![endif]-->
+
+</body>
+
+</html>
