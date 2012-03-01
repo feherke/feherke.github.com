@@ -2,6 +2,72 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
+    <loc>http://feherke.github.com/bash/buzz-sh.html</loc>
+    <lastmod>2008-09-02</lastmod>
+    <priority>0.1</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.com/bash/cookieclean-sh.html</loc>
+    <lastmod>2008-09-05</lastmod>
+    <priority>0.1</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.com/bash/killrenegade-sh.html</loc>
+    <lastmod>2005-07-24</lastmod>
+    <priority>0.1</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.com/bash/lyndex-sh.html</loc>
+    <lastmod>2005-10-05</lastmod>
+    <priority>0.1</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.com/bash/</loc>
+    <lastmod>2008-12-21</lastmod>
+    <priority>0.2</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.com/bash/duplicated-sh.html</loc>
+    <lastmod>2007-03-26</lastmod>
+    <priority>0.1</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.com/perl/irssi/osd-c.html</loc>
+    <lastmod>2012-02-21</lastmod>
+    <priority>0.1</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.com/perl/irssi/bitlbee-catch-command.html</loc>
+    <lastmod>2012-02-24</lastmod>
+    <priority>0.1</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.com/perl/irssi/man.html</loc>
+    <lastmod>2012-02-21</lastmod>
+    <priority>0.1</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.com/perl/irssi/</loc>
+    <lastmod>2012-02-21</lastmod>
+    <priority>0.2</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.com/perl/</loc>
+    <lastmod>2012-02-21</lastmod>
+    <priority>0.2</priority>
+  </url>
+
+  <url>
     <loc>http://feherke.github.com/ruby/jekyll/debug.html</loc>
     <lastmod>2012-02-20</lastmod>
     <priority>0.1</priority>

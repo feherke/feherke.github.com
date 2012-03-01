@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+<meta charset=UTF-8>
+<title>Man</title>
+<meta name=description content="Brief Irssi script developer manual.">
+<meta name=author content="Feherke">
+<meta name=generator content="Jekyll 0.11.2">
+<!--[if IE]>
+<script src="/html5fordummies.js"></script>
+<![endif]-->
+<link rel=stylesheet href="/style.css">
+<link rel=icon href="/favicon.ico">
+</head>
+
+<body>
+
+<header>
+
+<div id=skip>
+<a href="#content" accesskey=c>skip to content</a>
+</div>
+
+<div class=title>
+Feherke's GitHub Site == glue between Feherke's GitHub hosted projects
+</div>
+
+</header>
+
+<div id=wrapper>
+
+<section id=content>
+
+
+
+<div id=breadcrumb>
+<p><a href="/">Feherke&rsquo;s GitHub Site</a> / <a href="/perl/">Perl</a> / <a href="/perl/irssi/">Irssi</a> / </p>
+
+</div>
+
+
+
+
+<div class=clear></div>
+
+<h1 id="man">Man</h1>
+
+<p>The <a href="http://irssi.org/documentation/manual">Irssi manual</a> is practically plain text. After using it a lot you really wish to have some text attributes too. So I added
+them. And while Irssi is capable to display text attributes, I just wrote a script to spit a file on the screen.</p>
+
+<p>The manual&rsquo;s content is copyright (c) 2000, Timo Sirainen. I tried to keep the original format as much as possible while made it suitable to display it one
+chapter/section per page.</p>
+
+<h2 id="usage">Usage</h2>
+
+<p>Excerpt from the <code>/man help</code> command&rsquo;s output :</p>
+
+<p class="precaption">sample output</p>
+
+<pre><samp>Syntax :
+  man topic
+
+Parameters :
+  topic  - topic to display ( 56 available )
+</samp></pre>
+
+<p>The &ldquo;manual page&rdquo; files have to be located in the directory pointed by the <code>man_path</code> setting and have .txt extension. You can put there any file with possible Irssish
+formatting, for example :</p>
+
+<p class="precaption">reminder.txt</p>
+
+<pre><code>%U Things to do %U
+%_IM%_ feherke %rASALI%n ( as soon as logs in )
+
+%U IDs to remember %U
+%_feherke%_ - the one who wrote the man script
+</code></pre>
+
+<p>Then the <code>/man reminder</code> command will display it like this :</p>
+
+<p class="precaption">sample output</p>
+
+<pre><samp>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - man reminder
+<u> Things to do </u>
+<strong>IM</strong> feherke <span style="color: red">ASALI</span> ( as soon as logs in )
+
+<u> IDs to remember </u>
+<strong>feherke</strong> - the one who wrote the man script
+</samp></pre>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>Use the <code>/set</code> command to configure this script. The settings are queried when using them, so changes will be visible automatically on next use.</p>
+
+<table class="nowrap1">
+  <thead>
+    <tr>
+      <th>Setting</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>man_path</code></td>
+      <td>string</td>
+      <td>location of the manual files</td>
+      <td>.irssi/scripts/man</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="versions">Versions</h2>
+
+<ul class="changelog">
+  <li>0.0 - ?
+    <ul>
+      <li class="added">Initial release.</li>
+    </ul>
+  </li>
+  <li>
+    <p>0.1 - ?</p>
+  </li>
+  <li>0.2 - July 2008</li>
+</ul>
+
+<h2 id="plans">Plans</h2>
+
+<ul>
+  <li>Insert numbers after the links then accept them as parameter to display the given page.</li>
+  <li>Add a separate command which parameter completion to cycle through the previous page&rsquo;s links.</li>
+  <li>Implement apropos and whatis functionality.</li>
+</ul>
+
+<h2 id="download">Download</h2>
+
+<p>You can find the related files on GitHub in my <a href="http://github.com/feherke/Irssi-script">Irssi-script repository</a>  :</p>
+
+<ul>
+  <li><a href="http://github.com/feherke/Irssi-script/blob/master/man/man.pl">man.pl</a> - script</li>
+  <li><a href="http://github.com/feherke/Irssi-script/blob/master/man/man">man</a> - Irssi documentation converted for Man</li>
+</ul>
+
+
+
+</section>
+
+</div> <!-- #wrapper -->
+
+<div id=sidebar>
+
+<nav>
+
+<ul>
+  <li><a href="/bash/">Bash</a></li>
+  <li><a href="/javascript/">JavaScript</a>
+    <ul>
+      <li><a href="/javascript/firegestures/">FireGestures</a></li>
+      <li><a href="/javascript/greasemonkey/">Greasemonkey</a></li>
+    </ul>
+  </li>
+  <li><a href="/perl/">Perl</a>
+    <ul>
+      <li><a href="/perl/irssi/">Irssi</a></li>
+    </ul>
+  </li>
+  <li><a href="/ruby/">Ruby</a>
+    <ul>
+      <li><a href="/ruby/jekyll/">Jekyll</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+</nav>
+
+<div id=tagcloud title="Tag cloud">
+<p><a href="/tag.html#BitlBee" title="1" style="font-size: 8pt">BitlBee</a>
+<a href="/tag.html#TipMaster" title="2" style="font-size: 13pt">TipMaster</a>
+<a href="/tag.html#cleanup" title="3" style="font-size: 18pt">cleanup</a>
+<a href="/tag.html#notification" title="2" style="font-size: 13pt">notification</a>
+<a href="/tag.html#search" title="2" style="font-size: 13pt">search</a></p>
+
+</div>
+
+</div> <!-- #sidebar -->
+
+<footer>
+
+<ul>
+<li>Powered by <a href="http://ruby-lang.org/">Ruby</a> 1.9.2</li>
+<li>Generated by <a href="http://jekyllrb.com/">Jekyll</a> 0.11.2</li>
+<li>Processed by <a href="http://kramdown.rubyforge.org/">kramdown</a> 0.13.4</li>
+</ul>
+
+<ul>
+<li>Edited with <a href="http://midnight-commander.org/">MCEdit</a></li>
+<li>Hosted on <a href="http://github.com/">GitHub</a></li>
+</ul>
+
+<ul>
+<li>Valid <a href="http://w3c.org/TR/html5/">HTML 5</a></li>
+<li>Valid <a href="http://w3c.org/TR/CSS/#css3">CSS 3</a></li>
+<li>Valid <a href="http://w3c.org/WAI/">WAI AA</a></li>
+</ul>
+
+<ul>
+<li>Page man last modified 2012-02-21.</li>
+<li>Copyright &copy; 2012, <a href="/about.html">Feherke</a></li>
+</ul>
+
+<div class=logo>F<sup>G</sup><sub>H</sub>S</div>
+
+<div class=clear></div>
+
+</footer>
+
+<!--[if lte IE 6]>
+<p>
+Please consider changing your Explorer 6 to a newer and/or better browser.
+For reasons and guidance read "<a href="http://quirksmode.org/upgrade.html">Upgrade your browser!</a>" by Peter-Paul Koch.
+</p>
+<![endif]-->
+
+</body>
+
+</html>

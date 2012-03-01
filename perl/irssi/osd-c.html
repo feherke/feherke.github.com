@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+<meta charset=UTF-8>
+<title>OSD Chain</title>
+<meta name=description content="OSD display controlled with chained conditions.">
+<meta name=author content="Feherke">
+<meta name=generator content="Jekyll 0.11.2">
+<!--[if IE]>
+<script src="/html5fordummies.js"></script>
+<![endif]-->
+<link rel=stylesheet href="/style.css">
+<link rel=icon href="/favicon.ico">
+</head>
+
+<body>
+
+<header>
+
+<div id=skip>
+<a href="#content" accesskey=c>skip to content</a>
+</div>
+
+<div class=title>
+Feherke's GitHub Site == glue between Feherke's GitHub hosted projects
+</div>
+
+</header>
+
+<div id=wrapper>
+
+<section id=content>
+
+
+
+<div id=breadcrumb>
+<p><a href="/">Feherke&rsquo;s GitHub Site</a> / <a href="/perl/">Perl</a> / <a href="/perl/irssi/">Irssi</a> / </p>
+
+</div>
+
+
+
+<div id=taglist>
+Tag :
+<a href="/tag.html#notification">notification</a>
+</div>
+
+
+<div class=clear></div>
+
+<h1 id="osd-chain">OSD Chain</h1>
+
+<p>Inspired by the <a href="http://vipie.studentenweb.org/dev/irssi/">osd</a> script by Jeroen Coekaerts and Koenraad Heijlen. I used it and was happy with it. Thank you, guys.</p>
+
+<p>This script implements a controlling mechanism for filtering the messages. It uses a rule list which is traversed for each message. If the message&rsquo;s circumstances met
+the conditions of a rule, the rule&rsquo;s status is applied to the message. The last status indicates whether the message is displayed in OSD.</p>
+
+<p>Each rule has the following data :</p>
+
+<ul>
+  <li>id - order number used to sort the messages and to refer to them when altering</li>
+  <li>conditions : type, channel, sender - if a condition is not set or is set and matched the current message, the rule is applied</li>
+  <li>status - <strong>on</strong> or <strong>off</strong> meaning display or not display</li>
+  <li>final - if the rule is matched, traversing the list stops without checking any further rules</li>
+</ul>
+
+<h2 id="usage">Usage</h2>
+
+<p>Excerpt from the <code>/osd-c help</code> command&rsquo;s output :</p>
+
+<p class="precaption">sample output</p>
+
+<pre><samp>Syntax :
+  osd-c [command]
+
+Available commands :
+ - add rule  - add a new rule to the end of rule chain
+ - put id rule  - insert a new rule in position id of the rule chain
+ - set [id] rule  - change the rule identified by its id or add it
+ - delete id  - delete an existing rule
+ - move id newid  - move an existing rule to a new position in the chain
+ - list  - list the rules currently in the chain
+ - restart  - restart the osd_cat, useful after modifying the parameter setting
+ - test [text] - output a test message
+
+rule   := <strong>set</strong> type [<strong>on</strong> channel] [<strong>from</strong> nick] status [<strong>final</strong>]
+type   := <strong>public</strong>|<strong>private</strong>|<strong>hilite</strong>|<strong>invite</strong>|<strong>move</strong>
+status := <strong>on</strong>|<strong>off</strong>
+
+Without command displays the current rules.
+
+Available aliases :
+ - add - append
+ - put - insert
+ - set - let
+ - delete - remove, unset, del, rm
+ - move - mv
+ - list - ls
+ - restart - reload, refresh, re
+ - test - try, demo, show
+</samp></pre>
+<p><!-- ) --></p>
+
+<p>Joined a too noisy channel ? <code>/osd-c add public on #channel_name off</code><br />
+Bothered by a too chatty bot ? <code>/osd-c add from bot_name off</code><br />
+Just want to relax with a movie ? <code>/osd-c add</code>  </p>
+
+<p>At first sight that last command will stop all messages. Nope. Will stop only messages which reached the end of chain. But messages which matched a rule with both <strong>on</strong>
+and <strong>final</strong> will still appear. Maybe you indeed want them. Or maybe not. Personally I start my rule list with an empty rule with status <strong>on</strong>, so later I can use
+<code>/osd-c set 0 off final</code> to really stop everything.</p>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>Use the <code>/set</code> command to configure this script, except the rule. Use the <code>/osd-c</code> commands to manipulate the rules.</p>
+
+<p>The parameter setting is used only when starting <code>osd_cat</code>, so changes will not be visible automatically, use <code>/osd-c restart</code> to apply its changes.</p>
+
+<table class="nowrap1">
+  <thead>
+    <tr>
+      <th>Setting</th>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>osd-chain_parameter</code></td>
+      <td>string</td>
+      <td>command line parameters for the <code>osd_cat</code> command</td>
+      <td>&ndash;pos=bottom &ndash;offset=50 &ndash;align=center &ndash;indent=0 ( &hellip; TL;DR )</td>
+    </tr>
+    <tr>
+      <td><code>osd-chain_wrap</code></td>
+      <td>integer</td>
+      <td>wrap OSD message at this value, 0 means no wrap</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <td><code>osd-chain_rule</code></td>
+      <td>string</td>
+      <td>currently defined rules, stringified</td>
+      <td>( nothing )</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="versions">Versions</h2>
+
+<ul class="changelog">
+  <li>0.0 - ?
+    <ul>
+      <li class="added">Initial release.</li>
+    </ul>
+  </li>
+  <li>0.1 - August 2008
+    <ul>
+      <li class="added">Added message wrapping at configurable width.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="plans">Plans</h2>
+
+<ul>
+  <li>Replace with a pluggable version to support other notifications then OSD.</li>
+</ul>
+
+<h2 id="download">Download</h2>
+
+<p>You can find the related files on GitHub in my <a href="http://github.com/feherke/Irssi-script">Irssi-script repository</a>  :</p>
+
+<ul>
+  <li><a href="http://github.com/feherke/Irssi-script/blob/master/osd-c/osd-c.pl">osd-c.pl</a> - script</li>
+</ul>
+
+
+
+</section>
+
+</div> <!-- #wrapper -->
+
+<div id=sidebar>
+
+<nav>
+
+<ul>
+  <li><a href="/bash/">Bash</a></li>
+  <li><a href="/javascript/">JavaScript</a>
+    <ul>
+      <li><a href="/javascript/firegestures/">FireGestures</a></li>
+      <li><a href="/javascript/greasemonkey/">Greasemonkey</a></li>
+    </ul>
+  </li>
+  <li><a href="/perl/">Perl</a>
+    <ul>
+      <li><a href="/perl/irssi/">Irssi</a></li>
+    </ul>
+  </li>
+  <li><a href="/ruby/">Ruby</a>
+    <ul>
+      <li><a href="/ruby/jekyll/">Jekyll</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+</nav>
+
+<div id=tagcloud title="Tag cloud">
+<p><a href="/tag.html#BitlBee" title="1" style="font-size: 8pt">BitlBee</a>
+<a href="/tag.html#TipMaster" title="2" style="font-size: 13pt">TipMaster</a>
+<a href="/tag.html#cleanup" title="3" style="font-size: 18pt">cleanup</a>
+<a href="/tag.html#notification" title="2" style="font-size: 13pt">notification</a>
+<a href="/tag.html#search" title="2" style="font-size: 13pt">search</a></p>
+
+</div>
+
+</div> <!-- #sidebar -->
+
+<footer>
+
+<ul>
+<li>Powered by <a href="http://ruby-lang.org/">Ruby</a> 1.9.2</li>
+<li>Generated by <a href="http://jekyllrb.com/">Jekyll</a> 0.11.2</li>
+<li>Processed by <a href="http://kramdown.rubyforge.org/">kramdown</a> 0.13.4</li>
+</ul>
+
+<ul>
+<li>Edited with <a href="http://midnight-commander.org/">MCEdit</a></li>
+<li>Hosted on <a href="http://github.com/">GitHub</a></li>
+</ul>
+
+<ul>
+<li>Valid <a href="http://w3c.org/TR/html5/">HTML 5</a></li>
+<li>Valid <a href="http://w3c.org/TR/CSS/#css3">CSS 3</a></li>
+<li>Valid <a href="http://w3c.org/WAI/">WAI AA</a></li>
+</ul>
+
+<ul>
+<li>Page osd-c last modified 2012-02-21.</li>
+<li>Copyright &copy; 2012, <a href="/about.html">Feherke</a></li>
+</ul>
+
+<div class=logo>F<sup>G</sup><sub>H</sub>S</div>
+
+<div class=clear></div>
+
+</footer>
+
+<!--[if lte IE 6]>
+<p>
+Please consider changing your Explorer 6 to a newer and/or better browser.
+For reasons and guidance read "<a href="http://quirksmode.org/upgrade.html">Upgrade your browser!</a>" by Peter-Paul Koch.
+</p>
+<![endif]-->
+
+</body>
+
+</html>

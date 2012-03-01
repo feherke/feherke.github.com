@@ -7,7 +7,6 @@
 <meta name=description content="Allows calling any method of the template variables.">
 <meta name=keyword content="debug">
 <meta name=author content="Feherke">
-<meta name=copyright content="copyright (c) 2012, Feherke">
 <meta name=generator content="Jekyll 0.11.2">
 <!--[if IE]>
 <script src="/html5fordummies.js"></script>
@@ -58,8 +57,10 @@ in all generated documents to check one value in each. That is why this plugin g
 
 <h2 id="usage">Usage</h2>
 
-<p><code>send</code> is a Liquid filter, so you just put it after the <code>{{</code> and <code>}}</code> enclosed variable. The first parameter is the method name, the remaining
+<p><code>send</code> is a Liquid filter, so you just put it after the <code>{{ </code> and <code>}}</code> enclosed variable. The first parameter is the method name, the remaining
 parameters are passed forward to the called method :</p>
+
+<p class="precaption">sample code</p>
 
 <pre><code>Type of variable is {{ variable | send: 'class' | send: 'name' }}
 3rd letter of variable is {{ variable | send: '[]', 2 }}
@@ -72,10 +73,23 @@ Print variable to stdout {{ variable | send: 'display' }}
 
 <h2 id="versions">Versions</h2>
 
-<ul>
-  <li>0.0 - October 2011 - Initial release.</li>
-  <li>0.1 - February 2012 - Added the <code>puts</code> filter.</li>
-  <li>0.2 - February 2012 - Removed the <code>debug</code> and <code>puts</code> filter and added the <code>send</code> filter.</li>
+<ul class="changelog">
+  <li>0.0 - October 2011
+    <ul>
+      <li class="added">Initial release.</li>
+    </ul>
+  </li>
+  <li>0.1 - February 2012
+    <ul>
+      <li class="added">Added the <code>puts</code> filter.</li>
+    </ul>
+  </li>
+  <li>0.2 - February 2012
+    <ul>
+      <li class="removed">Removed the <code>debug</code> and <code>puts</code> filter.</li>
+      <li class="added">Added the <code>send</code> filter.</li>
+    </ul>
+  </li>
 </ul>
 
 <h2 id="plans">Plans</h2>
@@ -103,10 +117,16 @@ Print variable to stdout {{ variable | send: 'display' }}
 <nav>
 
 <ul>
+  <li><a href="/bash/">Bash</a></li>
   <li><a href="/javascript/">JavaScript</a>
     <ul>
       <li><a href="/javascript/firegestures/">FireGestures</a></li>
       <li><a href="/javascript/greasemonkey/">Greasemonkey</a></li>
+    </ul>
+  </li>
+  <li><a href="/perl/">Perl</a>
+    <ul>
+      <li><a href="/perl/irssi/">Irssi</a></li>
     </ul>
   </li>
   <li><a href="/ruby/">Ruby</a>
@@ -120,8 +140,11 @@ Print variable to stdout {{ variable | send: 'display' }}
 </nav>
 
 <div id=tagcloud title="Tag cloud">
-<p><a href="/tag.html#search" title="1" style="font-size: 8pt">search</a>
-<a href="/tag.html#tipmaster" title="2" style="font-size: 18pt">tipmaster</a></p>
+<p><a href="/tag.html#BitlBee" title="1" style="font-size: 8pt">BitlBee</a>
+<a href="/tag.html#TipMaster" title="2" style="font-size: 13pt">TipMaster</a>
+<a href="/tag.html#cleanup" title="3" style="font-size: 18pt">cleanup</a>
+<a href="/tag.html#notification" title="2" style="font-size: 13pt">notification</a>
+<a href="/tag.html#search" title="2" style="font-size: 13pt">search</a></p>
 
 </div>
 

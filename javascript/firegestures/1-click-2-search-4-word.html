@@ -6,16 +6,12 @@
 <title>1 Click 2 Search 4 Word</title>
 <meta name=description content="Searches for the previously single-clicked word">
 <meta name=author content="Feherke">
-<meta name=copyright content="copyright (c) 2012, Feherke">
 <meta name=generator content="Jekyll 0.11.2">
 <!--[if IE]>
 <script src="/html5fordummies.js"></script>
 <![endif]-->
 <link rel=stylesheet href="/style.css">
 <style>
-table.nowrap1 td:first-child {
-  white-space: nowrap;
-}
 strong.cursor {
   color: red;
 }
@@ -129,7 +125,9 @@ Caret Browsing ( <kbd>F7</kbd> ) on. )</p>
 
 <p>Configuration not really supported.</p>
 
-<p>But changing the list of separators is pretty simple. Just locate the following fragment in the stript and change the string value :</p>
+<p>But changing the list of separators is pretty simple. Just locate the following fragment in the script and change the string value :</p>
+
+<p class="precaption">1-click-2-search-4-word.js - configuration fragment</p>
 
 <div class="highlight"><pre><code class="javascript"><span class="nx">FireGestures</span><span class="p">.</span><span class="nx">API_1click2search4word</span><span class="o">=</span><span class="p">{</span>
   <span class="nx">separator</span><span class="o">:</span> <span class="s1">&#39; .‧…!¡?¿,;:\&#39;&quot;`´¨“”„‹›«»/\\\\|¦+±\\-–—*×÷=()\\[\\]{}&lt;&gt;@#$%‰‱^&amp;&#39;</span><span class="p">,</span>
@@ -137,13 +135,20 @@ Caret Browsing ( <kbd>F7</kbd> ) on. )</p>
 </code></pre>
 </div>
 
-<p><!-- _ --></p>
-
 <h2 id="versions">Versions</h2>
 
-<ul>
-  <li>0.0 - May 2011 - Initial release.</li>
-  <li>0.1 - February 2012 - Use better regular expression than <code>\W</code> for word separator. <kbd>Shift</kbd>-gesture copy the term into the search bar.</li>
+<ul class="changelog">
+  <li>0.0 - May 2011
+    <ul>
+      <li class="added">Initial release.</li>
+    </ul>
+  </li>
+  <li>0.1 - February 2012
+    <ul>
+      <li class="changed">Use better regular expression than <code>\W</code> for word separator.</li>
+      <li class="added"><kbd>Shift</kbd>-gesture copy the term into the search bar.</li>
+    </ul>
+  </li>
 </ul>
 
 <h2 id="plans">Plans</h2>
@@ -171,10 +176,16 @@ Caret Browsing ( <kbd>F7</kbd> ) on. )</p>
 <nav>
 
 <ul>
+  <li><a href="/bash/">Bash</a></li>
   <li><a href="/javascript/">JavaScript</a>
     <ul>
       <li><a href="/javascript/firegestures/">FireGestures</a></li>
       <li><a href="/javascript/greasemonkey/">Greasemonkey</a></li>
+    </ul>
+  </li>
+  <li><a href="/perl/">Perl</a>
+    <ul>
+      <li><a href="/perl/irssi/">Irssi</a></li>
     </ul>
   </li>
   <li><a href="/ruby/">Ruby</a>
@@ -188,8 +199,11 @@ Caret Browsing ( <kbd>F7</kbd> ) on. )</p>
 </nav>
 
 <div id=tagcloud title="Tag cloud">
-<p><a href="/tag.html#search" title="1" style="font-size: 8pt">search</a>
-<a href="/tag.html#tipmaster" title="2" style="font-size: 18pt">tipmaster</a></p>
+<p><a href="/tag.html#BitlBee" title="1" style="font-size: 8pt">BitlBee</a>
+<a href="/tag.html#TipMaster" title="2" style="font-size: 13pt">TipMaster</a>
+<a href="/tag.html#cleanup" title="3" style="font-size: 18pt">cleanup</a>
+<a href="/tag.html#notification" title="2" style="font-size: 13pt">notification</a>
+<a href="/tag.html#search" title="2" style="font-size: 13pt">search</a></p>
 
 </div>
 

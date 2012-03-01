@@ -16,8 +16,8 @@ header, footer, nav, section, article, aside {
 
 body {
   color: white;
-  font-family: Arial, Helvetica, sans-serif;
-//  font-family: Verdana, Geneva, sans-serif;
+/*  font-family: Arial, Helvetica, sans-serif; */
+  font-family: Verdana, Geneva, sans-serif;
   background-color: black;
   margin: 8px;
 }
@@ -58,18 +58,49 @@ a:active {
   text-shadow: lightblue 0 0 3px;
 }
 
+pre,
+code,
+samp {
+  font-family: Andale Mono,Andale Mono WT,Bitstream Vera Sans Mono,DejaVu Sans Mono,Courier,monospace;
+}
+
 pre {
   background-color: black;
-  border-left-style: dotted;
-  border-width: 5px;
-  border-color: #333;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #336;
   padding: 3px;
   margin-top: 10px;
   margin-bottom: 15px;
 }
 
+.precaption+pre,
+.precaption+div.highlight>pre {
+  margin-top: 0;
+}
+
+.precaption {
+  display: inline-block;
+  position: relative;
+  left: +30px;
+  top: +1px;
+  color: dimgray;
+  font-size: small;
+  font-style: italic;
+  background-color: black;
+  border-style: solid;
+  border-bottom-style: none; /* WebKit fails to color bottom distinctly if both upper corners have big radius */
+  border-width: 1px;
+  border-color: #336;
+  border-bottom-color: red;
+  border-top-left-radius: 3em 1em;
+  border-top-right-radius: 3em 1em;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin: 0;
+}
+
 samp.cli {
-  background-color: pink;
 }
 
 code { /* inline code */
@@ -85,6 +116,9 @@ pre code { /* code block */
   vertical-align: baseline;
 }
 
+pre samp { /* sample block */
+}
+
 kbd {
   background-color: #333;
   border-radius: 5px;
@@ -96,6 +130,7 @@ kbd {
 section ul,
 section ol {
   margin-left: 20px;
+  margin-bottom: 15px;
 }
 
 dl {
@@ -144,35 +179,34 @@ th {
   text-align: left;
 }
 
-.warn:first-line {
-  color: red;
-  font-weight: bold;
+table.nowrap1 td:first-child {
+  white-space: nowrap;
+}
+
+.warn,
+.note {
+  border-left-style: solid;
+  border-right-style: solid;
+  border-width: .25em;
+  border-radius: 1em / 3em;
+  padding: 5px;
 }
 
 .warn {
-  border-style: solid;
   border-color: red;
-  border-image: -moz-linear-gradient(bottom,red,transparent) 1 100%;
-  border-image: -webkit-gradient(linear,left bottom,left top,from(red),to(transparent)) 1 100%;
-  border-image: -webkit-linear-gradient(bottom,red,transparent) 1 100%;
-  border-image: -o-linear-gradient(bottom,red,transparent) 1 100%;
-  border-image: -ms-linear-gradient(bottom,red,transparent) 1 100%;
-  border-image: linear-gradient(bottom,red,transparent) 1 100%;
-  border-width: 1px;
-  padding: 5px;
 }
 
 .note {
-  border-style: solid;
   border-color: green;
-  border-image: -moz-linear-gradient(bottom,green,transparent) 1 100%;
-  border-image: -webkit-gradient(linear,left bottom,left top,from(green),to(transparent)) 1 100%;
-  border-image: -webkit-linear-gradient(bottom,green,transparent) 1 100%;
-  border-image: -o-linear-gradient(bottom,green,transparent) 1 100%;
-  border-image: -ms-linear-gradient(bottom,green,transparent) 1 100%;
-  border-image: linear-gradient(bottom,green,transparent) 1 100%;
-  border-width: 1px;
-  padding: 5px;
+}
+
+.warn:first-line,
+.note:first-line {
+  font-weight: bold;
+}
+
+.warn:first-line {
+  color: red;
 }
 
 .info {
@@ -217,8 +251,8 @@ div#breadcrumb {
   border-bottom-style: solid;
   border-width: 1px;
   border-color: #339;
-  border-bottom-right-radius: 150px 50px;
-  border-top-left-radius: 150px 50px;
+  border-bottom-right-radius: 15em 5em;
+  border-top-left-radius: 15em 5em;
   margin-bottom: 5px;
   padding: 5px;
   padding-right: 50px;
@@ -410,4 +444,45 @@ nav ul li li {
 .mi { color: fuchsia; } /* number */
 .o { color: aqua; } /* operator */
 .p { color: dodgerblue; } /* parenthesis ??? */
+.c { color: gray; } /* comment */
 .c1 { color: gray; } /* comment */
+
+/* change log */
+
+ul.changelog ul {
+  list-style-type: none;
+}
+
+ul.changelog li.added::before,
+ul.changelog li.removed::before,
+ul.changelog li.changed::before,
+ul.changelog li.fixed::before {
+  font-family: monospace;
+  font-size: 90%;
+  font-weight: bold;
+  vertical-align: middle;
+  padding-left: .5em;
+  padding-right: .5em;
+  margin-right: .5em;
+}
+
+ul.changelog li.added::before {
+  content: "+";
+  color: #0f0;
+  background-color: #060;
+}
+ul.changelog li.removed::before {
+  content: "-";
+  color: #f00;
+  background-color: #600;
+}
+ul.changelog li.changed::before {
+  content: "*";
+  color: #33f;
+  background-color: #009;
+}
+ul.changelog li.fixed::before {
+  content: "!";
+  color: #f0f;
+  background-color: #606;
+}
