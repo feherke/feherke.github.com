@@ -61,7 +61,8 @@ a:active {
 pre,
 code,
 samp {
-  font-family: Andale Mono,Andale Mono WT,Bitstream Vera Sans Mono,DejaVu Sans Mono,Courier,monospace;
+/*  font-family: Andale Mono,Andale Mono WT,Bitstream Vera Sans Mono,DejaVu Sans Mono,Courier,monospace; // Andale Mono is NOT real monospace */
+  font-family: Andale Mono WT,Bitstream Vera Sans Mono,DejaVu Sans Mono,Courier,monospace;
 }
 
 pre {
@@ -117,6 +118,7 @@ pre code { /* code block */
 }
 
 pre samp { /* sample block */
+  color: silver;
 }
 
 kbd {

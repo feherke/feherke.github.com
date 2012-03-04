@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+<meta charset=UTF-8>
+<title>minesweeper.sh</title>
+<meta name=description content="The classic mine sweeper game in text mode.">
+<meta name=author content="Feherke">
+<meta name=generator content="Jekyll 0.11.2">
+<!--[if IE]>
+<script src="/html5fordummies.js"></script>
+<![endif]-->
+<link rel=stylesheet href="/style.css">
+<style>
+.w, .b, .l, .m { font-weight: bold; }
+.s { color: silver; }
+.w { color: white; }
+.b { color: blue; }
+.l { color: lime; }
+.m { color: magenta; }
+.r { color: red; }
+.y { color: black; background-color: yellow; }
+
+</style>
+<link rel=icon href="/favicon.ico">
+</head>
+
+<body>
+
+<header>
+
+<div id=skip>
+<a href="#content" accesskey=c>skip to content</a>
+</div>
+
+<div class=title>
+Feherke's GitHub Site == glue between Feherke's GitHub hosted projects
+</div>
+
+</header>
+
+<div id=wrapper>
+
+<section id=content>
+
+
+
+<div id=breadcrumb>
+<p><a href="/">Feherke&rsquo;s GitHub Site</a> / <a href="/bash/">Bash</a> / </p>
+
+</div>
+
+
+
+<div id=taglist>
+Tag :
+<a href="/tag.html#game">game</a>
+</div>
+
+
+<div class=clear></div>
+
+<h1 id="minesweepersh---the-usual-mine-sweeper-game">minesweeper.sh - the usual mine sweeper game</h1>
+
+<p>I always appreciated the simple games with original concept. The Mine Sweeper is one of them. Alas most of its implementations are in graphic mode and works only with
+mouse. Since now, I already wrote a few Mine Sweeper programs which correct the above two misses. But this one is special for me. Mostly, because is my first game
+written in shell script.</p>
+
+<p>The code of this game is also on my favorites list, because excepting the unavoidable <code>tput</code> command, I used almost no external executables.</p>
+
+<p>My thought on games is that they serve as relaxation tool for hard-working programmers. After several hours of coding is necessary to take a break. And play something.
+I mean play. No race, no excitement. This is why I usually do not implement high scores, sound effects and similar useless things.</p>
+
+<h2 id="usage">Usage</h2>
+
+<p>minesweeper.sh usually has a nice color interface, but probably there are terminals on which fails to work :</p>
+
+<p class="precaption">sample output - minesweeper.sh</p>
+
+<pre><samp class="cli">Mine Sweeper   version 1.0   december 2005   written by Feherke
+board : S    size : 10*10   mine : 15   flag : 11   <span class="y">:)</span>
+<span class="s"> # # # # # # # # # # </span>
+<span class="s"> #<span class="w">[</span>#<span class="w">]</span># # # # # # # # </span>
+<span class="s"> # # <span class="l">2</span> <span class="m">3</span> <span class="l">2</span> <span class="m">3</span> <span class="r">F F</span> <span class="l">2</span> <span class="b">1</span> </span>
+<span class="g"> <span class="b">1</span> <span class="l">2</span> <span class="r">F</span> <span class="m">3</span> <span class="r">F</span> <span class="l">2</span> <span class="m">3 3</span> <span class="l">2</span> . </span>
+<span class="g"> . <span class="b">1</span> <span class="l">2</span> <span class="r">F</span> <span class="l">2</span> <span class="b">1 1</span> <span class="r">F</span> <span class="b">1</span> . </span>
+<span class="g"> . <span class="b">1</span> <span class="l">2 2</span> <span class="b">1</span> . <span class="b">1 1 1</span> . </span>
+<span class="g"> . <span class="b">1</span> <span class="r">F</span> <span class="b">1</span> . . . . . . </span>
+<span class="g"> <span class="b">1</span> <span class="l">2 2</span> <span class="b">1</span> . . . . . . </span>
+<span class="g"> <span class="b">1</span> <span class="r">F</span> <span class="l">2</span> <span class="b">1</span> <span class="l">2 2 2</span> <span class="b">1</span> . . </span>
+<span class="g"> <span class="b">1 1</span> <span class="l">2</span> <span class="r">F</span> <span class="l">2</span> <span class="r">F F</span> <span class="b">1</span> . . </span>
+&lt;<b>h</b>/<b>j</b>/<b>k</b>/<b>l</b>&gt; Move &lt;<b>g</b>&gt; Step &lt;<b>f</b>&gt; Flag &lt;<b>n</b>/<b>N</b>/<b>m</b>/<b>M</b>&gt; New &lt;<b>q</b>&gt; Quit
+</samp></pre>
+
+<p>For navigation there are available 3 sets of mappings :</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>layout</th>
+      <th style="text-align: center">left</th>
+      <th style="text-align: center">down</th>
+      <th style="text-align: center">up</th>
+      <th style="text-align: center">right</th>
+      <th style="text-align: center">step</th>
+      <th style="text-align: center">flag</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Vi</td>
+      <td style="text-align: center"><kbd>h</kbd></td>
+      <td style="text-align: center"><kbd>j</kbd></td>
+      <td style="text-align: center"><kbd>k</kbd></td>
+      <td style="text-align: center"><kbd>l</kbd></td>
+      <td style="text-align: center"><kbd>g</kbd></td>
+      <td style="text-align: center"><kbd>f</kbd></td>
+    </tr>
+    <tr>
+      <td>Lefthand</td>
+      <td style="text-align: center"><kbd>a</kbd></td>
+      <td style="text-align: center"><kbd>s</kbd></td>
+      <td style="text-align: center"><kbd>w</kbd></td>
+      <td style="text-align: center"><kbd>d</kbd></td>
+      <td style="text-align: center"><kbd>Space</kbd></td>
+      <td style="text-align: center"><kbd>f</kbd></td>
+    </tr>
+    <tr>
+      <td>Numeric</td>
+      <td style="text-align: center"><kbd>4</kbd></td>
+      <td style="text-align: center"><kbd>2</kbd></td>
+      <td style="text-align: center"><kbd>8</kbd></td>
+      <td style="text-align: center"><kbd>6</kbd></td>
+      <td style="text-align: center"><kbd>Enter</kbd></td>
+      <td style="text-align: center"><kbd>0</kbd></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Beside those, 3 additional commands exist :</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">key</th>
+      <th>command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><kbd>r</kbd></td>
+      <td>redraw the board</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><kbd>q</kbd></td>
+      <td>quit the script</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>None.</p>
+
+<p>However there are 4 predefined board setups and a new game starts by choosing one of them :</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">key</th>
+      <th>board</th>
+      <th style="text-align: center">size</th>
+      <th style="text-align: right">mines</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><kbd>n</kbd></td>
+      <td>Small</td>
+      <td style="text-align: center">10*10</td>
+      <td style="text-align: right">15</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><kbd>N</kbd></td>
+      <td>Medium</td>
+      <td style="text-align: center">15*15</td>
+      <td style="text-align: right">33</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><kbd>m</kbd></td>
+      <td>Large</td>
+      <td style="text-align: center">20*20</td>
+      <td style="text-align: right">60</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><kbd>M</kbd></td>
+      <td>Extra</td>
+      <td style="text-align: center">30*20</td>
+      <td style="text-align: right">90</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="versions">Versions</h2>
+
+<ul class="changelog">
+  <li>1.0 - December 2005
+    <ul>
+      <li class="added">Initial release.</li>
+    </ul>
+  </li>
+  <li>1.1 - August 2008
+    <ul>
+      <li class="changed">Minor optimizations.</li>
+      <li class="changed">Portable sh code replaced with Bash specific alternatives.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="plans">Plans</h2>
+
+<ul>
+  <li>Would be nice to keep the high scores somewhere.</li>
+</ul>
+
+<h2 id="download">Download</h2>
+
+<p>You can find the related files on GitHub in my <a href="http://github.com/feherke/Bash-script">Bash-script repository</a>  :</p>
+
+<ul>
+  <li><a href="http://github.com/feherke/Bash-script/blob/master/minesweeper/minesweeper.sh">minesweeper.sh</a> - script</li>
+  <li><a href="http://github.com/feherke/Bash-script/blob/master/minesweeper/minesweeper.sh.6">minesweeper.sh.6</a> - man page</li>
+</ul>
+
+
+
+</section>
+
+</div> <!-- #wrapper -->
+
+<div id=sidebar>
+
+<nav>
+
+<ul>
+  <li><a href="/bash/">Bash</a></li>
+  <li><a href="/javascript/">JavaScript</a>
+    <ul>
+      <li><a href="/javascript/firegestures/">FireGestures</a></li>
+      <li><a href="/javascript/greasemonkey/">Greasemonkey</a></li>
+    </ul>
+  </li>
+  <li><a href="/perl/">Perl</a>
+    <ul>
+      <li><a href="/perl/irssi/">Irssi</a></li>
+    </ul>
+  </li>
+  <li><a href="/ruby/">Ruby</a>
+    <ul>
+      <li><a href="/ruby/jekyll/">Jekyll</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+</nav>
+
+<div id=tagcloud title="Tag cloud">
+<p><a href="/tag.html#BitlBee" title="1" style="font-size: 8pt">BitlBee</a>
+<a href="/tag.html#TipMaster" title="2" style="font-size: 13pt">TipMaster</a>
+<a href="/tag.html#cleanup" title="3" style="font-size: 18pt">cleanup</a>
+<a href="/tag.html#game" title="1" style="font-size: 8pt">game</a>
+<a href="/tag.html#notification" title="2" style="font-size: 13pt">notification</a>
+<a href="/tag.html#search" title="2" style="font-size: 13pt">search</a></p>
+
+</div>
+
+</div> <!-- #sidebar -->
+
+<footer>
+
+<ul>
+<li>Powered by <a href="http://ruby-lang.org/">Ruby</a> 1.9.2</li>
+<li>Generated by <a href="http://jekyllrb.com/">Jekyll</a> 0.11.2</li>
+<li>Processed by <a href="http://kramdown.rubyforge.org/">kramdown</a> 0.13.4</li>
+</ul>
+
+<ul>
+<li>Edited with <a href="http://midnight-commander.org/">MCEdit</a></li>
+<li>Hosted on <a href="http://github.com/">GitHub</a></li>
+</ul>
+
+<ul>
+<li>Valid <a href="http://w3c.org/TR/html5/">HTML 5</a></li>
+<li>Valid <a href="http://w3c.org/TR/CSS/#css3">CSS 3</a></li>
+<li>Valid <a href="http://w3c.org/WAI/">WAI AA</a></li>
+</ul>
+
+<ul>
+<li>Page minesweeper-sh last modified 2005-12-27.</li>
+<li>Copyright &copy; 2012, <a href="/about.html">Feherke</a></li>
+</ul>
+
+<div class=logo>F<sup>G</sup><sub>H</sub>S</div>
+
+<div class=clear></div>
+
+</footer>
+
+<!--[if lte IE 6]>
+<p>
+Please consider changing your Explorer 6 to a newer and/or better browser.
+For reasons and guidance read "<a href="http://quirksmode.org/upgrade.html">Upgrade your browser!</a>" by Peter-Paul Koch.
+</p>
+<![endif]-->
+
+</body>
+
+</html>
