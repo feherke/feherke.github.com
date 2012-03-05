@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+<meta charset=UTF-8>
+<title>mpc.sh</title>
+<meta name=description content="Just a rudimental frontend for the most basic music playing functionalities.">
+<meta name=author content="Feherke">
+<meta name=generator content="Jekyll 0.11.2">
+<!--[if IE]>
+<script src="/html5fordummies.js"></script>
+<![endif]-->
+<link rel=stylesheet href="/style.css">
+<style>
+.s { color: #e5e5e5; }
+.y { color: #cdcd00; }
+.r { color: #cd0000; }
+.bs { color: black; background-color: #e5e5e5; }
+.by { color: black; background-color: #cdcd00; }
+.br { color: black; background-color: #cd0000; }
+
+</style>
+<link rel=icon href="/favicon.ico">
+</head>
+
+<body>
+
+<header>
+
+<div id=skip>
+<a href="#content" accesskey=c>skip to content</a>
+</div>
+
+<div class=title>
+Feherke's GitHub Site == glue between Feherke's GitHub hosted projects
+</div>
+
+</header>
+
+<div id=wrapper>
+
+<section id=content>
+
+
+
+<div id=breadcrumb>
+<p><a href="/">Feherke&rsquo;s GitHub Site</a> / <a href="/bash/">Bash</a> / </p>
+
+</div>
+
+
+
+<div id=taglist>
+Tag :
+<a href="/tag.html#media">media</a>
+</div>
+
+
+<div class=clear></div>
+
+<h1 id="mpcsh---simple-frontend-for-the-mpc-client-for-mpd">mpc.sh - simple frontend for the mpc client for mpd</h1>
+
+<p>In my subconscious I always tried to achieve something like <a href="http://musicpd.org/" title="Music Player Daemon">MPD</a>. And when I discovered it of course I choose
+<a href="http://musicpd.org/mpc.shtml" title="Music Player daemon Command-line interface">MPC</a> as client. I really enjoy to start the music with <code>mpc play</code>, but there are situations
+when you wish to have a faster way too. Certainly there are adequate clients out there and using different clients in different circumstances would feet the
+client-server architecture. But I decided to not install, learn, run, maintain another client just for a few occasion. So I wrote this extremely dumb frontend.</p>
+
+<p>Never intended to be a full featured frontend and certainly never will be. But a playlist switcher with similar look &amp; feel may feet the original idea.</p>
+
+<h2 id="usage">Usage</h2>
+
+<p>mpc.sh simply gets one key press and executes the <code>mpc</code> client passing the corresponding parameter :</p>
+
+<p class="precaption">sample output - mpc.sh</p>
+
+<pre><samp class="cli"><span class="y">[      no play in progress       ]</span>
+<span class="y">----------------------------------</span>
+<span class="by">|&lt;</span> <span class="by">&gt;&nbsp;</span> <span class="by">||</span> <span class="br">[]</span> <span class="by">&gt;|</span>  <span class="br">&raquo;&raquo;</span> <span class="by">&iquest;?</span> <span class="by">()</span> <span class="by">.&lt;</span> <span class="by">&gt;&lt;</span>  <span class="by">:=</span>
+<span class="s">z  x  c  v  b   r  s  i  a  f   p </span>
+<span class="by">|</span>--<span class="by">|</span>--<span class="by">|</span>--<span class="by">|</span>--<span class="by">|</span>--<span class="by">|</span>--<span class="by">|</span>--<span class="by">|</span>--<span class="br">O</span>--<span class="by">|</span>--<span class="by">|</span>  <span class="by">i</span>
+<span class="s">m  1  2  3  4  5  6- 7 +8  9  0  ?</span>
+</samp></pre>
+
+<p>This is not a big bang, I only decided to post it because the used approach gives me very comfortable frontend.
+Of course, to be really handy I set the window manager to start it for a specific key combination.</p>
+
+<p>mpc.sh expects no command line parameters from the user. But it uses two special parameters when re-launching itself to display different interfaces :</p>
+
+<p class="precaption">sample output - mpc.sh playlist</p>
+
+<pre><samp class="cli"><span class="y">a</span> At Work Channel
+<span class="y">b</span> Classical King FM
+<span class="y">c</span> Hard Rock Radio
+<span class="y">d</span> Italo Disco
+<span class="y">e</span> Magic FM
+<span class="y">f</span> MelleslegFM
+<span class="y">g</span> Rock Radio 1
+<span class="y">h</span> Slay Radio
+<span class="y">i</span> SwissRadio
+
+<span class="br">a-s</span> <span class="bs">   </span> <span class="bs">   </span> <span class="bs">   </span> <span class="bs">   </span> <span class="bs">   </span> <span class="bs">   </span> <span class="bs">   </span> <span class="bs">   </span> <span class="bs">   </span>
+ 1   2   3   4   5   6   7   8   9   0 
+current playlist : <span class="r">4</span> entries
+load : a..z replace, A..Z append
+</samp></pre>
+
+<p class="precaption">sample output - mpc.sh statinfo</p>
+
+<pre><samp class="cli">mpd version     <span class="r">:</span> <span class="y">0.16.0</span>
+mpc version     <span class="r">:</span> <span class="y">0.20</span>
+mpc.sh version  <span class="r">:</span> <span class="y">1.6</span>
+
+Artists         <span class="r">:</span> <span class="y">#####</span>
+Albums          <span class="r">:</span> <span class="y">#####</span>
+Songs           <span class="r">:</span> <span class="y">#####</span>
+
+Play Time       <span class="r">:</span> <span class="y">0 days, 8:15:11</span>
+Uptime          <span class="r">:</span> <span class="y">12 days, 1:19:21</span>
+DB Updated      <span class="r">:</span> <span class="y">Sat Dec 31 19:36:10 2011</span>
+DB Play Time    <span class="r">:</span> <span class="y">#####</span>
+<span class="by">ok</span>
+</samp></pre>
+
+<p>The keys available in the main dialog :</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">key</th>
+      <th>command</th>
+      <th>involved <code>mpc</code> command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><kbd>z</kbd></td>
+      <td>Starts playing previous song.</td>
+      <td><code>prev</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><kbd>x</kbd></td>
+      <td>Starts playing.</td>
+      <td><code>play</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><kbd>c</kbd></td>
+      <td>Pauses playing.</td>
+      <td><code>pause</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><kbd>v</kbd></td>
+      <td>Stops playing.</td>
+      <td><code>stop</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><kbd>b</kbd></td>
+      <td>Starts playing next song on playlist.</td>
+      <td><code>next</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><kbd>r</kbd></td>
+      <td>Toggles repeat mode.</td>
+      <td><code>repeat</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><kbd>s</kbd></td>
+      <td>Toggles random mode.</td>
+      <td><code>random</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><kbd>i</kbd></td>
+      <td>Toggles single mode.</td>
+      <td><code>single</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><kbd>a</kbd></td>
+      <td>Jumps back to current song&rsquo;s beginning.</td>
+      <td><code>seek</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><kbd>f</kbd></td>
+      <td>Toggles crossfade.</td>
+      <td><code>crossfade</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><kbd>m</kbd></td>
+      <td>Sets volume to 0.</td>
+      <td><code>volume</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><kbd>1</kbd>..<kbd>0</kbd></td>
+      <td>Sets volume to number*10%.</td>
+      <td><code>volume</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><kbd>+</kbd></td>
+      <td>Increases volume with 10%.</td>
+      <td><code>volume</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><kbd>-</kbd></td>
+      <td>Decreases volume with 10%.</td>
+      <td><code>volume</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><kbd>p</kbd></td>
+      <td>Open the playlist window.</td>
+      <td><code>lsplaylists</code>, <code>clear</code>, <code>load</code></td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><kbd>?</kbd></td>
+      <td>Open the status information window.</td>
+      <td><code>version</code>, <code>help</code>, <code>stats</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The keys available in the playlist dialog :</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">key</th>
+      <th>command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center"><kbd>1</kbd>..<kbd>0</kbd></td>
+      <td>Changes playlist to page given by number.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><kbd>+</kbd></td>
+      <td>Changes playlist to next page.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><kbd>-</kbd></td>
+      <td>Changes playlist to previous page.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><kbd>a</kbd>..<kbd>z</kbd></td>
+      <td>Clears the current playlist then loads the given playlist.</td>
+    </tr>
+    <tr>
+      <td style="text-align: center"><kbd>A</kbd>..<kbd>Z</kbd></td>
+      <td>Loads the playlist assigned to the given letter.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>None.</p>
+
+<h2 id="versions">Versions</h2>
+
+<ul class="changelog">
+  <li>1.0 - May 2008
+    <ul>
+      <li class="added">Initial release.</li>
+    </ul>
+  </li>
+  <li>1.1 - September 2008
+    <ul>
+      <li class="added">Volume adjusting :
+        <ul>
+          <li>mute ( key <kbd>m</kbd> )</li>
+          <li>set volume percentage ( key <kbd>1</kbd>..<kbd>9</kbd> = number*10% )</li>
+          <li>set volume to maximum ( key <kbd>0</kbd> )</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>1.2 - September 2008
+    <ul>
+      <li class="added">Title display.</li>
+    </ul>
+  </li>
+  <li>1.4 - July 2010
+    <ul>
+      <li class="added">Progress display.</li>
+    </ul>
+  </li>
+  <li>1.5 - November 2010
+    <ul>
+      <li class="changed">Notice instead of progress for content through http:// .</li>
+      <li class="added">Play single entry ( key <kbd>i</kbd> ).</li>
+      <li class="added">Toggle 2 second crossfade ( key <kbd>f</kbd> ).</li>
+      <li class="added">Playlist loading :
+        <ul>
+          <li>display playlist list ( key <kbd>p</kbd> )</li>
+          <li>load playlist exclusively ( key <kbd>a</kbd>..<kbd>z</kbd> )</li>
+          <li>append playlist ( key <kbd>A</kbd>..<kbd>Z</kbd> )</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>1.6 - May 2011
+    <ul>
+      <li class="added">Play current again ( key <kbd>a</kbd> ).</li>
+      <li class="added">Status information ( key <kbd>?</kbd> ).</li>
+      <li class="added">Playlist pager :
+        <ul>
+          <li>switch to given page ( key <kbd>1</kbd>..<kbd>0</kbd> )</li>
+          <li>switch to next page ( key <kbd>+</kbd> )</li>
+          <li>switch to previous page ( key <kbd>-</kbd> )</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="plans">Plans</h2>
+
+<ul>
+  <li>A few minor configuration pieces for the terminal would be nice.</li>
+  <li><del>( Remove the playlist limitation, if I will have a good idea for it. )</del></li>
+  <li>Remove the playlist limitation, if I will have a good idea for it.</li>
+  <li>Implement some simple sticker operations.</li>
+</ul>
+
+<h2 id="download">Download</h2>
+
+<p>You can find the related files on GitHub in my <a href="http://github.com/feherke/Bash-script">Bash-script repository</a>  :</p>
+
+<ul>
+  <li><a href="http://github.com/feherke/Bash-script/blob/master/mpc/mpc.sh">mpc.sh</a> - script</li>
+  <li><a href="http://github.com/feherke/Bash-script/blob/master/mpc/mpc.sh.1">mpc.sh.1</a> - man page</li>
+</ul>
+
+
+
+</section>
+
+</div> <!-- #wrapper -->
+
+<div id=sidebar>
+
+<nav>
+
+<ul>
+  <li><a href="/bash/">Bash</a></li>
+  <li><a href="/javascript/">JavaScript</a>
+    <ul>
+      <li><a href="/javascript/firegestures/">FireGestures</a></li>
+      <li><a href="/javascript/greasemonkey/">Greasemonkey</a></li>
+    </ul>
+  </li>
+  <li><a href="/perl/">Perl</a>
+    <ul>
+      <li><a href="/perl/irssi/">Irssi</a></li>
+    </ul>
+  </li>
+  <li><a href="/ruby/">Ruby</a>
+    <ul>
+      <li><a href="/ruby/jekyll/">Jekyll</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+</nav>
+
+<div id=tagcloud title="Tag cloud">
+<p><a href="/tag.html#BitlBee" title="1" style="font-size: 8pt">BitlBee</a>
+<a href="/tag.html#TipMaster" title="2" style="font-size: 13pt">TipMaster</a>
+<a href="/tag.html#cleanup" title="3" style="font-size: 18pt">cleanup</a>
+<a href="/tag.html#game" title="1" style="font-size: 8pt">game</a>
+<a href="/tag.html#media" title="1" style="font-size: 8pt">media</a>
+<a href="/tag.html#notification" title="2" style="font-size: 13pt">notification</a>
+<a href="/tag.html#search" title="2" style="font-size: 13pt">search</a></p>
+
+</div>
+
+</div> <!-- #sidebar -->
+
+<footer>
+
+<ul>
+<li>Powered by <a href="http://ruby-lang.org/">Ruby</a> 1.9.2</li>
+<li>Generated by <a href="http://jekyllrb.com/">Jekyll</a> 0.11.2</li>
+<li>Processed by <a href="http://kramdown.rubyforge.org/">kramdown</a> 0.13.4</li>
+</ul>
+
+<ul>
+<li>Edited with <a href="http://midnight-commander.org/">MCEdit</a></li>
+<li>Hosted on <a href="http://github.com/">GitHub</a></li>
+</ul>
+
+<ul>
+<li>Valid <a href="http://w3c.org/TR/html5/">HTML 5</a></li>
+<li>Valid <a href="http://w3c.org/TR/CSS/#css3">CSS 3</a></li>
+<li>Valid <a href="http://w3c.org/WAI/">WAI AA</a></li>
+</ul>
+
+<ul>
+<li>Page mpc-sh last modified 2011-05-28.</li>
+<li>Copyright &copy; 2012, <a href="/about.html">Feherke</a></li>
+</ul>
+
+<div class=logo>F<sup>G</sup><sub>H</sub>S</div>
+
+<div class=clear></div>
+
+</footer>
+
+<!--[if lte IE 6]>
+<p>
+Please consider changing your Explorer 6 to a newer and/or better browser.
+For reasons and guidance read "<a href="http://quirksmode.org/upgrade.html">Upgrade your browser!</a>" by Peter-Paul Koch.
+</p>
+<![endif]-->
+
+</body>
+
+</html>

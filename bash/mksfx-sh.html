@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+<meta charset=UTF-8>
+<title>mksfx.sh</title>
+<meta name=description content="Add a shell script header to a compressed file, to make it selfextractor.">
+<meta name=author content="Feherke">
+<meta name=generator content="Jekyll 0.11.2">
+<!--[if IE]>
+<script src="/html5fordummies.js"></script>
+<![endif]-->
+<link rel=stylesheet href="/style.css">
+<link rel=icon href="/favicon.ico">
+</head>
+
+<body>
+
+<header>
+
+<div id=skip>
+<a href="#content" accesskey=c>skip to content</a>
+</div>
+
+<div class=title>
+Feherke's GitHub Site == glue between Feherke's GitHub hosted projects
+</div>
+
+</header>
+
+<div id=wrapper>
+
+<section id=content>
+
+
+
+<div id=breadcrumb>
+<p><a href="/">Feherke&rsquo;s GitHub Site</a> / <a href="/bash/">Bash</a> / </p>
+
+</div>
+
+
+
+
+<div class=clear></div>
+
+<h1 id="mksfxsh---make-selfextracting-compressed-file">mksfx.sh - make selfextracting compressed file</h1>
+
+<p>This one was not written to fit my necessity. And beside this, was written in a hurry. So is not as flexible as could be, but does a nice work. I do not really care
+about the number of typed commands, but when I work on a remote machine doing something boring, then I prefer this kind of automation. So the script has good chances
+to evolve. Although it is quiet simple to do this by hand :</p>
+
+<p class="precaption">Bash script</p>
+
+<div class="highlight"><pre><code class="bash"><span class="o">(</span>
+cat <span class="s">&lt;&lt;END_OF_TEXT</span>
+<span class="s">#! /bin/bash</span>
+<span class="s">tail +5 &quot;\$0&quot; | tar xz -C /tmp/whatcompress</span>
+<span class="s">/tmp/whatcompress/whatrun.sh</span>
+<span class="s">exit 0</span>
+<span class="s">END_OF_TEXT</span>
+tar cfz - /whatcompress
+<span class="o">)</span> &gt; whatcreate.sfx
+</code></pre>
+</div>
+
+<h2 id="usage">Usage</h2>
+
+<p>mksfx.sh makes this easyer. You can achieve the above, and evidently even more, with this command :</p>
+
+<p class="precaption">sample output - mksfx.sh</p>
+
+<pre><samp class="cli"><span class="pr">bash-4.2$ </span>mksfx.sh -x whatcreate.sfx -c gzip -r whatrun.sh /whatcompress
+SFX /whatcompress -&gt; whatcreate.sh : gzip... sfx... add... Ok
+</samp></pre>
+
+<p>Only a few parameters are implemented :</p>
+
+<p class="precaption">sample output - mksfx.sh --help</p>
+
+<pre><samp class="cli">Make SelFeXtracting archive   version 1.1   august 2008   written by Feherke
+create compressed tar of a directory and add an autoextract header
+Syntax :
+  mksfx.sh [-x sfxname] [-c compression] [-r runname] [directory]
+Parameters :
+  directory  - name of the directory to compress ( . )
+  -x sfxname | --sfx=sfxname  - file name to create ( same as directory )
+  -c compression | --compress=compression  - method : gzip, bzip2 ( gzip )
+  -r runname | --run=runname  - file to run after uncompressing ( run.sh )
+( The values between paranthesis are the default values. )
+</samp></pre>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>None.</p>
+
+<p>The only way duplicated.sh&rsquo;s activity can be influenced, are the command line parameters.</p>
+
+<h2 id="versions">Versions</h2>
+
+<ul class="changelog">
+  <li>1.0 - May 2005
+    <ul>
+      <li class="added">Initial release.</li>
+    </ul>
+  </li>
+  <li>1.1 - August 2008
+    <ul>
+      <li class="changed">Minor optimizations.</li>
+      <li class="changed">Portable sh code replaced with Bash specific alternatives.</li>
+      <li class="added">Added GNU-style long option alternatives.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="plans">Plans</h2>
+
+<ul>
+  <li>Is somehow strange the use of the temporary directory, so it probably will be made optional.</li>
+  <li>Also optionally some integrity check would be nice.</li>
+  <li>Allow choosing from multiple compression methods.</li>
+</ul>
+
+<h2 id="download">Download</h2>
+
+<p>You can find the related files on GitHub in my <a href="http://github.com/feherke/Bash-script">Bash-script repository</a>  :</p>
+
+<ul>
+  <li><a href="http://github.com/feherke/Bash-script/blob/master/mksfx/mksfx.sh">mksfx.sh</a> - script</li>
+  <li><a href="http://github.com/feherke/Bash-script/blob/master/mksfx/mksfx.sh.1">mksfx.sh.1</a> - man page</li>
+</ul>
+
+
+
+</section>
+
+</div> <!-- #wrapper -->
+
+<div id=sidebar>
+
+<nav>
+
+<ul>
+  <li><a href="/bash/">Bash</a></li>
+  <li><a href="/javascript/">JavaScript</a>
+    <ul>
+      <li><a href="/javascript/firegestures/">FireGestures</a></li>
+      <li><a href="/javascript/greasemonkey/">Greasemonkey</a></li>
+    </ul>
+  </li>
+  <li><a href="/perl/">Perl</a>
+    <ul>
+      <li><a href="/perl/irssi/">Irssi</a></li>
+    </ul>
+  </li>
+  <li><a href="/ruby/">Ruby</a>
+    <ul>
+      <li><a href="/ruby/jekyll/">Jekyll</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+</nav>
+
+<div id=tagcloud title="Tag cloud">
+<p><a href="/tag.html#BitlBee" title="1" style="font-size: 8pt">BitlBee</a>
+<a href="/tag.html#TipMaster" title="2" style="font-size: 13pt">TipMaster</a>
+<a href="/tag.html#cleanup" title="3" style="font-size: 18pt">cleanup</a>
+<a href="/tag.html#game" title="1" style="font-size: 8pt">game</a>
+<a href="/tag.html#media" title="1" style="font-size: 8pt">media</a>
+<a href="/tag.html#notification" title="2" style="font-size: 13pt">notification</a>
+<a href="/tag.html#search" title="2" style="font-size: 13pt">search</a></p>
+
+</div>
+
+</div> <!-- #sidebar -->
+
+<footer>
+
+<ul>
+<li>Powered by <a href="http://ruby-lang.org/">Ruby</a> 1.9.2</li>
+<li>Generated by <a href="http://jekyllrb.com/">Jekyll</a> 0.11.2</li>
+<li>Processed by <a href="http://kramdown.rubyforge.org/">kramdown</a> 0.13.4</li>
+</ul>
+
+<ul>
+<li>Edited with <a href="http://midnight-commander.org/">MCEdit</a></li>
+<li>Hosted on <a href="http://github.com/">GitHub</a></li>
+</ul>
+
+<ul>
+<li>Valid <a href="http://w3c.org/TR/html5/">HTML 5</a></li>
+<li>Valid <a href="http://w3c.org/TR/CSS/#css3">CSS 3</a></li>
+<li>Valid <a href="http://w3c.org/WAI/">WAI AA</a></li>
+</ul>
+
+<ul>
+<li>Page mksfx-sh last modified 2005-07-07.</li>
+<li>Copyright &copy; 2012, <a href="/about.html">Feherke</a></li>
+</ul>
+
+<div class=logo>F<sup>G</sup><sub>H</sub>S</div>
+
+<div class=clear></div>
+
+</footer>
+
+<!--[if lte IE 6]>
+<p>
+Please consider changing your Explorer 6 to a newer and/or better browser.
+For reasons and guidance read "<a href="http://quirksmode.org/upgrade.html">Upgrade your browser!</a>" by Peter-Paul Koch.
+</p>
+<![endif]-->
+
+</body>
+
+</html>

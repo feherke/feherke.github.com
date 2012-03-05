@@ -449,10 +449,17 @@ nav ul li li {
 .c { color: gray; } /* comment */
 .c1 { color: gray; } /* comment */
 
+.pr { color: blue; } /* prompt */
+
 /* change log */
 
-ul.changelog ul {
+ul.changelog>li>ul {
   list-style-type: none;
+  margin-left: 5px;
+}
+
+ul.changelog>li>ul>li>ul {
+  margin-left: 40px;
 }
 
 ul.changelog li.added::before,
