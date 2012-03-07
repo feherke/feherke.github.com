@@ -203,13 +203,29 @@ table.nowrap1 td:first-child {
 }
 
 .warn:first-line,
-.note:first-line {
+.note:first-line,
+.warn>p:first-child:first-line,
+.note>p:first-child:first-line {
   font-weight: bold;
 }
 
 .warn:first-line {
   color: red;
 }
+
+/* newer design, but maybe I change my mind */
+.warn,.note {
+  border-color: black;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.warn {
+  box-shadow: red -2px 0 1px -1px, red 2px 0 1px -1px, red -2px 0 1px -1px inset, red 2px 0 1px -1px inset;
+}
+.note {
+  box-shadow: green -2px 0 1px -1px, green 2px 0 1px -1px, green -2px 0 1px -1px inset, green 2px 0 1px -1px inset;
+}
+/* */
 
 .info {
   background-image: -moz-repeating-linear-gradient(-45deg,black,#339 1px,black 2px,black 5px);
