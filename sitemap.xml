@@ -158,7 +158,13 @@
 
   <url>
     <loc>http://feherke.github.com/javascript/greasemonkey/tipmaster-reply-with-quote.html</loc>
-    <lastmod>2012-02-17</lastmod>
+    <lastmod>2012-03-08</lastmod>
+    <priority>0.1</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.com/javascript/greasemonkey/tipmaster-show-hide-spoiler.html</loc>
+    <lastmod>2012-03-07</lastmod>
     <priority>0.1</priority>
   </url>
 
