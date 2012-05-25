@@ -3,9 +3,9 @@
 
 <head>
 <meta charset=UTF-8>
-<title>TipMaster - Reply with Quote</title>
-<meta name=description content="Adds a reply link below each post to easily quote the answered message.">
-<meta name=keyword content="reply, quote, conversion, html2tgml">
+<title>TipMaster - markItUp! Setting</title>
+<meta name=description content="Improved settings for the markItUp! editor.">
+<meta name=keyword content="markItUp, setting, tgml, markup, button">
 <meta name=author content="Feherke">
 <meta name=generator content="Jekyll 0.11.2">
 <!--[if IE]>
@@ -50,47 +50,53 @@ Tag :
 
 <div class=clear></div>
 
-<h1 id="tipmaster---reply-with-quote">TipMaster - Reply with Quote</h1>
+<h1 id="tipmaster---markitup-setting">TipMaster - markItUp! Setting</h1>
 
-<p>Improves the <a href="http://tipmaster.com/">TipMaster</a>&rsquo;s forums, <a href="http://tek-tips.com/">Tek-Tips</a> and <a href="http://eng-tips.com/">Eng-Tips</a>, by adding a link below each post on the
-thread pages to copy the given post&rsquo;s content into the reply form&rsquo;s message field. The quote&rsquo;s parameter is the post&rsquo;s author&rsquo;s handle. The signature is not included.</p>
+<p>Improves the <a href="http://tipmaster.com/">TipMaster</a>&rsquo;s forums, <a href="http://tek-tips.com/">Tek-Tips</a> and <a href="http://eng-tips.com/">Eng-Tips</a>, by improving the markItUp! editor&rsquo;s
+settings used in the post forms.</p>
 
-<p>The quoted message is converted back from HTML to TGML.</p>
+<p>The <a href="http://markitup.jaysalvat.com/home/">markItUp! universal markup jQuery editor</a> is very customizable. It keeps all its setting in the global mySettings JavaScript
+variable, so is enough to change that one.</p>
 
-<p>Protecting verbatim TGML as [ignore][valid TGML tag][/ignore] is not implemented yet. ( Actually there is an implementation, but is not public as it is less
-optimal than could be, so I am looking for a better idea. )</p>
+<p>Included modifications :</p>
+
+<ul>
+  <li>Strikethrough button&rsquo;s associated key <kbd>S</kbd> removed.</li>
+  <li>Color dropdown list extended to the 16 HTML colors.</li>
+  <li>Color dropdown buttons changed to insert [red] style tags instead of [color red].</li>
+  <li>Highlight button added to insert [highlight] tags.</li>
+  <li>Highlight dropdown buttons added for the 6 pale colors I used to use.</li>
+  <li>Alignment drowdown added and Left, Center and Right buttons moved into the dropdown.</li>
+  <li>Float dropdown added with Left and Right buttons to insert [floatl] and [floatr] tags respectively.</li>
+  <li>Box dropdown added with Inline and Block buttons to insert [box] and [bbox] tags respectively.</li>
+  <li>Picture button&rsquo;s associated key <kbd>P</kbd> removed.</li>
+  <li>YouTube button added to insert [youtube] tags.</li>
+  <li>Link button&rsquo;s associated key <kbd>L</kbd> removed.</li>
+  <li>Monospaced button added to insert [tt] tags.</li>
+  <li>Monospaced button got associated key <kbd>M</kbd>.</li>
+  <li>Small button added to insert [small] tags.</li>
+  <li>Attention button added to insert [!] tags.</li>
+  <li>Bulleted list button modified to enclose the entire selection with [ul] tags and each selected line in separate [li] tags.</li>
+  <li>Numeric list button modified to enclose the entire selection with [ol] tags and each selected line in separate [li] tags.</li>
+  <li>Quote button modified to enclose the entire selection not each line separately.</li>
+  <li>Code button modified to enclose the entire selection not each line separately.</li>
+  <li>Spoiler button added to insert [spoiler] tags.</li>
+</ul>
 
 <h2 id="usage">Usage</h2>
 
-<p>Click the &ldquo;Reply with quote to this post&rdquo; link below the message you want to reply to.</p>
+<p>See markItUp!&rsquo;s own documentation.</p>
 
 <h2 id="configuration">Configuration</h2>
 
-<p>Configuration not really supported.</p>
-
-<p>But you could add ( or remove ) some of the tag conversion rules declared in the <code>markup</code> array.</p>
+<p>See markItUp!&rsquo;s own documentation.</p>
 
 <h2 id="versions">Versions</h2>
 
 <ul class="changelog">
-  <li>0.0 - February 2012
+  <li>0.0 - May 2012
     <ul>
       <li class="added">Initial release.</li>
-    </ul>
-  </li>
-  <li>0.1 - February 2012
-    <ul>
-      <li class="changed">Skip signature.</li>
-    </ul>
-  </li>
-  <li>0.2 - March 2012
-    <ul>
-      <li class="fixed">Extracting the code tags&rsquo; title now works.</li>
-    </ul>
-  </li>
-  <li>0.3 - March 2012
-    <ul>
-      <li class="fixed">Consume pointless wbr tags.</li>
     </ul>
   </li>
 </ul>
@@ -98,9 +104,7 @@ optimal than could be, so I am looking for a better idea. )</p>
 <h2 id="plans">Plans</h2>
 
 <ul>
-  <li>Implement adding the [ignore] tag.</li>
-  <li>Make difference between [spoiler] and [hide] tags.</li>
-  <li>Provide a way to convert to lighter markup, like *bold* instead of [b]bold[/b].</li>
+  <li>None.</li>
 </ul>
 
 <h2 id="download">Download</h2>
@@ -108,7 +112,7 @@ optimal than could be, so I am looking for a better idea. )</p>
 <p>You can find the related files on GitHub in my <a href="http://github.com/feherke/Greasemonkey-script">Greasemonkey-script repository</a>  :</p>
 
 <ul>
-  <li><a href="http://github.com/feherke/Greasemonkey-script/blob/master/tipmaster-reply-with-quote/TipMaster_-_Reply_with_Quote.user.js">TipMaster_-_Reply_with_Quote.user.js</a> - script</li>
+  <li><a href="http://github.com/feherke/Greasemonkey-script/blob/master/tipmaster-markitup-setting/TipMaster_-_markItUp_Setting.user.js">TipMaster_-_markItUp_Setting.user.js</a> - script</li>
 </ul>
 
 
@@ -177,7 +181,7 @@ optimal than could be, so I am looking for a better idea. )</p>
 </ul>
 
 <ul>
-<li>Page <span title="tipmaster-reply-with-quote">tipmaster-reply-with-quote</span> last modified 2012-03-27.</li>
+<li>Page <span title="tipmaster-markitup-setting">tipmaster-markitup-setting</span> last modified 2012-05-25.</li>
 <li>Copyright &copy; 2012, <a href="/about.html">Feherke</a></li>
 </ul>
 

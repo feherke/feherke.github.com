@@ -158,7 +158,7 @@
 
   <url>
     <loc>http://feherke.github.com/javascript/greasemonkey/tipmaster-reply-with-quote.html</loc>
-    <lastmod>2012-03-08</lastmod>
+    <lastmod>2012-03-27</lastmod>
     <priority>0.1</priority>
   </url>
 
@@ -171,6 +171,12 @@
   <url>
     <loc>http://feherke.github.com/javascript/greasemonkey/tipmaster-author-highlight.html</loc>
     <lastmod>2012-03-07</lastmod>
+    <priority>0.1</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.com/javascript/greasemonkey/tipmaster-markitup-setting.html</loc>
+    <lastmod>2012-05-25</lastmod>
     <priority>0.1</priority>
   </url>
 
@@ -189,6 +195,12 @@
   <url>
     <loc>http://feherke.github.com/tag.html</loc>
     <lastmod>2012-02-04</lastmod>
+    <priority>0.1</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.com/404.html</loc>
+    <lastmod>2012-04-20</lastmod>
     <priority>0.1</priority>
   </url>
 
