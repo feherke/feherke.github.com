@@ -12,6 +12,35 @@
 <script src="/html5fordummies.js"></script>
 <![endif]-->
 <link rel=stylesheet href="/style.css">
+<style>
+.tgml-demo {
+  color: black;
+  background-color: white;
+  padding: 3px;
+  box-shadow: black 0 0 10px inset;
+}
+.tgml-demo::first-line {
+  color: gray;
+  font-style: italic;
+}
+.tgml-key {
+  color: black;
+  background-color: gainsboro;
+  border-style: solid;
+  border-width: 1px;
+  border-color: silver;
+}
+.tgml-off {
+  color: blue;
+  font-family: monospace;
+  font-size: small;
+}
+.tgml-link {
+  color: #00074f;
+  font-weight: bold;
+}
+
+</style>
 <link rel=icon href="/favicon.ico">
 </head>
 
@@ -64,22 +93,22 @@ variable, so is enough to change that one.</p>
   <li>Underline button&rsquo;s associated key <kbd>U</kbd> removed.</li>
   <li>Strikethrough button&rsquo;s associated key <kbd>S</kbd> removed.</li>
   <li>Superscript button associated with key <kbd>S</kbd>.</li>
-  <li>Color dropdown list extended to the 16 HTML colors.</li>
-  <li>Color dropdown buttons changed to insert [red] style tags instead of [color red].</li>
+  <li>Color drop-down list extended to the 16 HTML colors.</li>
+  <li>Color drop-down buttons changed to insert [red] style tags instead of [color red].</li>
   <li>
     <s>Highlight button added to insert [highlight] tags. ( Added to the site. )</s>
   </li>
   <li>
-    <s>Highlight dropdown buttons added for the 6 pale colors I used to use. ( Added to the site. )</s>
+    <s>Highlight drop-down buttons added for the 6 pale colors I used to use. ( Added to the site. )</s>
   </li>
-  <li>Alignment dropdown added and Left, Center and Right buttons moved into the dropdown.</li>
-  <li>Float dropdown added with Left and Right buttons to insert [floatl] and [floatr] tags respectively.</li>
-  <li>Box dropdown added with Inline and Block buttons to insert [box] and [bbox] tags respectively.</li>
+  <li>Alignment drop-down added and Left, Center and Right buttons moved into the drop-down.</li>
+  <li>Float drop-down added with Left and Right buttons to insert [floatl] and [floatr] tags respectively.</li>
+  <li>Box drop-down added with Inline and Block buttons to insert [box] and [bbox] tags respectively.</li>
   <li>Picture button changed to use the selection as default URL.</li>
   <li>Picture button&rsquo;s associated key <kbd>P</kbd> removed.</li>
   <li>YouTube button added to insert [youtube] tags.</li>
   <li>Link button&rsquo;s associated key <kbd>L</kbd> removed.</li>
-  <li>Dropdown list adde to Emoticon button to insert the smileys I used most frequently.</li>
+  <li>Drop-down list added to Emoticon button to insert the smileys I used most frequently.</li>
   <li>Monospaced button added to insert [tt] tags.</li>
   <li>Monospaced button associated with key <kbd>M</kbd>.</li>
   <li>Preformatted button added to insert [pre] tags.</li>
@@ -105,17 +134,96 @@ variable, so is enough to change that one.</p>
     <s>Ignore button added to insert [ignore] tag. ( Added to the site. )</s>
   </li>
   <li>Composite button Key added to insert key-looking [box] tags sequence.</li>
-  <li>Composite button Off Topic added to insert TGML-looking [off-topic]..[/off-topic] text.</li>
-  <li>Composite button Web Search added to insert link to Google search for a given term.</li>
+  <li>Composite button Fake TGML added with Off Topic and Flame buttons to insert TGML-looking [fake]..[/fake] text.</li>
+  <li>Composite button Documentation added with Perl, PHP, Tcl and Tk buttons to insert links to documentations of a give term.</li>
+  <li>Composite button TipMaster Search added with Google Search, Yahoo! Search and Lycos Search buttons to insert link to search results for a given term.</li>
+  <li>Composite button Canned Response to store and retrieve custom text snippets.</li>
 </ul>
 
 <h2 id="usage">Usage</h2>
 
 <p>See markItUp!&rsquo;s own documentation.</p>
 
+<h3 id="key">Key</h3>
+
+<p>Transforms a space separated list of key names into a key combination markup.</p>
+
+<p class="tgml-demo">Example :<br />
+Alt Ctrl Del &#x279c; <span class="tgml-key">Alt</span>-<span class="tgml-key">Ctrl</span>-<span class="tgml-key">Del</span></p>
+
+<p>If there is selected text, uses it as input, otherwise <code>prompt()</code>s the user for key list.</p>
+
+<h3 id="fake-tgml">Fake TGML</h3>
+
+<p>Encloses a piece of text between a TGML-looking pair of text.</p>
+
+<p>The toolbar button itself does nothing, the drop-down list&rsquo;s buttons insert the text their names say. This is kind of joke, use it sparsely.</p>
+
+<p class="warn">Warning !<br />
+Off topic and flame messages are <em>not</em> welcome on TipMaster forums. Using these fake TGML tags or not, you post will still be subject of edition or deletion.</p>
+
+<p class="tgml-demo">Example :<br />
+text &#x279c; <span class="tgml-off">[off-topic]</span>text<span class="tgml-off">[/off-topic]</span></p>
+
+<p>If there is selected text, encloses it, otherwise uses the fake tag name as placeholder.</p>
+
+<h3 id="documentation">Documentation</h3>
+
+<p>Generates a link to the documentation of a given term.</p>
+
+<p class="tgml-demo">Example :<br />
+print() &#x279c; <a href="http://perldoc.perl.org/functions/print.html" class="tgml-link"><tt>print()</tt></a></p>
+
+<p>If there is selected text, uses it as input, otherwise <code>prompt()</code>s the user for documentation term.</p>
+
+<h3 id="tipmaster-search">TipMaster Search</h3>
+
+<p>Generates a link to a web search for a given term.</p>
+
+<p>The toolbar button itself generates link to the current TipMaster site&rsquo;s own search engine, the drop-down list&rsquo;s buttons does similar work but for the web search engines
+I use most frequently.</p>
+
+<p class="tgml-demo">Example :<br />
+term &#x279c; <a href="http://tek-tips.com/search.cfm?q=term&amp;action=search" class="tgml-link">search Tek-Tips for &ldquo;term&rdquo;</a></p>
+
+<p>If there is selected text, uses it as input, otherwise <code>prompt()</code>s the user for search term.</p>
+
+<h3 id="canned-response">Canned Response</h3>
+
+<p>Manages a collection of predefined text snippets.</p>
+
+<p>The toolbar button itself saves the current post content as canned response. The response&rsquo;s title is requested from the user through a <code>prompt()</code>. If a response with the
+given title exists, its content is replaced with the new one, otherwise a new response is created.</p>
+
+<p>The drop down buttons enumerate the available response titles. Clicking on any of them inserts the clicked one&rsquo;s content into the post. <kbd>Ctrl</kbd>-clicking on any
+of them removes the clicked one after the user&rsquo;s <code>confirm()</code>. <kbd>Shift</kbd>-clicking on any of them saves over the clicked response, after user&rsquo;s <code>confirm()</code>.</p>
+
+<p>Responses may contain {{text}} placeholders, which will be replaced with the current selection, if exists, otherwise with nothing.</p>
+
+<p>The responses are stored using the Greasemonkey script&rsquo;s API, but that is not accessible after the script execution terminated. So adding, modifying and removing
+responses can not be performed directly. The changes first are stored in the <code>sessionStorage</code> and get finalized on the next page load. So after a response manipulation
+is requested, the user is <code>alert()</code>ed to reload the page. The drop-down list&rsquo;s content reflects the finalized manipulations.</p>
+
+<p>Warning : There is a problem with marItUp!&rsquo;s key detection, sometimes ( mostly on the first action after page load ) the <kbd>Ctrl</kbd> and <kbd>Shift</kbd> key&rsquo;s states
+are detected erroneously. Watch the confirmation dialogs carefully to avoid data loss. If you accidentally prepare a modification operation you can still cancel it by
+removing the corresponding <code>sessionStorage</code> entry <em>before</em> reloading the page.</p>
+
 <h2 id="configuration">Configuration</h2>
 
 <p>See markItUp!&rsquo;s own documentation.</p>
+
+<h3 id="documentation-1">Documentation</h3>
+
+<p>If you add more entries to the Documentation button&rsquo;s drop-down list you have to also add an entry to the <code>documentation</code> object&rsquo;s <code>url</code> property. The key must be
+identical with button name. The value will be the URL to link to, it should contain a {{text}} placeholder, which will be replaced with the term to document.</p>
+
+<p>This is expected to change radically in the future, though not guaranteed to be in the near future&hellip;</p>
+
+<h3 id="tipmaster-search-1">TipMaster Search</h3>
+
+<p>If you add more entries to the TipMaster Search button&rsquo;s drop-down list you have to also add an entry to the <code>websearch</code> object&rsquo;s <code>url</code> property. The key must be
+identical with button name, eventually without the &ldquo;Search&rdquo; word spaces surrounding it. The value will be the URL to link to, it should contain a {{text}}
+placeholder, which will be replaced with the term to search.</p>
 
 <h2 id="versions">Versions</h2>
 
@@ -144,7 +252,7 @@ variable, so is enough to change that one.</p>
   <li>0.3 - September 2012
     <ul>
       <li class="changed">Spoiler button&rsquo;s icon is now the &ldquo;official&rdquo; gift box icon.</li>
-      <li class="added">Emoticon button now has a dropdown list with the icons I used most frequently.</li>
+      <li class="added">Emoticon button now has a drop-down list with the icons I used most frequently.</li>
     </ul>
   </li>
   <li>0.4 - October 2012
@@ -152,12 +260,25 @@ variable, so is enough to change that one.</p>
       <li class="added">Preformatted button for the new [pre] tag.</li>
     </ul>
   </li>
+  <li>0.5 - October 2012
+    <ul>
+      <li class="changed">Ignore button&rsquo;s icon is now the &ldquo;official&rdquo; red bracket icon.</li>
+      <li class="corrected">Left, Center and Right button&rsquo;s icons now correctly represent the alignment type.</li>
+      <li class="changed">Preformatted button&rsquo;s icon redesigned.</li>
+      <li class="changed">Off Topic button renamed to Fake TGML, functionality removed.</li>
+      <li class="added">Fake TGML button now has a drop-down list with Off Topic and Flame buttons to insert the given fake markup.</li>
+      <li class="changed">Web Search button renamed to TipMaster Search, links to current TipMaster site&rsquo;s own search engine.</li>
+      <li class="added">TipMaster Search button now has a drop-down list Google Search, Yahoo! Search and Lycos Search buttons to various web searches.</li>
+      <li class="added">New composite button Documentation with drop-down buttons Perl, PHP, Tcl and Tk.</li>
+      <li class="added">New composite button Canned Response.</li>
+    </ul>
+  </li>
 </ul>
 
 <h2 id="plans">Plans</h2>
 
 <ul>
-  <li>None.</li>
+  <li>Add more documentation links.</li>
 </ul>
 
 <h2 id="download">Download</h2>
@@ -234,7 +355,7 @@ variable, so is enough to change that one.</p>
 </ul>
 
 <ul>
-<li>Page <span title="tipmaster-markitup-setting">tipmaster-markitup-setting</span> last modified 2012-10-09.</li>
+<li>Page <span title="tipmaster-markitup-setting">tipmaster-markitup-setting</span> last modified 2012-10-15.</li>
 <li>Copyright &copy; 2012, <a href="/about.html">Feherke</a></li>
 </ul>
 
