@@ -186,6 +186,14 @@ table.nowrap1 td:first-child {
   white-space: nowrap;
 }
 
+del {
+  color: firebrick;
+}
+
+del>* {
+  color: white;
+}
+
 .warn,
 .note {
   border-left-style: solid;
@@ -249,7 +257,7 @@ section {
   background-image: -webkit-linear-gradient(left,black,transparent 50px), -webkit-linear-gradient(right,black,transparent 50px), -webkit-linear-gradient(top,black,transparent 50px), -webkit-linear-gradient(bottom,black,transparent 50px), -webkit-radial-gradient(rgba(0,0,100,.15) 25%,rgba(0,0,200,.15) 30%,transparent 50%), -webkit-radial-gradient(rgba(0,0,100,.15) 25%,rgba(0,0,200,.15) 30%,transparent 50%), -webkit-radial-gradient(rgba(0,0,100,.15) 25%,rgba(0,0,200,.15) 30%,transparent 50%);
   background-image: -o-linear-gradient(left,black,transparent 50px), -o-linear-gradient(right,black,transparent 50px), -o-linear-gradient(top,black,transparent 50px), -o-linear-gradient(bottom,black,transparent 50px), -o-radial-gradient(rgba(0,0,100,.15) 25%,rgba(0,0,200,.15) 30%,transparent 50%), -o-radial-gradient(rgba(0,0,100,.15) 25%,rgba(0,0,200,.15) 30%,transparent 50%), -o-radial-gradient(rgba(0,0,100,.15) 25%,rgba(0,0,200,.15) 30%,transparent 50%);
   background-image: -ms-linear-gradient(left,black,transparent 50px), -ms-linear-gradient(right,black,transparent 50px), -ms-linear-gradient(top,black,transparent 50px), -ms-linear-gradient(bottom,black,transparent 50px), -ms-radial-gradient(rgba(0,0,100,.15) 25%,rgba(0,0,200,.15) 30%,transparent 50%), -ms-radial-gradient(rgba(0,0,100,.15) 25%,rgba(0,0,200,.15) 30%,transparent 50%), -ms-radial-gradient(rgba(0,0,100,.15) 25%,rgba(0,0,200,.15) 30%,transparent 50%);
-  background-image: linear-gradient(left,black,transparent 50px), linear-gradient(right,black,transparent 50px), linear-gradient(top,black,transparent 50px), linear-gradient(bottom,black,transparent 50px), radial-gradient(rgba(0,0,100,.15) 25%,rgba(0,0,200,.15) 30%,transparent 50%), radial-gradient(rgba(0,0,100,.15) 25%,rgba(0,0,200,.15) 30%,transparent 50%), radial-gradient(rgba(0,0,100,.15) 25%,rgba(0,0,200,.15) 30%,transparent 50%);
+  background-image: linear-gradient(to right,black,transparent 50px), linear-gradient(to left,black,transparent 50px), linear-gradient(to bottom,black,transparent 50px), linear-gradient(to top,black,transparent 50px), radial-gradient(rgba(0,0,100,.15) 25%,rgba(0,0,200,.15) 30%,transparent 50%), radial-gradient(rgba(0,0,100,.15) 25%,rgba(0,0,200,.15) 30%,transparent 50%), radial-gradient(rgba(0,0,100,.15) 25%,rgba(0,0,200,.15) 30%,transparent 50%);
   background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 350px 350px, 400px 400px, 450px 450px;
   background-position: left top, left top, left top, left top, left top, center center, right bottom;
   padding: 5px;
@@ -411,7 +419,7 @@ nav {
   background-image: -webkit-linear-gradient(left,black,#0a0a1c 20%,#131330,#0a0a1c 80%,black);
   background-image: -o-linear-gradient(left,black,#0a0a1c 20%,#131330,#0a0a1c 80%,black);
   background-image: -ms-linear-gradient(left,black,#0a0a1c 20%,#131330,#0a0a1c 80%,black);
-  background-image: linear-gradient(left,black,#0a0a1c 20%,#131330,#0a0a1c 80%,black);
+  background-image: linear-gradient(to right,black,#0a0a1c 20%,#131330,#0a0a1c 80%,black);
 }
 
 nav::before,
