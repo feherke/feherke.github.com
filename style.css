@@ -102,6 +102,12 @@ pre {
   margin: 0;
 }
 
+.precaption code {
+  color: gray;
+  font-style: normal;
+  border-style: none;
+}
+
 samp.cli {
 }
 

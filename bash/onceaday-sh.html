@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+<meta charset=UTF-8>
+<title>onceaday.sh</title>
+<meta name=description content="Run commands enumerated in a configuration file, conditionally, only once a day.">
+<meta name=author content="Feherke">
+<meta name=generator content="Jekyll 0.11.2">
+<!--[if IE]>
+<script src="/html5fordummies.js"></script>
+<![endif]-->
+<link rel=stylesheet href="/style.css">
+<link rel=icon href="/favicon.ico">
+</head>
+
+<body>
+
+<header>
+
+<div id=skip>
+<a href="#content" accesskey=c>skip to content</a>
+</div>
+
+<div class=title>
+Feherke's GitHub Site == glue between Feherke's GitHub hosted projects
+</div>
+
+</header>
+
+<div id=wrapper>
+
+<section id=content>
+
+
+
+<div id=breadcrumb>
+<p><a href="/">Feherke&rsquo;s GitHub Site</a> / <a href="/bash/">Bash</a> / </p>
+
+</div>
+
+
+
+<div id=taglist>
+Tag :
+<a href="/tag.html#notification">notification</a>
+</div>
+
+
+<div class=clear></div>
+
+<h1 id="onceadaysh---run-commands-only-once-a-day">onceaday.sh - run commands only once a day</h1>
+
+<p>The utility of this script is disputable, but I decided to publish it, just because I like it. Because I like working with text files and the crontab-like time patterns
+always fascinated me.</p>
+
+<p>Simply I wanted something to show me some reminders, notices, anything when I start to work at my computer. In my case, this mean, when I open the first interactive
+shell. So the best method is to put it in the shell&rsquo;s personal initialization file and save the last run&rsquo;s timestamp somewhere in a file. But this would be boring
+simple, so I added timestamp conditions to the configuration file.</p>
+
+<p>onceaday.sh by default does not print anything to not mess up the output of the run commands. The below output was obtained with the <code>-a</code> <code>-s</code> parameters on January
+1<sup>st</sup> :</p>
+
+<p class="precaption">sample output - <code>onceaday.sh -a -s</code></p>
+
+<pre><samp class="cli">fortune
+cat /home/master/holiday-warning.txt
+</samp></pre>
+
+<p>The initial idea was to make it functional even by sourcing it or run properly. But I realized, that sourced files loose their identity, and can not find out their name
+and path, so can get its configuration file. So I renounced to this idea. Anyway, if I will find a bulletproof solution without using hardcoded reference points,
+probably I will rewrite this script.</p>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>onceaday.ini looks like a usual crontab file, with the usual 5 time fields and 1 command. With one twist : while in traditional crontab there is an <em>or</em> operation
+between the day of month and day of week checks, in onceaday.ini there are <em>and</em> operations between all checks.</p>
+
+<p>The time can be specified as ( examples expanded as in case of month ) :</p>
+
+<ul>
+  <li>asterisk ( * -&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 )</li>
+  <li>number ( 1 -&gt; 1 )</li>
+  <li>list ( 1,3 -&gt; 1, 3 )</li>
+  <li>range ( 1-3 -&gt; 1, 2, 3 )</li>
+  <li>range with step ( */2 -&gt; 1, 3, 5, 7, 9, 11 )</li>
+  <li>combinations of the above</li>
+</ul>
+
+<p>For more see the sample onceaday.ini provided with the script.</p>
+
+<p>The command can be :</p>
+
+<ul>
+  <li>script ( file without execute permission ) - gets <code>source</code>d</li>
+  <li>text ( file without execute permission and txt extension ) - gets <code>cat</code>ed</li>
+  <li>command ( anything else ) - attempted to be executed</li>
+</ul>
+
+<p class="precaption">onceaday.ini - sample configuration</p>
+
+<div class="highlight"><pre><code class="ini"><span class="err">*</span> <span class="err">*</span> <span class="err">*</span> <span class="err">*</span> <span class="err">*</span> <span class="err">fortune</span>
+<span class="err">*</span> <span class="err">*</span> <span class="err">1,2</span> <span class="err">1</span> <span class="err">*</span> <span class="err">~/holiday-warning.txt</span>
+<span class="err">*</span> <span class="err">*</span> <span class="err">14</span> <span class="err">2</span> <span class="err">*</span> <span class="err">figlet</span> <span class="err">I</span> <span class="err">hate</span> <span class="err">this</span> <span class="err">day</span>
+</code></pre>
+</div>
+
+<h2 id="versions">Versions</h2>
+
+<ul class="changelog">
+  <li>1.0 - December 2005
+    <ul>
+      <li class="added">Initial release.</li>
+    </ul>
+  </li>
+  <li>1.1 - August 2008
+    <ul>
+      <li class="changed">Minor optimizations.</li>
+      <li class="changed">Portable sh code replaced with Bash specific alternatives.</li>
+      <li class="added">Added GNU-style long option alternatives.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="plans">Plans</h2>
+
+<ul>
+  <li>Abit more error checking and maybe a parameter to print debug information while running.</li>
+</ul>
+
+<h2 id="download">Download</h2>
+
+<p>You can find the related files on GitHub in my <a href="http://github.com/feherke/bash-script">bash-script repository</a>  :</p>
+
+<ul>
+  <li><a href="http://github.com/feherke/bash-script/blob/master/onceaday/onceaday.sh">onceaday.sh</a> - script</li>
+  <li><a href="http://github.com/feherke/bash-script/blob/master/onceaday/onceaday.ini">onceaday.ini</a> - configuration</li>
+  <li><a href="http://github.com/feherke/bash-script/blob/master/onceaday/onceaday.sh.1">onceaday.sh.1</a> - man page</li>
+</ul>
+
+
+
+</section>
+
+</div> <!-- #wrapper -->
+
+<div id=sidebar>
+
+<nav>
+
+<ul>
+  <li><a href="/bash/" title="9 scripts">Bash</a></li>
+  <li><a href="/javascript/" title="0 script">JavaScript</a>
+    <ul>
+      <li><a href="/javascript/firegestures/" title="4 scripts">FireGestures</a></li>
+      <li><a href="/javascript/greasemonkey/" title="5 scripts">Greasemonkey</a></li>
+    </ul>
+  </li>
+  <li><a href="/perl/" title="0 script">Perl</a>
+    <ul>
+      <li><a href="/perl/irssi/" title="3 scripts">Irssi</a></li>
+    </ul>
+  </li>
+  <li><a href="/ruby/" title="0 script">Ruby</a>
+    <ul>
+      <li><a href="/ruby/jekyll/" title="2 scripts">Jekyll</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+</nav>
+
+<div id=tagcloud title="Tag cloud">
+<p><a href="/tag.html#BitlBee" title="1 script" style="font-size: 8pt">BitlBee</a>
+<a href="/tag.html#cleanup" title="3 scripts" style="font-size: 13pt">cleanup</a>
+<a href="/tag.html#game" title="1 script" style="font-size: 8pt">game</a>
+<a href="/tag.html#media" title="1 script" style="font-size: 8pt">media</a>
+<a href="/tag.html#notification" title="3 scripts" style="font-size: 13pt">notification</a>
+<a href="/tag.html#search" title="2 scripts" style="font-size: 10pt">search</a>
+<a href="/tag.html#TipMaster" title="5 scripts" style="font-size: 18pt">TipMaster</a></p>
+
+</div>
+
+</div> <!-- #sidebar -->
+
+<footer>
+
+<ul>
+<li>Powered by <a href="http://ruby-lang.org/">Ruby</a> 1.9.2</li>
+<li>Generated by <a href="http://jekyllrb.com/">Jekyll</a> 0.11.2</li>
+<li>Processed by <a href="http://kramdown.rubyforge.org/">kramdown</a> 0.13.8</li>
+</ul>
+
+<ul>
+<li>Edited with <a href="http://midnight-commander.org/">MCEdit</a></li>
+<li>Hosted on <a href="http://github.com/">GitHub</a></li>
+</ul>
+
+<ul>
+<li>Valid <a href="http://w3c.org/TR/html5/">HTML 5</a></li>
+<li>Valid <a href="http://w3c.org/TR/CSS/#css3">CSS 3</a></li>
+<li>Valid <a href="http://w3c.org/WAI/">WAI AA</a></li>
+</ul>
+
+<ul>
+<li>Page <span title="onceaday-sh">onceaday-sh</span> last modified 2008-08-30.</li>
+<li>Copyright &copy; 2012, <a href="/about.html">Feherke</a></li>
+</ul>
+
+<div class=logo>F<sup>G</sup><sub>H</sub>S</div>
+
+<div class=clear></div>
+
+</footer>
+
+<!--[if lte IE 6]>
+<p>
+Please consider changing your Explorer 6 to a newer and/or better browser.
+For reasons and guidance read "<a href="http://quirksmode.org/upgrade.html">Upgrade your browser!</a>" by Peter-Paul Koch.
+</p>
+<![endif]-->
+
+</body>
+
+</html>
