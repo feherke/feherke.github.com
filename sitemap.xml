@@ -50,6 +50,12 @@
   </url>
 
   <url>
+    <loc>http://feherke.github.com/bash/psqall-sh.html</loc>
+    <lastmod>2012-11-13</lastmod>
+    <priority>0.1</priority>
+  </url>
+
+  <url>
     <loc>http://feherke.github.com/bash/</loc>
     <lastmod>2008-12-21</lastmod>
     <priority>0.2</priority>
