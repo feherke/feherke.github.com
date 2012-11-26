@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+<meta charset=UTF-8>
+<title>psqall.sh</title>
+<meta name=description content="Runs the psql tool in a loop for more databases of the same server.">
+<meta name=author content="Feherke">
+<meta name=generator content="Jekyll 0.11.2">
+<!--[if IE]>
+<script src="/html5fordummies.js"></script>
+<![endif]-->
+<link rel=stylesheet href="/style.css">
+<link rel=icon href="/favicon.ico">
+</head>
+
+<body>
+
+<header>
+
+<div id=skip>
+<a href="#content" accesskey=c>skip to content</a>
+</div>
+
+<div class=title>
+Feherke's GitHub Site == glue between Feherke's GitHub hosted projects
+</div>
+
+</header>
+
+<div id=wrapper>
+
+<section id=content>
+
+
+
+<div id=breadcrumb>
+<p><a href="/">Feherke&rsquo;s GitHub Site</a> / <a href="/bash/">Bash</a> / </p>
+
+</div>
+
+
+
+
+<div class=clear></div>
+
+<h1 id="psqallsh---execute-sql-commands-on-more-databases">psqall.sh - execute SQL commands on more databases</h1>
+
+<p>I missed a tool like this since long time. And of course I tried to write it, but that time I was beginner, so the result was useless. Then I wrote it in Perl and was
+happy with that. Although it was limited to what I implemented. Now I remembered my initial plan and wrote this script as I always wanted it : just a loop to cycle
+through the list of databases and run <code>psql</code> passing the received parameters to it.</p>
+
+<p>It requires Bash version 4.0 because uses the <code>mapfile</code> builtin. Even without that, the compatibility with older versions is compromised by the differences in handling
+some special characters in shell patterns.</p>
+
+<p>Most of the parameters and the configuration file are serving only one purpose : to set the list of databases to include or exclude from the list. The possibility to
+have the excluded databases in a file simplifies its use.</p>
+
+<h2 id="usage">Usage</h2>
+
+<p class="precaption">sample output - <code>psqall.sh -c 'select max(date) from log'</code></p>
+
+<pre><samp class="cli">PSQalL   version 1.1   november 2012   written by Feherke
+execute SQL commands on more databases
+=== alpha ===
+              max              
+-------------------------------
+ 2008-01-30 13:50:27.652215+02
+(1 row)
+
+=== beta ===
+              max              
+-------------------------------
+ 2008-10-16 12:09:43.489163+03
+(1 row)
+
+=== blah ===
+ERROR:  Relation "log" does not exist
+=== gamma ===
+              max              
+-------------------------------
+ 2007-01-31 19:53:57.279145+02
+(1 row)
+</samp></pre>
+
+<p class="precaption">sample output - <code>psqall.sh -t -A -L -c 'select max(date) from log'</code></p>
+
+<pre><samp class="cli">PSQalL   version 1.1   november 2012   written by Feherke
+execute SQL commands on more databases
+alpha === 2008-01-30 13:50:27.652215+02
+beta  === 2008-10-16 12:09:43.489163+03
+ERROR:  Relation "log" does not exist
+gamma === 2007-01-31 19:53:57.279145+02
+</samp></pre>
+
+<p>The output is not filtered or altered so both the output data and the <code>psql</code> error messages are formatted in their expected way.</p>
+
+<h2 id="versions">Versions</h2>
+
+<ul class="changelog">
+  <li>0.0 - May 2004
+    <ul>
+      <li class="added">Initial release, in Perl.</li>
+    </ul>
+  </li>
+  <li>1.0 - December 2008
+    <ul>
+      <li class="changed">Rewritten in Bash.</li>
+    </ul>
+  </li>
+  <li>1.1 - November 2012
+    <ul>
+      <li class="changed"><code>-y</code> option changed to <code>-D</code>.</li>
+      <li class="added">New configuration entry, <code>include</code>.</li>
+      <li class="added">New configuration entry, <code>lineprefix</code>.</li>
+      <li class="removed"><code>-r</code>, <code>--regular-expression</code> switch removed.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="plans">Plans</h2>
+
+<ul>
+  <li><del><span>Handling of input.</span></del></li>
+  <li>Maybe handling of joined short parameters.</li>
+</ul>
+
+<h2 id="download">Download</h2>
+
+<p>You can find the related files on GitHub in my <a href="http://github.com/feherke/Bash-script">Bash-script repository</a>  :</p>
+
+<ul>
+  <li><a href="http://github.com/feherke/Bash-script/blob/master/psqall/psqall.sh">psqall.sh</a> - script</li>
+  <li><a href="http://github.com/feherke/Bash-script/blob/master/psqall/psqall.ini">psqall.ini</a> - configuration</li>
+  <li><a href="http://github.com/feherke/Bash-script/blob/master/psqall/psqall.sh.1">psqall.sh.1</a> - man page</li>
+  <li><a href="http://github.com/feherke/Bash-script/blob/master/psqall/psqall.sh.pod">psqall.sh.pod</a> - man page source</li>
+</ul>
+
+
+
+</section>
+
+</div> <!-- #wrapper -->
+
+<div id=sidebar>
+
+<nav>
+
+<ul>
+  <li><a href="/bash/" title="10 scripts">Bash</a></li>
+  <li><a href="/javascript/" title="0 script">JavaScript</a>
+    <ul>
+      <li><a href="/javascript/firegestures/" title="4 scripts">FireGestures</a></li>
+      <li><a href="/javascript/greasemonkey/" title="5 scripts">Greasemonkey</a></li>
+    </ul>
+  </li>
+  <li><a href="/perl/" title="0 script">Perl</a>
+    <ul>
+      <li><a href="/perl/irssi/" title="3 scripts">Irssi</a></li>
+    </ul>
+  </li>
+  <li><a href="/ruby/" title="0 script">Ruby</a>
+    <ul>
+      <li><a href="/ruby/jekyll/" title="2 scripts">Jekyll</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+</nav>
+
+<div id=tagcloud title="Tag cloud">
+<p><a href="/tag.html#BitlBee" title="1 script" style="font-size: 8pt">BitlBee</a>
+<a href="/tag.html#cleanup" title="3 scripts" style="font-size: 13pt">cleanup</a>
+<a href="/tag.html#game" title="1 script" style="font-size: 8pt">game</a>
+<a href="/tag.html#media" title="1 script" style="font-size: 8pt">media</a>
+<a href="/tag.html#notification" title="3 scripts" style="font-size: 13pt">notification</a>
+<a href="/tag.html#search" title="2 scripts" style="font-size: 10pt">search</a>
+<a href="/tag.html#TipMaster" title="5 scripts" style="font-size: 18pt">TipMaster</a></p>
+
+</div>
+
+</div> <!-- #sidebar -->
+
+<footer>
+
+<ul>
+<li>Powered by <a href="http://ruby-lang.org/">Ruby</a> 1.9.2</li>
+<li>Generated by <a href="http://jekyllrb.com/">Jekyll</a> 0.11.2</li>
+<li>Processed by <a href="http://kramdown.rubyforge.org/">kramdown</a> 0.13.8</li>
+</ul>
+
+<ul>
+<li>Edited with <a href="http://midnight-commander.org/">MCEdit</a></li>
+<li>Hosted on <a href="http://github.com/">GitHub</a></li>
+</ul>
+
+<ul>
+<li>Valid <a href="http://w3c.org/TR/html5/">HTML 5</a></li>
+<li>Valid <a href="http://w3c.org/TR/CSS/#css3">CSS 3</a></li>
+<li>Valid <a href="http://w3c.org/WAI/">WAI AA</a></li>
+</ul>
+
+<ul>
+<li>Page <span title="psqall-sh">psqall-sh</span> last modified 2012-11-13.</li>
+<li>Copyright &copy; 2012, <a href="/about.html">Feherke</a></li>
+</ul>
+
+<div class=logo>F<sup>G</sup><sub>H</sub>S</div>
+
+<div class=clear></div>
+
+</footer>
+
+<!--[if lte IE 6]>
+<p>
+Please consider changing your Explorer 6 to a newer and/or better browser.
+For reasons and guidance read "<a href="http://quirksmode.org/upgrade.html">Upgrade your browser!</a>" by Peter-Paul Koch.
+</p>
+<![endif]-->
+
+</body>
+
+</html>
