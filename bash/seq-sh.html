@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+<meta charset=UTF-8>
+<title>seq.sh</title>
+<meta name=description content="Use the seq command to replace numeric part of a string with numeric sequences and multiplying the string.">
+<meta name=author content="Feherke">
+<meta name=generator content="Jekyll 0.11.2">
+<!--[if IE]>
+<script src="/html5fordummies.js"></script>
+<![endif]-->
+<link rel=stylesheet href="/style.css">
+<link rel=icon href="/favicon.ico">
+</head>
+
+<body>
+
+<header>
+
+<div id=skip>
+<a href="#content" accesskey=c>skip to content</a>
+</div>
+
+<div class=title>
+Feherke's GitHub Site == glue between Feherke's GitHub hosted projects
+</div>
+
+</header>
+
+<div id=wrapper>
+
+<section id=content>
+
+
+
+<div id=breadcrumb>
+<p><a href="/">Feherke&rsquo;s GitHub Site</a> / <a href="/bash/">Bash</a> / </p>
+
+</div>
+
+
+
+
+<div class=clear></div>
+
+<h1 id="seqsh---embeded-seq">seq.sh - embeded seq</h1>
+
+<p>Kind of embedded <code>seq</code>. Sometimes happens that you need a bunch of text lines with some periodically changing numeric values in them. Usually for download with <code>wget</code>.
+But sadly, with all it&rsquo;s almost omnipotent parameters, using <code>wget</code> can be difficult if there is no index page with followable links or the thumbnails are messed between
+the full size pictures. So you will have to do more single-file downloads instead of one recursive. And you will use the <code>-i</code> switch and an input file. But how you can
+create that file easier ? Naturally, with a <code>for</code> and a <code>seq</code> :</p>
+
+<p class="precaption">bash code - old, deprecated example</p>
+
+<div class="highlight"><pre><code class="bash"><span class="k">for </span>i in <span class="sb">`</span>seq 10<span class="sb">`</span>; <span class="k">do </span>wget http://example.com/public/file_<span class="nv">$i</span>.txt; <span class="k">done</span>
+</code></pre>
+</div>
+
+<div class="note">
+  <p>Note<br />
+In meantime Bash&rsquo;s brace expansion was significantly improved :</p>
+
+  <ul>
+    <li>Bash 2.05 introduced brace expansion for series of values <code>{a,b,c,d,e,f}</code></li>
+    <li>Bash 3.0 introduced sequence expansion for numbers <code>{1..10}</code> and letters <code>{a..z}</code></li>
+    <li>Bash 4.0 introduced sequence increment <code>{1..10..2}</code> and zero padding <code>{01..10}</code></li>
+  </ul>
+
+</div>
+
+<p class="precaption">bash code - new, modern example</p>
+
+<div class="highlight"><pre><code class="bash">wget http://www.example.com/public/file_<span class="o">{</span>1..10<span class="o">}</span>.txt
+</code></pre>
+</div>
+
+<h2 id="usage">Usage</h2>
+
+<p>seq.sh makes this easier. You just mark the expandable values and seq.sh will generate the list of strings. The marks are of form :</p>
+
+<ul>
+  <li><code>{[-w] [from [by]] to}</code> - the usual parameters for seq command</li>
+  <li><code>{#level}</code> - replace with the value of the given counter</li>
+</ul>
+
+<p>For more details see the man page.</p>
+
+<p>So this file :</p>
+
+<p class="precaption">sample input</p>
+
+<pre><samp class="cli">http://www.example.net/archive/{2003 2004}-{-w 3 3 12}.zip
+http://www.example.com/gallery{2}/pamela_a_{#1}/{3}_{#2}.jpg
+</samp></pre>
+
+<p>will be transformed into this :</p>
+
+<p class="precaption">sample output - <code>seq.sh &lt; input.txt</code></p>
+
+<pre><samp class="cli">http://www.example.net/archive/2003-03.zip
+http://www.example.net/archive/2003-06.zip
+http://www.example.net/archive/2003-09.zip
+http://www.example.net/archive/2003-12.zip
+http://www.example.net/archive/2004-03.zip
+http://www.example.net/archive/2004-06.zip
+http://www.example.net/archive/2004-09.zip
+http://www.example.net/archive/2004-12.zip
+http://www.example.com/gallery1/pamela_a_1/1_1.jpg
+http://www.example.com/gallery1/pamela_a_1/2_2.jpg
+http://www.example.com/gallery1/pamela_a_1/3_3.jpg
+http://www.example.com/gallery2/pamela_a_2/1_1.jpg
+http://www.example.com/gallery2/pamela_a_2/2_2.jpg
+http://www.example.com/gallery2/pamela_a_2/3_3.jpg
+</samp></pre>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>None.</p>
+
+<p>Not even command line parameters exist.</p>
+
+<h2 id="versions">Versions</h2>
+
+<ul class="changelog">
+  <li>1.0
+    <ul>
+      <li class="added">Initial release.</li>
+    </ul>
+  </li>
+  <li>1.1 - December 2004
+    <ul>
+      <li class="added">Placeholders prefixed with hash ( # ) are replaced with the sequential value of the placeholder with the given order number.</li>
+    </ul>
+  </li>
+  <li>1.2 - April 2008
+    <ul>
+      <li class="changed">Minor optimizations.</li>
+      <li class="changed">Portable sh code replaced with Bash specific alternatives.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="plans">Plans</h2>
+
+<ul>
+  <li>Should be nice to make it to use character sequences and roman numbers. ( Ok, the second is just a joke. )</li>
+  <li>As far as is used for URLs, the  <code>{</code> .. <code>}</code> markup is ok, but it should be setable through parameters.</li>
+</ul>
+
+<h2 id="download">Download</h2>
+
+<p>You can find the related files on GitHub in my <a href="http://github.com/feherke/Bash-script">Bash-script repository</a>  :</p>
+
+<ul>
+  <li><a href="http://github.com/feherke/Bash-script/blob/master/seq/seq.sh">seq.sh</a> - script</li>
+  <li><a href="http://github.com/feherke/Bash-script/blob/master/seq/seq.sh.1">seq.sh.1</a> - man page</li>
+  <li><a href="http://github.com/feherke/Bash-script/blob/master/seq/seq.sh.pod">seq.sh.pod</a> - man page source</li>
+</ul>
+
+
+
+</section>
+
+</div> <!-- #wrapper -->
+
+<div id=sidebar>
+
+<nav>
+
+<ul>
+  <li><a href="/bash/" title="11 scripts">Bash</a></li>
+  <li><a href="/javascript/" title="0 script">JavaScript</a>
+    <ul>
+      <li><a href="/javascript/firegestures/" title="4 scripts">FireGestures</a></li>
+      <li><a href="/javascript/greasemonkey/" title="5 scripts">Greasemonkey</a></li>
+    </ul>
+  </li>
+  <li><a href="/perl/" title="0 script">Perl</a>
+    <ul>
+      <li><a href="/perl/irssi/" title="3 scripts">Irssi</a></li>
+    </ul>
+  </li>
+  <li><a href="/ruby/" title="0 script">Ruby</a>
+    <ul>
+      <li><a href="/ruby/jekyll/" title="2 scripts">Jekyll</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+</nav>
+
+<div id=tagcloud title="Tag cloud">
+<p><a href="/tag.html#BitlBee" title="1 script" style="font-size: 8pt">BitlBee</a>
+<a href="/tag.html#cleanup" title="3 scripts" style="font-size: 13pt">cleanup</a>
+<a href="/tag.html#font" title="1 script" style="font-size: 8pt">font</a>
+<a href="/tag.html#game" title="1 script" style="font-size: 8pt">game</a>
+<a href="/tag.html#media" title="1 script" style="font-size: 8pt">media</a>
+<a href="/tag.html#notification" title="3 scripts" style="font-size: 13pt">notification</a>
+<a href="/tag.html#search" title="2 scripts" style="font-size: 10pt">search</a>
+<a href="/tag.html#TipMaster" title="5 scripts" style="font-size: 18pt">TipMaster</a></p>
+
+</div>
+
+</div> <!-- #sidebar -->
+
+<footer>
+
+<ul>
+<li>Powered by <a href="http://ruby-lang.org/">Ruby</a> 1.9.2</li>
+<li>Generated by <a href="http://jekyllrb.com/">Jekyll</a> 0.11.2</li>
+<li>Processed by <a href="http://kramdown.rubyforge.org/">kramdown</a> 0.13.8</li>
+</ul>
+
+<ul>
+<li>Edited with <a href="http://midnight-commander.org/">MCEdit</a></li>
+<li>Hosted on <a href="http://github.com/">GitHub</a></li>
+</ul>
+
+<ul>
+<li>Valid <a href="http://w3c.org/TR/html5/">HTML 5</a></li>
+<li>Valid <a href="http://w3c.org/TR/CSS/#css3">CSS 3</a></li>
+<li>Valid <a href="http://w3c.org/WAI/">WAI AA</a></li>
+</ul>
+
+<ul>
+<li>Page <span title="seq-sh">seq-sh</span> last modified 2004-12-25.</li>
+<li>Copyright &copy; 2013, <a href="/about.html">Feherke</a></li>
+</ul>
+
+<div class=logo>F<sup>G</sup><sub>H</sub>S</div>
+
+<div class=clear></div>
+
+</footer>
+
+<!--[if lte IE 6]>
+<p>
+Please consider changing your Explorer 6 to a newer and/or better browser.
+For reasons and guidance read "<a href="http://quirksmode.org/upgrade.html">Upgrade your browser!</a>" by Peter-Paul Koch.
+</p>
+<![endif]-->
+
+</body>
+
+</html>

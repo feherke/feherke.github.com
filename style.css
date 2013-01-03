@@ -480,6 +480,7 @@ nav ul li li {
 .n { color: yellow; } /* normal ??? */
 .k { color: white; font-weight: bold; } /* keyword */
 .nb { color: white; } /* ??? */
+.s { color: lime; font-style: italic; } /* here document */
 .s1 { color: lime; font-style: italic; } /* single quoted string */
 .s2 { color: lime; font-style: italic; } /* double quoted string */
 .se { color: green; font-style: italic; } /* escaped character */
@@ -488,6 +489,8 @@ nav ul li li {
 .p { color: dodgerblue; } /* parenthesis ??? */
 .c { color: gray; } /* comment */
 .c1 { color: gray; } /* comment */
+.sb { color: aqua; } /* backtick */
+.nv { color: teal; } /* variable */
 
 .pr { color: blue; } /* prompt */
 

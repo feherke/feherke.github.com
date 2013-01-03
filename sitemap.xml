@@ -8,6 +8,12 @@
   </url>
 
   <url>
+    <loc>http://feherke.github.com/bash/seq-sh.html</loc>
+    <lastmod>2004-12-25</lastmod>
+    <priority>0.1</priority>
+  </url>
+
+  <url>
     <loc>http://feherke.github.com/bash/minesweeper-sh.html</loc>
     <lastmod>2005-12-27</lastmod>
     <priority>0.1</priority>
@@ -220,6 +226,12 @@
     <loc>http://feherke.github.com/</loc>
     <lastmod>2012-02-07</lastmod>
     <priority>0.2</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.com/fonttest.html</loc>
+    <lastmod>2012-11-24</lastmod>
+    <priority>0.1</priority>
   </url>
 
 </urlset>
