@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+<meta charset=UTF-8>
+<title>taborder.sh</title>
+<meta name=description content="Reorders the controls in the XFM file based on the declarations in the Pas file.">
+<meta name=author content="Feherke">
+<meta name=generator content="Jekyll 0.11.2">
+<!--[if IE]>
+<script src="/html5fordummies.js"></script>
+<![endif]-->
+<link rel=stylesheet href="/style.css">
+<link rel=icon href="/favicon.ico">
+</head>
+
+<body>
+
+<header>
+
+<div id=skip>
+<a href="#content" accesskey=c>skip to content</a>
+</div>
+
+<div class=title>
+Feherke's GitHub Site == glue between Feherke's GitHub hosted projects
+</div>
+
+</header>
+
+<div id=wrapper>
+
+<section id=content>
+
+
+
+<div id=breadcrumb>
+<p><a href="/">Feherke&rsquo;s GitHub Site</a> / <a href="/bash/">Bash</a> / </p>
+
+</div>
+
+
+
+
+<div class=clear></div>
+
+<h1 id="tabordersh---changes-the-taborder-in-form">taborder.sh - changes the <code>TabOrder</code> in form</h1>
+
+<p>When a form has more than 100 controls, setting the tabbing order through the Delphi/Kylix IDE form designer&rsquo;s Edit Tab Order dialog becomes abit tedious.</p>
+
+<p>This script helps abit to automate the manual taborder changing. First the component declarations have to be put in the desired order in the source file ( .pas ),
+then this script rearranges the form file ( .xfm ) moving the sections of each component in the same order as they are in the source file and edits the <code>TabOrder</code>
+property values according to the new order. Unless altered later by some editing, the received order is trustfully constant.</p>
+
+<p>taborder.sh is not configurable, its only parameter is the file name. Additionally it checks some environment variables to see where to put temporary data.</p>
+
+<p class="precaption">sample output - <code>taborder.sh ~/project/src/uhugeform</code></p>
+
+<pre><samp class="cli">TabOrder   version 2.0   august 2010   written by Feherke
+reorders the controls in the XFM file based on the declarations in the Pas file
+identifying the form... ok, uhugeform
+checking the files... ok
+checking the structure... ok
+identifying the class... ok, Tfrmhugeform
+checking consistency... ok
+creating temporary directory... ok, /tmp/taborder-5Kxx9Y
+creating control list... ok, 323
+splitting up... ok
+rebuilding &amp; renumbering... ok
+renaming the original... ok, 0
+recreating the file... ok, uhugeform.xfm
+deleting temporary files... ok
+</samp></pre>
+
+<p>Of course, this script can be easily fooled if the .pas file is messed up. But I do not intend to write a full featured Pascal parser.</p>
+
+<h2 id="configuration">Configuration</h2>
+
+<h2 id="versions">Versions</h2>
+
+<ul class="changelog">
+  <li>1.0
+    <ul>
+      <li class="added">Initial release.</li>
+    </ul>
+  </li>
+  <li>2.0 - August 2010
+    <ul>
+      <li class="added">Complete rewrite, for Bash 4.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="plans">Plans</h2>
+
+<ul>
+  <li>Read pieces up to a semicolor ( ; ), not to line end.</li>
+  <li>Handle comments.</li>
+</ul>
+
+<h2 id="download">Download</h2>
+
+<p>You can find the related files on GitHub in my <a href="http://github.com/feherke/bash-script">bash-script repository</a>  :</p>
+
+<ul>
+  <li><a href="http://github.com/feherke/bash-script/blob/master/taborder/taborder.sh">taborder.sh</a> - script</li>
+  <li><a href="http://github.com/feherke/bash-script/blob/master/taborder/taborder.sh.1">taborder.sh.1</a> - man page</li>
+  <li><a href="http://github.com/feherke/bash-script/blob/master/taborder/taborder.sh.pod">taborder.sh.pod</a> - man page source</li>
+</ul>
+
+
+
+</section>
+
+</div> <!-- #wrapper -->
+
+<div id=sidebar>
+
+<nav>
+
+<ul>
+  <li><a href="/bash/" title="13 scripts">Bash</a></li>
+  <li><a href="/javascript/" title="0 script">JavaScript</a>
+    <ul>
+      <li><a href="/javascript/firegestures/" title="4 scripts">FireGestures</a></li>
+      <li><a href="/javascript/greasemonkey/" title="5 scripts">Greasemonkey</a></li>
+    </ul>
+  </li>
+  <li><a href="/perl/" title="0 script">Perl</a>
+    <ul>
+      <li><a href="/perl/irssi/" title="3 scripts">Irssi</a></li>
+    </ul>
+  </li>
+  <li><a href="/ruby/" title="0 script">Ruby</a>
+    <ul>
+      <li><a href="/ruby/jekyll/" title="2 scripts">Jekyll</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+</nav>
+
+<div id=tagcloud title="Tag cloud">
+<p><a href="/tag.html#BitlBee" title="1 script" style="font-size: 8pt">BitlBee</a>
+<a href="/tag.html#cleanup" title="3 scripts" style="font-size: 13pt">cleanup</a>
+<a href="/tag.html#font" title="1 script" style="font-size: 8pt">font</a>
+<a href="/tag.html#game" title="1 script" style="font-size: 8pt">game</a>
+<a href="/tag.html#media" title="1 script" style="font-size: 8pt">media</a>
+<a href="/tag.html#notification" title="3 scripts" style="font-size: 13pt">notification</a>
+<a href="/tag.html#recovery" title="1 script" style="font-size: 8pt">recovery</a>
+<a href="/tag.html#search" title="2 scripts" style="font-size: 10pt">search</a>
+<a href="/tag.html#TipMaster" title="5 scripts" style="font-size: 18pt">TipMaster</a></p>
+
+</div>
+
+</div> <!-- #sidebar -->
+
+<footer>
+
+<ul>
+<li>Powered by <a href="http://ruby-lang.org/">Ruby</a> 1.9.2</li>
+<li>Generated by <a href="http://jekyllrb.com/">Jekyll</a> 0.11.2</li>
+<li>Processed by <a href="http://kramdown.rubyforge.org/">kramdown</a> 0.13.8</li>
+</ul>
+
+<ul>
+<li>Edited with <a href="http://midnight-commander.org/">MCEdit</a></li>
+<li>Hosted on <a href="http://github.com/">GitHub</a></li>
+</ul>
+
+<ul>
+<li>Valid <a href="http://w3c.org/TR/html5/">HTML 5</a></li>
+<li>Valid <a href="http://w3c.org/TR/CSS/#css3">CSS 3</a></li>
+<li>Valid <a href="http://w3c.org/WAI/">WAI AA</a></li>
+</ul>
+
+<ul>
+<li>Page <span title="taborder-sh">taborder-sh</span> last modified 2010-09-20.</li>
+<li>Copyright &copy; 2013, <a href="/about.html">Feherke</a></li>
+</ul>
+
+<div class=logo>F<sup>G</sup><sub>H</sub>S</div>
+
+<div class=clear></div>
+
+</footer>
+
+<!--[if lte IE 6]>
+<p>
+Please consider changing your Explorer 6 to a newer and/or better browser.
+For reasons and guidance read "<a href="http://quirksmode.org/upgrade.html">Upgrade your browser!</a>" by Peter-Paul Koch.
+</p>
+<![endif]-->
+
+</body>
+
+</html>
