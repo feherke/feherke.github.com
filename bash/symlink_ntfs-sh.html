@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+<meta charset=UTF-8>
+<title>symlink_ntfs.sh</title>
+<meta name=description content="Restores symlinks after copying them to NTFS and back.">
+<meta name=author content="Feherke">
+<meta name=generator content="Jekyll 0.11.2">
+<!--[if IE]>
+<script src="/html5fordummies.js"></script>
+<![endif]-->
+<link rel=stylesheet href="/style.css">
+<link rel=icon href="/favicon.ico">
+</head>
+
+<body>
+
+<header>
+
+<div id=skip>
+<a href="#content" accesskey=c>skip to content</a>
+</div>
+
+<div class=title>
+Feherke's GitHub Site == glue between Feherke's GitHub hosted projects
+</div>
+
+</header>
+
+<div id=wrapper>
+
+<section id=content>
+
+
+
+<div id=breadcrumb>
+<p><a href="/">Feherke&rsquo;s GitHub Site</a> / <a href="/bash/">Bash</a> / </p>
+
+</div>
+
+
+
+<div id=taglist>
+Tag :
+<a href="/tag.html#recovery">recovery</a>
+</div>
+
+
+<div class=clear></div>
+
+<h1 id="symlinkntfssh---restores-symlinks-copied-from-ntfs">symlink_ntfs.sh - restores symlinks copied from NTFS</h1>
+
+<p>When a symlink is copied to an NTFS partition then back to ReiserFS, it is transformed into regular file. ( Note that I not researched on this subject, there could be
+ways to avoid this. Certainly one workaround exists : tar them before copying. But I copied from defectuous harddisk and I did not wanted to risk to corrupt possibly
+good files by archiving them together with bad ones. )</p>
+
+<p>For example in case of the UltraBlack IceWM theme originally was this :</p>
+
+<p class="precaption">sample output - <code>ls -l .icewm/themes/UltraBlack/maximizeA.xpm</code></p>
+
+<pre><samp class="cli">lrwxrwxrwx 1 master master 10 May  1 18:37 .icewm/themes/UltraBlack/maximizeA.xpm -&gt; closeA.xpm
+</samp></pre>
+
+<p>But during the copying it was transformed into this :</p>
+
+<p class="precaption">sample output - <code>od -t ax1 .icewm/themes/UltraBlack/maximizeA.xpm</code></p>
+
+<pre><samp class="cli">0000000   I   n   t   x   L   N   K soh   c nul   l nul   o nul   s nul
+         49  6e  74  78  4c  4e  4b  01  63  00  6c  00  6f  00  73  00
+0000020   e nul   A nul   . nul   x nul   p nul   m nul
+         65  00  41  00  2e  00  78  00  70  00  6d  00
+</samp></pre>
+
+<p>symlink_ntfs.sh restores the symlink in the shortest and simplest way :</p>
+
+<p class="precaption">sample output - <code>symlink_ntfs.sh</code></p>
+
+<pre><samp class="cli">Symlink back from NTFS   version 0.0   may 2011   written by Feherke
+corrects symlinks copied back from NTFS
+.icewm/themes/UltraBlack/maximizeA.xpm -&gt; closeA.xpm... ok
+</samp></pre>
+
+<p>As this script hopefully will be never used again, there are very few error checks. To avoid data lost, it can be asked to rename the files instead of removing them.</p>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>None.</p>
+
+<h2 id="versions">Versions</h2>
+
+<ul class="changelog">
+  <li>1.0 - May 2011
+    <ul>
+      <li class="added">Initial release.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="plans">Plans</h2>
+
+<p>None.</p>
+
+<h2 id="download">Download</h2>
+
+<p>You can find the related files on GitHub in my <a href="http://github.com/feherke/bash-script">bash-script repository</a>  :</p>
+
+<ul>
+  <li><a href="http://github.com/feherke/bash-script/blob/master/symlink_ntfs/symlink_ntfs.sh">symlink_ntfs.sh</a> - script</li>
+  <li><a href="http://github.com/feherke/bash-script/blob/master/symlink_ntfs/symlink_ntfs.sh.1">symlink_ntfs.sh.1</a> - man page</li>
+  <li><a href="http://github.com/feherke/bash-script/blob/master/symlink_ntfs/symlink_ntfs.sh.pod">symlink_ntfs.sh.pod</a> - man page source</li>
+</ul>
+
+
+
+</section>
+
+</div> <!-- #wrapper -->
+
+<div id=sidebar>
+
+<nav>
+
+<ul>
+  <li><a href="/bash/" title="13 scripts">Bash</a></li>
+  <li><a href="/javascript/" title="0 script">JavaScript</a>
+    <ul>
+      <li><a href="/javascript/firegestures/" title="4 scripts">FireGestures</a></li>
+      <li><a href="/javascript/greasemonkey/" title="5 scripts">Greasemonkey</a></li>
+    </ul>
+  </li>
+  <li><a href="/perl/" title="0 script">Perl</a>
+    <ul>
+      <li><a href="/perl/irssi/" title="3 scripts">Irssi</a></li>
+    </ul>
+  </li>
+  <li><a href="/ruby/" title="0 script">Ruby</a>
+    <ul>
+      <li><a href="/ruby/jekyll/" title="2 scripts">Jekyll</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+</nav>
+
+<div id=tagcloud title="Tag cloud">
+<p><a href="/tag.html#BitlBee" title="1 script" style="font-size: 8pt">BitlBee</a>
+<a href="/tag.html#cleanup" title="3 scripts" style="font-size: 13pt">cleanup</a>
+<a href="/tag.html#font" title="1 script" style="font-size: 8pt">font</a>
+<a href="/tag.html#game" title="1 script" style="font-size: 8pt">game</a>
+<a href="/tag.html#media" title="1 script" style="font-size: 8pt">media</a>
+<a href="/tag.html#notification" title="3 scripts" style="font-size: 13pt">notification</a>
+<a href="/tag.html#recovery" title="1 script" style="font-size: 8pt">recovery</a>
+<a href="/tag.html#search" title="2 scripts" style="font-size: 10pt">search</a>
+<a href="/tag.html#TipMaster" title="5 scripts" style="font-size: 18pt">TipMaster</a></p>
+
+</div>
+
+</div> <!-- #sidebar -->
+
+<footer>
+
+<ul>
+<li>Powered by <a href="http://ruby-lang.org/">Ruby</a> 1.9.2</li>
+<li>Generated by <a href="http://jekyllrb.com/">Jekyll</a> 0.11.2</li>
+<li>Processed by <a href="http://kramdown.rubyforge.org/">kramdown</a> 0.13.8</li>
+</ul>
+
+<ul>
+<li>Edited with <a href="http://midnight-commander.org/">MCEdit</a></li>
+<li>Hosted on <a href="http://github.com/">GitHub</a></li>
+</ul>
+
+<ul>
+<li>Valid <a href="http://w3c.org/TR/html5/">HTML 5</a></li>
+<li>Valid <a href="http://w3c.org/TR/CSS/#css3">CSS 3</a></li>
+<li>Valid <a href="http://w3c.org/WAI/">WAI AA</a></li>
+</ul>
+
+<ul>
+<li>Page <span title="symlink_ntfs-sh">symlink_ntfs-sh</span> last modified 2011-05-01.</li>
+<li>Copyright &copy; 2013, <a href="/about.html">Feherke</a></li>
+</ul>
+
+<div class=logo>F<sup>G</sup><sub>H</sub>S</div>
+
+<div class=clear></div>
+
+</footer>
+
+<!--[if lte IE 6]>
+<p>
+Please consider changing your Explorer 6 to a newer and/or better browser.
+For reasons and guidance read "<a href="http://quirksmode.org/upgrade.html">Upgrade your browser!</a>" by Peter-Paul Koch.
+</p>
+<![endif]-->
+
+</body>
+
+</html>
