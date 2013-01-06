@@ -50,6 +50,12 @@
   </url>
 
   <url>
+    <loc>http://feherke.github.com/bash/termclock-sh.html</loc>
+    <lastmod>2008-09-10</lastmod>
+    <priority>0.1</priority>
+  </url>
+
+  <url>
     <loc>http://feherke.github.com/bash/taborder-sh.html</loc>
     <lastmod>2010-09-20</lastmod>
     <priority>0.1</priority>

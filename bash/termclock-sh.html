@@ -3,9 +3,8 @@
 
 <head>
 <meta charset=UTF-8>
-<title>[Popup] Change Protocol</title>
-<meta name=description content="Changes the protocol of the currently viewed URL">
-<meta name=keyword content="switch, protocol, http, httpd">
+<title>termclock.sh</title>
+<meta name=description content="Analog clock displayed using only bash arithmetics and tput.">
 <meta name=author content="Feherke">
 <meta name=generator content="Jekyll 0.11.2">
 <!--[if IE]>
@@ -36,7 +35,7 @@ Feherke's GitHub Site == glue between Feherke's GitHub hosted projects
 
 
 <div id=breadcrumb>
-<p><a href="/">Feherke&rsquo;s GitHub Site</a> / <a href="/javascript/">JavaScript</a> / <a href="/javascript/firegestures/">FireGestures</a> / </p>
+<p><a href="/">Feherke&rsquo;s GitHub Site</a> / <a href="/bash/">Bash</a> / </p>
 
 </div>
 
@@ -45,56 +44,92 @@ Feherke's GitHub Site == glue between Feherke's GitHub hosted projects
 
 <div class=clear></div>
 
-<h1 id="change-protocol">Change Protocol</h1>
+<h1 id="termclocksh---draws-an-analog-clock-from-letters">termclock.sh - draws an analog clock from letters</h1>
 
-<p>Once called <strong>Change http: / https:</strong> changed the protocol from/to <code>http:</code> and <code>https:</code>.</p>
+<p>When I started to learn Linux I met two commands : <code>xclock</code> and <code>bc</code>. And I got the idea to imitate the first using the second.</p>
 
-<p>The old behavior was kept, but if you perform <kbd>Shift</kbd>-gesture, a popup list with the following protocols is displayed : <code>http:</code>, <code>https:</code>, <code>spdy:</code> and <code>ftp:</code>.</p>
+<p>You will see nothing from the original <code>bc</code> based implementations. I am not really proud of those.
+The current version uses an &ldquo;angle&rdquo; table from which derives the needed sine &amp; cosine values then precalculates the positions. This makes it faster and uses less
+resources. And of course, reduces the dependencies to <code>tput</code> only.</p>
 
-<p>Not so important script, I posted it because a catch : <code>window</code> refers to the chrome. To get the same <code>window</code> object as JavaScript gets in the document&rsquo;s context, you
-have to use <code>window.content</code>.</p>
+<p>termclock.sh just indicates the time and indicates the time and&hellip;
+You have to press <kbd>Ctrl-C</kbd> to stop it.</p>
 
-<h2 id="usage">Usage</h2>
+<p class="precaption">sample output - <code>termclock.sh</code></p>
 
-<p>Perform a gesture to instantly change the current URL&rsquo;s protocol between <code>http:</code> and <code>https:</code>.</p>
+<pre><samp class="cli">&nbsp;                                      12
 
-<p>Perform <kbd>Shift</kbd>-gesture to get a list of protocols and select the one to which you want to change the current URL&rsquo;s protocol.</p>
+                    11                                    1
+
+
+
+      10                                                                2
+
+
+
+
+9                                 m  m o h                                    3
+                             m m      s    h
+                    m  m  m          s       h h
+                                    s            h
+                                   s
+      8                           s                                     4
+                                 s
+                                s
+                               s
+                    7                                     5
+
+                                       6
+</samp></pre>
+
+<p>If you resize the terminal window in which runs, the clock gets resized.</p>
 
 <h2 id="configuration">Configuration</h2>
 
-<p>Configuration not really supported.</p>
+<p>None.</p>
 
-<p>But new protocols for the <kbd>Shift</kbd>-gesture&rsquo;s popup list can be easily added.</p>
-
-<p>Just copy &amp; paste a line of the <code>FireGestures.generatePopup()</code>&rsquo;s parameter array and edit it.</p>
+<p>Not even command line parameters exist.</p>
 
 <h2 id="versions">Versions</h2>
 
 <ul class="changelog">
-  <li>0.0 - May 2011
+  <li>1.0 - January 2004
     <ul>
-      <li class="added">Initial release, as <a href="change-http-https.html">Change http: / https:</a>.</li>
+      <li class="added">Initial release, just a proof of concept.</li>
     </ul>
   </li>
-  <li>0.1 - February 2012
+  <li>1.1
     <ul>
-      <li class="changed">Renamed to [Popup] Change Protocol.</li>
-      <li class="added">Added popup list.</li>
+      <li class="changed">Transformed into usable script.</li>
+    </ul>
+  </li>
+  <li>1.2 - August 2008
+    <ul>
+      <li class="changed">Optimized for speed by reducing the calls for <code>bc</code>.</li>
+    </ul>
+  </li>
+  <li>1.3 - September 2008
+    <ul>
+      <li class="changed">Rewritten to use precalculated sin/cos table.</li>
     </ul>
   </li>
 </ul>
 
 <h2 id="plans">Plans</h2>
 
-<p>None. Maybe should cut off the path when changing to <code>ftp:</code> protocol. Maybe the same should be done for <code>spdy:</code> too. Undecided.</p>
+<ul>
+  <li>Make the hands to look less dashed.</li>
+  <li>I could borrow some options from <code>xclock</code> to set the look and feel.</li>
+</ul>
 
 <h2 id="download">Download</h2>
 
-<p>You can find the related files on GitHub in my <a href="http://github.com/feherke/FireGestures-script">FireGestures-script repository</a>  :</p>
+<p>You can find the related files on GitHub in my <a href="http://github.com/feherke/bash-script">bash-script repository</a>  :</p>
 
 <ul>
-  <li><a href="http://github.com/feherke/FireGestures-script/blob/master/popup-change-protocol/popup-change-protocol.js">popup-change-protocol.js</a> - script</li>
-  <li><a href="http://github.com/feherke/FireGestures-script/blob/master/popup-change-protocol/change-http-https.js">change-http-https.js</a> - old script</li>
+  <li><a href="http://github.com/feherke/bash-script/blob/master/termclock/termclock.sh">termclock.sh</a> - script</li>
+  <li><a href="http://github.com/feherke/bash-script/blob/master/termclock/termclock.sh.1">termclock.sh.1</a> - man page</li>
+  <li><a href="http://github.com/feherke/bash-script/blob/master/termclock/termclock.sh.pod">termclock.sh.pod</a> - man page source</li>
 </ul>
 
 
@@ -164,7 +199,7 @@ have to use <code>window.content</code>.</p>
 </ul>
 
 <ul>
-<li>Page <span title="popup-change-protocol">popup-change-protocol</span> last modified 2012-02-07.</li>
+<li>Page <span title="termclock-sh">termclock-sh</span> last modified 2008-09-10.</li>
 <li>Copyright &copy; 2013, <a href="/about.html">Feherke</a></li>
 </ul>
 
