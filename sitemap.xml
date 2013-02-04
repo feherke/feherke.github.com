@@ -3,7 +3,7 @@
 
   <url>
     <loc>http://feherke.github.com/bash/buzz-sh.html</loc>
-    <lastmod>2008-09-02</lastmod>
+    <lastmod>2013-02-02</lastmod>
     <priority>0.1</priority>
   </url>
 
@@ -247,9 +247,21 @@
   </url>
 
   <url>
-    <loc>http://feherke.github.com/fonttest.html</loc>
-    <lastmod>2012-11-24</lastmod>
+    <loc>http://feherke.github.com/artwork/font/</loc>
+    <lastmod>2013-02-04</lastmod>
+    <priority>0.2</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.com/artwork/font/font-awesome-adjusted.html</loc>
+    <lastmod>2013-02-04</lastmod>
     <priority>0.1</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.com/artwork/</loc>
+    <lastmod>2013-02-04</lastmod>
+    <priority>0.2</priority>
   </url>
 
 </urlset>

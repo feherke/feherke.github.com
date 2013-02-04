@@ -1,0 +1,18 @@
+
+Team
+----
+  Script developer   : Feherke
+  Content author     : Feherke
+  Site webmaster     : Feherke
+  Graphic designer   : uhm, no, that is too embarassing
+
+Site
+----
+  Document standard  : HTML5, CSS3, WAI AA
+  Generator software : Ruby, Jekyll, Liquid, kramdown
+  Editor software    : MCEdit, FontForge
+
+Thanks
+------
+  Project hosting    : GitHub ( http://github.com/ )
+  Icon font          : Font Awesome ( http://fortawesome.github.com/Font-Awesome/ )

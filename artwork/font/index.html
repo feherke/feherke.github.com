@@ -3,9 +3,9 @@
 
 <head>
 <meta charset=UTF-8>
-<title>[Popup] Change Protocol</title>
-<meta name=description content="Changes the protocol of the currently viewed URL">
-<meta name=keyword content="switch, protocol, http, httpd">
+<title>Font</title>
+<meta name=description content="Various artistic manifestations.">
+<meta name=keyword content="font">
 <meta name=author content="Feherke">
 <meta name=generator content="Jekyll 0.11.2">
 <!--[if IE]>
@@ -36,7 +36,7 @@ Feherke's GitHub Site == glue between Feherke's GitHub hosted projects
 
 
 <div id=breadcrumb>
-<p><a href="/">Feherke&rsquo;s GitHub Site</a> / <a href="/javascript/">JavaScript</a> / <a href="/javascript/firegestures/">FireGestures</a> / </p>
+<p><a href="/">Feherke&rsquo;s GitHub Site</a> / <a href="/artwork/">Artwork</a> / <a href="/artwork/font/">Font</a> / </p>
 
 </div>
 
@@ -45,57 +45,18 @@ Feherke's GitHub Site == glue between Feherke's GitHub hosted projects
 
 <div class=clear></div>
 
-<h1 id="change-protocol">Change Protocol</h1>
+<h1 id="font">Font</h1>
 
-<p>Once called <strong>Change http: / https:</strong> changed the protocol from/to <code>http:</code> and <code>https:</code>.</p>
+<p>Font I draw with <a href="http://fontforge.org/">FontForge</a> and many sweat.</p>
 
-<p>The old behavior was kept, but if you perform <kbd>Shift</kbd>-gesture, a popup list with the following protocols is displayed : <code>http:</code>, <code>https:</code>, <code>spdy:</code> and <code>ftp:</code>.</p>
+<p>Initially I intended to start up with <a href="http://inkscape.org/">Inkscape</a> and draw the entire SVG font then just conver it to whatever I need, but this prooved to be hard
+without considerable theoretical knowledge about fonts and rendering. But once in a future&hellip; maybe&hellip;</p>
 
-<p>Not so important script, I posted it because a catch : <code>window</code> refers to the chrome. To get the same <code>window</code> object as JavaScript gets in the document&rsquo;s context, you
-have to use <code>window.content</code>.</p>
-
-<h2 id="usage">Usage</h2>
-
-<p>Perform a gesture to instantly change the current URL&rsquo;s protocol between <code>http:</code> and <code>https:</code>.</p>
-
-<p>Perform <kbd>Shift</kbd>-gesture to get a list of protocols and select the one to which you want to change the current URL&rsquo;s protocol.</p>
-
-<h2 id="configuration">Configuration</h2>
-
-<p>Configuration not really supported.</p>
-
-<p>But new protocols for the <kbd>Shift</kbd>-gesture&rsquo;s popup list can be easily added.</p>
-
-<p>Just copy &amp; paste a line of the <code>FireGestures.generatePopup()</code>&rsquo;s parameter array and edit it.</p>
-
-<h2 id="versions">Versions</h2>
-
-<ul class="changelog">
-  <li>0.0 - May 2011
-    <ul>
-      <li class="added">Initial release, as <a href="change-http-https.html">Change http: / https:</a>.</li>
-    </ul>
-  </li>
-  <li>0.1 - February 2012
-    <ul>
-      <li class="changed">Renamed to [Popup] Change Protocol.</li>
-      <li class="added">Added popup list.</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="plans">Plans</h2>
-
-<p>None. Maybe should cut off the path when changing to <code>ftp:</code> protocol. Maybe the same should be done for <code>spdy:</code> too. Undecided.</p>
-
-<h2 id="download">Download</h2>
-
-<p class="icon-directory">You can find the related files on GitHub in my <a href="http://github.com/feherke/FireGestures-script">FireGestures-script repository</a>&rsquo;s <a href="http://github.com/feherke/FireGestures-script/blob/master/popup-change-protocol/">popup-change-protocol directory</a> :</p>
-
-<ul class="download">
-  <li class="icon-file-script"><a href="http://github.com/feherke/FireGestures-script/blob/master/popup-change-protocol/popup-change-protocol.js">popup-change-protocol.js</a> - script</li>
-  <li class="icon-file-script"><a href="http://github.com/feherke/FireGestures-script/blob/master/popup-change-protocol/change-http-https.js">change-http-https.js</a> - old script</li>
-</ul>
+<dl>
+  <dt><a href="font-awesome-adjusted.html">Font Awesome Adjusted</a></dt>
+  <dd>2013-02-04 / <a href="/tag.html#font">font</a></dd>
+  <dd>Font Awesome icon font adjusted to my site&rsquo;s needs.</dd>
+</dl>
 
 
 
@@ -170,7 +131,7 @@ have to use <code>window.content</code>.</p>
 </ul>
 
 <ul>
-<li>Page <span title="popup-change-protocol">popup-change-protocol</span> last modified 2012-02-07.</li>
+<li>Page <span title="index">index</span> last modified 2013-02-04.</li>
 <li>Copyright &copy; 2013, <a href="/about.html">Feherke</a></li>
 <li class=icon-cookie>Cookie not used</li>
 </ul>

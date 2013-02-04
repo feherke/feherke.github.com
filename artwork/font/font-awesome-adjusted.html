@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+<meta charset=UTF-8>
+<title>Font Awesome Adjusted</title>
+<meta name=description content="Font Awesome icon font adjusted to my site's needs.">
+<meta name=author content="Feherke">
+<meta name=generator content="Jekyll 0.11.2">
+<!--[if IE]>
+<script src="/html5fordummies.js"></script>
+<![endif]-->
+<link rel=stylesheet href="/style.css">
+<style>
+ul.sample {
+  list-style-type: none;
+  margin-left: 5px;
+}
+ul.sample li::before {
+  font-size: 90%;
+  font-weight: bold;
+  vertical-align: middle;
+  padding-left: .5em;
+  padding-right: .5em;
+  margin-right: .5em;
+}
+ul.sample.with li::before {
+  font-family: FontAwesomeAdjusted;
+}
+ul.sample li.added::before {
+  content: "(+)";
+  color: #0f0;
+}
+ul.sample li.removed::before {
+  content: "(-)";
+  color: #f00;
+}
+.precaption+ul {
+  background-color: black;
+  border-style: solid;
+  border-color: #336;
+  border-width: 1px;
+  padding: 3px;
+  margin-bottom: 15px;
+}
+
+</style>
+<link rel=icon href="/favicon.ico">
+</head>
+
+<body>
+
+<header>
+
+<div id=skip>
+<a href="#content" accesskey=c>skip to content</a>
+</div>
+
+<div class=title>
+Feherke's GitHub Site == glue between Feherke's GitHub hosted projects
+</div>
+
+</header>
+
+<div id=wrapper>
+
+<section id=content>
+
+
+
+<div id=breadcrumb>
+<p><a href="/">Feherke&rsquo;s GitHub Site</a> / <a href="/artwork/">Artwork</a> / <a href="/artwork/font/">Font</a> / </p>
+
+</div>
+
+
+
+<div id=taglist class=icon-tag>
+Tag :
+<a href="/tag.html#font">font</a>
+</div>
+
+
+<div class=clear></div>
+
+<h1 id="font-awesome-adjusted">Font Awesome Adjusted</h1>
+
+<p>Well, that is all. An adjusted version of <a href="http://fortawesome.github.com/Font-Awesome/">Font Awesome</a>.</p>
+
+<p class="warn icon-warning">Warning<br />
+Hell knows what happened to the icons. Suddenly all glyphs&rsquo; rounding changed transforming the circles into octagons. I corrected them using version 3.0.2 icons and now
+some have blurry edges. No idea whether I will ever fix them or not.</p>
+
+<p>I found my site abit naked, so I decided to add some icons. As I used no images for decorations I decided to use an icon font instead of images. I wished to find a font
+with both navigational and file type icons. No such font exists, so I choose Font Awesome and adjusted it to my needs :</p>
+
+<ul>
+  <li>Copied glyphs resembling regular characters over their regular correspondent to ensure fallback in case the icon font not gets loaded.</li>
+  <li>Copied glyphs I needed in smaller groups by categories in additional location in the private area.</li>
+  <li>Adjusted some glyphs I found to look too blurry on my dark pages.</li>
+  <li>Drawn some file type icons I needed based on the file icon.</li>
+</ul>
+
+<p>After all, I could draw all glyphs of my own icon font, but I can not start it from zero anyway : I am unable to set up all those properties of the font which contribute
+to their pleasant appearance regardless of scaling.</p>
+
+<h2 id="usage">Usage</h2>
+
+<table>
+<tr><th>Code</th><th>Name</th><th>Original</th><th>Awesome</th><th>Comment</th></tr>
+<tr><td>0021</td><td>exclamation mark    </td><td>!</td><td class="iconfont">!</td><td>adjusted</td></tr>
+<tr><td>0028</td><td>left parenthesis    </td><td>(</td><td class="iconfont">(</td><td>by Fehérke</td></tr>
+<tr><td>0029</td><td>right parenthesis   </td><td>)</td><td class="iconfont">)</td><td>by Fehérke</td></tr>
+<tr><td>002a</td><td>asterisk            </td><td>*</td><td class="iconfont">*</td><td>adjusted</td></tr>
+<tr><td>002b</td><td>plus sign           </td><td>+</td><td class="iconfont">+</td><td>adjusted</td></tr>
+<tr><td>002d</td><td>hyphen-minus        </td><td>-</td><td class="iconfont">-</td><td>adjusted</td></tr>
+<tr><td>003f</td><td>question mark       </td><td>?</td><td class="iconfont">?</td><td>adjusted</td></tr>
+<tr><td>0069</td><td>latin small letter i</td><td>i</td><td class="iconfont">i</td><td>adjusted</td></tr>
+
+<tr><td>231a</td><td>watch               </td><td>&#x231a;</td><td class="iconfont">&#x231a;</td><td>-</td></tr>
+<tr><td>26a0</td><td>warning sign        </td><td>&#x26a0;</td><td class="iconfont">&#x26a0;</td><td>adjusted</td></tr>
+<tr><td>2713</td><td>check mark          </td><td>&#x2713;</td><td class="iconfont">&#x2713;</td><td>adjusted</td></tr>
+<tr><td>2717</td><td>ballot x            </td><td>&#x2717;</td><td class="iconfont">&#x2717;</td><td>adjusted</td></tr>
+
+<tr><td>f200</td><td>home                </td><td rowspan="30">private use area</td><td class="iconfont">&#xf200;</td><td>-</td></tr>
+<tr><td>f201</td><td>sitemap             </td><td class="iconfont">&#xf201;</td><td>-</td></tr>
+<tr><td>f202</td><td>feed                </td><td class="iconfont">&#xf202;</td><td>-</td></tr>
+
+<tr><td>f210</td><td>usage               </td><td class="iconfont">&#xf210;</td><td>-</td></tr>
+<tr><td>f211</td><td>configuration       </td><td class="iconfont">&#xf211;</td><td>-</td></tr>
+<tr><td>f212</td><td>version             </td><td class="iconfont">&#xf212;</td><td>-</td></tr>
+<tr><td>f213</td><td>plan                </td><td class="iconfont">&#xf213;</td><td>-</td></tr>
+<tr><td>f214</td><td>download            </td><td class="iconfont">&#xf214;</td><td>-</td></tr>
+<tr><td>f215</td><td>legal               </td><td class="iconfont">&#xf215;</td><td>-</td></tr>
+
+<tr><td>f220</td><td>link                </td><td class="iconfont">&#xf220;</td><td>-</td></tr>
+<tr><td>f221</td><td>tag                 </td><td class="iconfont">&#xf221;</td><td>-</td></tr>
+<tr><td>f222</td><td>search              </td><td class="iconfont">&#xf222;</td><td>-</td></tr>
+<tr><td>f223</td><td>screen              </td><td class="iconfont">&#xf223;</td><td>-</td></tr>
+<tr><td>f224</td><td>screenshot          </td><td class="iconfont">&#xf224;</td><td>-</td></tr>
+<tr><td>f225</td><td>cookie              </td><td class="iconfont">&#xf225;</td><td>by Fehérke</td></tr>
+
+<tr><td>f230</td><td>github              </td><td class="iconfont">&#xf230;</td><td>-</td></tr>
+<tr><td>f231</td><td>html5               </td><td class="iconfont">&#xf231;</td><td>by Fehérke</td></tr>
+<tr><td>f232</td><td>css3                </td><td class="iconfont">&#xf232;</td><td>by Fehérke</td></tr>
+
+<tr><td>f240</td><td>directory           </td><td class="iconfont">&#xf240;</td><td>-</td></tr>
+<tr><td>f241</td><td>file                </td><td class="iconfont">&#xf241;</td><td>by Fehérke</td></tr>
+<tr><td>f242</td><td>file unknown        </td><td class="iconfont">&#xf242;</td><td>by Fehérke</td></tr>
+<tr><td>f243</td><td>file text           </td><td class="iconfont">&#xf243;</td><td>by Fehérke</td></tr>
+<tr><td>f244</td><td>file binary         </td><td class="iconfont">&#xf244;</td><td>by Fehérke</td></tr>
+<tr><td>f245</td><td>file script         </td><td class="iconfont">&#xf245;</td><td>by Fehérke</td></tr>
+<tr><td>f246</td><td>file embed          </td><td class="iconfont">&#xf246;</td><td>by Fehérke</td></tr>
+<tr><td>f247</td><td>file html           </td><td class="iconfont">&#xf247;</td><td>by Fehérke</td></tr>
+<tr><td>f248</td><td>file css            </td><td class="iconfont">&#xf248;</td><td>by Fehérke</td></tr>
+<tr><td>f249</td><td>file config         </td><td class="iconfont">&#xf249;</td><td>by Fehérke</td></tr>
+<tr><td>f24a</td><td>file man            </td><td class="iconfont">&#xf24a;</td><td>by Fehérke</td></tr>
+<tr><td>f24b</td><td>file pod            </td><td class="iconfont">&#xf24b;</td><td>by Fehérke</td></tr>
+</table>
+
+<p>The parenthesis are used for fallback : they are used literally, but if Font Awesome Adjusted is in use, they disappear.</p>
+
+<p class="precaption">sample rendering <strong>without</strong> Font Awesome Adjusted</p>
+
+<ul class="sample">
+  <li class="added">Added icon.</li>
+  <li class="removed">Removed icon.</li>
+</ul>
+
+<p class="precaption">sample rendering <strong>with</strong> Font Awesome Adjusted</p>
+
+<ul class="sample with">
+  <li class="added">Added icon.</li>
+  <li class="removed">Removed icon.</li>
+</ul>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>None.</p>
+
+<p>Well, fonts can not really be configured, but a suitable <em>font editor configuration</em> could help.</p>
+
+<h2 id="versions">Versions</h2>
+
+<ul class="changelog">
+  <li>0.0 - February 2013
+    <ul>
+      <li class="added">Initial release.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="plans">Plans</h2>
+
+<ul class="todo">
+  <li class="pending">Draw some type specific file icons for script, HTML, CSS, binary, etc.</li>
+  <li class="pending">Draw or acquire some technology specific icons for Ruby, Jekyll, Markdown, etc.</li>
+  <li class="pending">Draw or acquire HTML5, CSS3, eventually WAI.</li>
+  <li class="pending">Design better section icons for usage, versions and plans.</li>
+  <li class="pending">Design an icon for breadcrumb.</li>
+</ul>
+
+<h2 id="download">Download</h2>
+
+<p class="icon-directory">You can find the related files on GitHub in my <a href="http://github.com/feherke/Font-file">Font-file repository</a>&rsquo;s <a href="http://github.com/feherke/Font-file/blob/master/font-awesome-adjusted/">font-awesome-adjusted directory</a> :</p>
+
+<ul class="download">
+  <li class="icon-file-binary"><a href="http://github.com/feherke/Font-file/blob/master/font-awesome-adjusted/fontawesomeadjusted.sdf">fontawesomeadjusted.sdf</a> - font source</li>
+  <li class="icon-file-binary"><a href="http://github.com/feherke/Font-file/blob/master/font-awesome-adjusted/fontawesomeadjusted.ttf">fontawesomeadjusted.ttf</a> - truetype font</li>
+  <li class="icon-file-binary"><a href="http://github.com/feherke/Font-file/blob/master/font-awesome-adjusted/fontawesomeadjusted.woff">fontawesomeadjusted.woff</a> - web openfont</li>
+  <li class="icon-file-html"><a href="http://github.com/feherke/Font-file/blob/master/font-awesome-adjusted/fontawesomeadjusted.svg">fontawesomeadjusted.svg</a> - SVG font</li>
+</ul>
+
+<h2 id="legal">Legal</h2>
+
+<p>The copyright of the original Font Awesome is owned by Dave Gandy. Visit <a href="http://fortawesome.github.com/Font-Awesome">fortawesome.github.com/Font-Awesome</a> for more
+copyright information.</p>
+
+<p>Font Awesome Adjusted contains the entire original Font Awesome unaltered. All glyphs I adjusted were copied to a different character.</p>
+
+<p>I hope the chosen name makes it clear that the essential part of the work was made by the original font&rsquo;s author.</p>
+
+
+</section>
+
+</div> <!-- #wrapper -->
+
+<div id=sidebar>
+
+<nav>
+
+<ul>
+  <li><a href="/artwork/" title="0 script">Artwork</a>
+    <ul>
+      <li><a href="/artwork/font/" title="1 script">Font</a></li>
+    </ul>
+  </li>
+  <li><a href="/bash/" title="14 scripts">Bash</a></li>
+  <li><a href="/javascript/" title="0 script">JavaScript</a>
+    <ul>
+      <li><a href="/javascript/firegestures/" title="4 scripts">FireGestures</a></li>
+      <li><a href="/javascript/greasemonkey/" title="5 scripts">Greasemonkey</a></li>
+    </ul>
+  </li>
+  <li><a href="/perl/" title="0 script">Perl</a>
+    <ul>
+      <li><a href="/perl/irssi/" title="3 scripts">Irssi</a></li>
+    </ul>
+  </li>
+  <li><a href="/ruby/" title="0 script">Ruby</a>
+    <ul>
+      <li><a href="/ruby/jekyll/" title="2 scripts">Jekyll</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+</nav>
+
+<div id=tagcloud title="Tag cloud">
+<p><a href="/tag.html#BitlBee" title="1 script" style="font-size: 8pt">BitlBee</a>
+<a href="/tag.html#cleanup" title="3 scripts" style="font-size: 13pt">cleanup</a>
+<a href="/tag.html#font" title="1 script" style="font-size: 8pt">font</a>
+<a href="/tag.html#game" title="1 script" style="font-size: 8pt">game</a>
+<a href="/tag.html#media" title="1 script" style="font-size: 8pt">media</a>
+<a href="/tag.html#notification" title="3 scripts" style="font-size: 13pt">notification</a>
+<a href="/tag.html#recovery" title="1 script" style="font-size: 8pt">recovery</a>
+<a href="/tag.html#search" title="2 scripts" style="font-size: 10pt">search</a>
+<a href="/tag.html#TipMaster" title="5 scripts" style="font-size: 18pt">TipMaster</a></p>
+
+</div>
+
+</div> <!-- #sidebar -->
+
+<footer>
+
+<ul>
+<li>Powered by <a href="http://ruby-lang.org/">Ruby</a> 1.9.2</li>
+<li>Generated by <a href="http://jekyllrb.com/">Jekyll</a> 0.11.2</li>
+<li>Processed by <a href="http://kramdown.rubyforge.org/">kramdown</a> 0.13.8</li>
+</ul>
+
+<ul>
+<li>Edited with <a href="http://midnight-commander.org/">MCEdit</a></li>
+<li class=icon-github>Hosted on <a href="http://github.com/">GitHub</a></li>
+</ul>
+
+<ul>
+<li class=icon-html5>Valid <a href="http://w3c.org/TR/html5/">HTML 5</a></li>
+<li class=icon-css3>Valid <a href="http://w3c.org/TR/CSS/#css3">CSS 3</a></li>
+<li>Valid <a href="http://w3c.org/WAI/">WAI AA</a></li>
+</ul>
+
+<ul>
+<li>Page <span title="font-awesome-adjusted">font-awesome-adjusted</span> last modified 2013-02-04.</li>
+<li>Copyright &copy; 2013, <a href="/about.html">Feherke</a></li>
+<li class=icon-cookie>Cookie not used</li>
+</ul>
+
+<div class=logo>F<sup>G</sup><sub>H</sub>S</div>
+
+<div class=clear></div>
+
+</footer>
+
+<!--[if lte IE 6]>
+<p>
+Please consider changing your Explorer 6 to a newer and/or better browser.
+For reasons and guidance read "<a href="http://quirksmode.org/upgrade.html">Upgrade your browser!</a>" by Peter-Paul Koch.
+</p>
+<![endif]-->
+
+</body>
+
+</html>
