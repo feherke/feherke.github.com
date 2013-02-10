@@ -3,8 +3,9 @@
 
 <head>
 <meta charset=UTF-8>
-<title>BitlBee - Catch Command</title>
-<meta name=description content="Catch BitlBee commands sent accidentally to other channels.">
+<title>IceWM</title>
+<meta name=description content="Various artistic manifestations.">
+<meta name=keyword content="IceWM, theme">
 <meta name=author content="Feherke">
 <meta name=generator content="Jekyll 0.11.2">
 <!--[if IE]>
@@ -35,109 +36,29 @@ Feherke's GitHub Site == glue between Feherke's GitHub hosted projects
 
 
 <div id=breadcrumb>
-<p><a href="/">Feherke&rsquo;s GitHub Site</a> / <a href="/perl/">Perl</a> / <a href="/perl/irssi/">Irssi</a> / </p>
+<p><a href="/">Feherke&rsquo;s GitHub Site</a> / <a href="/artwork/">Artwork</a> / <a href="/artwork/icewm/">IceWM</a> / </p>
 
 </div>
 
 
-
-<div id=taglist class=icon-tag>
-Tag :
-<a href="/tag.html#BitlBee">BitlBee</a>
-</div>
 
 
 <div class=clear></div>
 
-<h1 id="bitlbee---catch-command">BitlBee - Catch Command</h1>
+<h1 id="icewm-theme">IceWM Theme</h1>
 
-<p>Sometimes I type messages in the wrong window. As I am not gossiping, those are not specifically embarrassing. However BitlBee commands may contain snippets of private
-information, which should not be made public.</p>
+<p><a href="http://www.icewm.org/">IceWM</a> is the most comfortable window manager I ever met. It has everything I need and very few I not need.</p>
 
-<p>This script save such situations by stopping messages which looks like BitlBee commands and asks for confirmation. The confirmation is simple : <kbd>up arrow</kbd> and
-<kbd>Enter</kbd>. I mean, if the message is repeated between a given amount of time, it is let to pass.</p>
+<p>I especially enjoy the way it can be configured : with <code>$EDITOR</code>. ( Yes, I know there are GUI configurators, but sorry, I do not like them. )</p>
 
-<h2 id="usage">Usage</h2>
+<p>Even more, if your patience allows it, you can draw the theme decorations too with <code>$EDITOR</code>. However, I preferred to edit the images with <a href="http://gimp.org/">GIMP</a>
+first, then only to fine tune them with with text editor when needed.</p>
 
-<p>This script is not interactive, so it defines no command.</p>
-
-<p>To get some information use the <code>/help bb-catch</code> command.</p>
-
-<h2 id="configuration">Configuration</h2>
-
-<p>Use the <code>/set</code> command to configure this script. The settings are queried when using them, so changes will be visible automatically on next use.</p>
-
-<table class="nowrap1">
-  <thead>
-    <tr>
-      <th>Setting</th>
-      <th>Type</th>
-      <th>Description</th>
-      <th>Default</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>bitlbee-catchcommand_active</code></td>
-      <td>boolean</td>
-      <td>turns the command catching on and off</td>
-      <td>true</td>
-    </tr>
-    <tr>
-      <td><code>bitlbee-catchcommand_timeout</code></td>
-      <td>integer</td>
-      <td>time to wait for confirmation, in seconds</td>
-      <td>3</td>
-    </tr>
-    <tr>
-      <td><code>bitlbee-catchcommand_command</code></td>
-      <td>string</td>
-      <td>space separated list of commands to catch</td>
-      <td>account add allow ( &hellip; TL;DR )</td>
-    </tr>
-    <tr>
-      <td><code>bitlbee-catchcommand_channel</code></td>
-      <td>string</td>
-      <td>space separated list of channels to ignore</td>
-      <td>&amp;bitlbee</td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="versions">Versions</h2>
-
-<ul class="changelog">
-  <li>0.0 - ?
-    <ul>
-      <li class="added">Initial release.</li>
-    </ul>
-  </li>
-  <li>0.1 - March 2008
-    <ul>
-      <li class="changed">Updated BitlBee command list.</li>
-    </ul>
-  </li>
-  <li>0.2 - February 2012
-    <ul>
-      <li class="added">Added setting to enumerate commands to catch.</li>
-      <li class="added">Added setting to enumerate channels to ignore.</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="plans">Plans</h2>
-
-<ul>
-  <li>Think to an exception list. Is annoying when all help commands sent in private message to a bot are caught.</li>
-</ul>
-
-<h2 id="download">Download</h2>
-
-<p class="icon-directory">You can find the related files on GitHub in my <a href="http://github.com/feherke/Irssi-script">Irssi-script repository</a>&rsquo;s <a href="http://github.com/feherke/Irssi-script/blob/master/bitlbee-catch-command/">bitlbee-catch-command directory</a> :</p>
-
-<ul class="download">
-  <li class="icon-file-script"><a href="http://github.com/feherke/Irssi-script/blob/master/bitlbee-catch-command/bitlbee-catch-command.pl">bitlbee-catch-command.pl</a> - script</li>
-</ul>
+<dl>
+  <dt><a href="mars-text.html">Mars Text</a></dt>
+  <dd>2013-02-10 / <a href="/tag.html#theme">theme</a></dd>
+  <dd>Theme with redish color palette using textual buttons.</dd>
+</dl>
 
 
 
@@ -214,7 +135,7 @@ information, which should not be made public.</p>
 </ul>
 
 <ul>
-<li>Page <span title="bitlbee-catch-command">bitlbee-catch-command</span> last modified 2012-02-24.</li>
+<li>Page <span title="index">index</span> last modified 2013-02-10.</li>
 <li>Copyright &copy; 2013, <a href="/about.html">Feherke</a></li>
 <li class=icon-cookie>Cookie not used</li>
 </ul>

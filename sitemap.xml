@@ -259,6 +259,18 @@
   </url>
 
   <url>
+    <loc>http://feherke.github.com/artwork/icewm/mars-text.html</loc>
+    <lastmod>2013-02-10</lastmod>
+    <priority>0.1</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.com/artwork/icewm/</loc>
+    <lastmod>2013-02-10</lastmod>
+    <priority>0.2</priority>
+  </url>
+
+  <url>
     <loc>http://feherke.github.com/artwork/</loc>
     <lastmod>2013-02-04</lastmod>
     <priority>0.2</priority>
