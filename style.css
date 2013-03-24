@@ -151,7 +151,8 @@ pre {
 }
 
 .precaption+pre,
-.precaption+div.highlight>pre {
+.precaption+div.highlight>pre,
+.precaption+p {
   margin-top: 0;
 }
 
@@ -577,6 +578,7 @@ h2[id]::before {
   margin-right: .2em;
 }
 
+h2#screenshot::before { content: "\f224"; }
 h2#usage::before { content: "\f210"; }
 h2#configuration::before { content: "\f211"; }
 h2#versions::before { content: "\f212"; }
