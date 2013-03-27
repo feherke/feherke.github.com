@@ -3,9 +3,9 @@
 
 <head>
 <meta charset=UTF-8>
-<title>TipMaster - Reply with Quote</title>
-<meta name=description content="Adds a reply link below each post to easily quote the answered message.">
-<meta name=keyword content="reply, quote, conversion, html2tgml">
+<title>TipMaster - No Old New</title>
+<meta name=description content="Remove the NEW icon from the old posts.">
+<meta name=keyword content="new, post, mark">
 <meta name=author content="Feherke">
 <meta name=generator content="Jekyll 0.11.2">
 <!--[if IE]>
@@ -50,70 +50,56 @@ Tag :
 
 <div class=clear></div>
 
-<h1 id="tipmaster---reply-with-quote">TipMaster - Reply with Quote</h1>
+<h1 id="tipmaster---no-old-new">TipMaster - No Old New</h1>
 
-<p>Improves the <a href="http://tipmaster.com/">TipMaster</a>&rsquo;s forums, <a href="http://tek-tips.com/">Tek-Tips</a> and <a href="http://eng-tips.com/">Eng-Tips</a>, by adding a link below each post on the
-thread pages to copy the given post&rsquo;s content into the reply form&rsquo;s message field. The quote&rsquo;s parameter is the post&rsquo;s author&rsquo;s handle. The signature is not included.</p>
+<p>Improves the <a href="http://tipmaster.com/">TipMaster</a>&rsquo;s forums, <a href="http://tek-tips.com/">Tek-Tips</a> and <a href="http://eng-tips.com/">Eng-Tips</a>, by removing the NEW icons from the
+already seen posts on the thread pages.</p>
 
-<p>The quoted message is converted back from HTML to TGML.</p>
+<p>The script saves the posting time of the last post, then on the next visit it removes the NEW icons from all posts with posting time older or equal with the saved one.
+Additionally, it jumps again to the first new post in case the location contains the hash for the jump.</p>
 
-<p>
-<del><span>Protecting verbatim TGML as [ignore][valid TGML tag][/ignore] is not implemented yet. ( Actually there is an implementation, but is not
-public as it is less optimal than could be, so I am looking for a better idea. )</span></del> ( I think it only works from a certain post date forward. If so, will not
-fix it, but a better review is still pending. )
-</p>
+<p>To avoid accumulating huge amount of saved last seen times which may put some extra load on the browser, each day it cleans up the data by deleting the last seen times
+older than approximately 1 year. ( This can be changed by editing the script. )</p>
 
 <h2 id="usage">Usage</h2>
 
-<p>Click the &ldquo;Reply with quote to this post&rdquo; link below the message you want to reply to.</p>
+<p>None. There is nothing interactive.</p>
 
 <h2 id="configuration">Configuration</h2>
 
 <p>Configuration not really supported.</p>
 
-<p>But you could add ( or remove ) some of the tag conversion rules declared in the <code>markup</code> array.</p>
+<p>But changing how long to keep the last seen times is pretty simple. Just locate the following fragment in the script and change the value ( the default is a formula for
+~1 year ) :</p>
+
+<p class="precaption icon-file">TipMaster_-_No_Old_New.user.js - configuration fragment</p>
+
+<div class="highlight"><pre><code class="javascript"><span class="c1">// keep last seen times this long</span>
+<span class="kd">var</span> <span class="nx">expire</span><span class="o">=</span><span class="mf">365.25</span><span class="o">*</span><span class="mi">24</span><span class="o">*</span><span class="mi">60</span><span class="o">*</span><span class="mi">60</span><span class="o">*</span><span class="mi">1000</span>
+</code></pre>
+</div>
 
 <p>This script may clash with other Greasemonkey scripts, so you may have to adjust the execution order in your browser :</p>
 
 <ul>
-  <li><a href="tipmaster-no-old-new.html">TipMaster - No Old New</a> jumps to the first unread post, so the post footer height adjustment made by this script makes the jump unprecise.
-Set this script to run <em>before</em> TipMaster - No Old New.</li>
+  <li><a href="tipmaster-reply-with-quote.html">TipMaster - Reply With Quote</a> adjusts the height of the post footer, so jumping to the first new post may not be precise. Set this
+script to run <em>after</em> TipMaster - Reply With Quote.</li>
+  <li><a href="tipmaster-time-ago.html">TipMaster - Time Ago</a> adds relative alternative of the post time inside the same element, so parsing it as date will fail. Set this script to
+run <em>before</em> TipMaster - Time Ago.</li>
 </ul>
 
 <h2 id="versions">Versions</h2>
 
 <ul class="changelog">
-  <li>0.0 - February 2012
+  <li>0.0 - January 2012
     <ul>
       <li class="added">Initial release.</li>
     </ul>
   </li>
-  <li>0.1 - February 2012
+  <li>0.1 - March 2013
     <ul>
-      <li class="changed">Skip signature.</li>
-    </ul>
-  </li>
-  <li>0.2 - March 2012
-    <ul>
-      <li class="fixed">Extracting the code tags&rsquo; title now works.</li>
-    </ul>
-  </li>
-  <li>0.3 - March 2012
-    <ul>
-      <li class="fixed">Consume pointless wbr tags.</li>
-    </ul>
-  </li>
-  <li>0.4 - June 2012
-    <ul>
-      <li class="changed">Updated according to TipMaster sites&rsquo; HTML changes.</li>
-      <li class="added">Recognizes the new [box], [bbox], [floatl], [floatr] and [indent] TGML tags.</li>
-      <li class="added">Handles [ignore] tag.</li>
-      <li class="fixed">Excludes signature.</li>
-    </ul>
-  </li>
-  <li>0.5 - October 2012
-    <ul>
-      <li class="added">Recognizes the new [pre] TGML tag.</li>
+      <li class="added"><code>@grant</code> metadata imperative according to Greasemonkey 1.0 API.</li>
+      <li class="added">Clean up old last seen times.</li>
     </ul>
   </li>
 </ul>
@@ -121,16 +107,15 @@ Set this script to run <em>before</em> TipMaster - No Old New.</li>
 <h2 id="plans">Plans</h2>
 
 <ul>
-  <li>Make difference between [spoiler] and [hide] tags.</li>
-  <li>Provide a way to convert to lighter markup, like *bold* instead of [b]bold[/b].</li>
+  <li>See whether is possible to remove the old NEW icons on the thread list pages too. ( Sadly there the last activity date lacks the time part. )</li>
 </ul>
 
 <h2 id="download">Download</h2>
 
-<p class="icon-directory">You can find the related files on GitHub in my <a href="http://github.com/feherke/Greasemonkey-script">Greasemonkey-script repository</a>&rsquo;s <a href="http://github.com/feherke/Greasemonkey-script/blob/master/tipmaster-reply-with-quote/">tipmaster-reply-with-quote directory</a> :</p>
+<p class="icon-directory">You can find the related files on GitHub in my <a href="http://github.com/feherke/Greasemonkey-script">Greasemonkey-script repository</a>&rsquo;s <a href="http://github.com/feherke/Greasemonkey-script/blob/master/tipmaster-no-old-new/">tipmaster-no-old-new directory</a> :</p>
 
 <ul class="download">
-  <li class="icon-file-script"><a href="http://github.com/feherke/Greasemonkey-script/blob/master/tipmaster-reply-with-quote/TipMaster_-_Reply_with_Quote.user.js">TipMaster_-_Reply_with_Quote.user.js</a> - script</li>
+  <li class="icon-file-script"><a href="http://github.com/feherke/Greasemonkey-script/blob/master/tipmaster-no-old-new/TipMaster_-_No_Old_New.user.js">TipMaster_-_No_Old_New.user.js</a> - script</li>
 </ul>
 
 
@@ -208,7 +193,7 @@ Set this script to run <em>before</em> TipMaster - No Old New.</li>
 </ul>
 
 <ul>
-<li>Page <span title="tipmaster-reply-with-quote">tipmaster-reply-with-quote</span> last modified 2012-10-09.</li>
+<li>Page <span title="tipmaster-no-old-new">tipmaster-no-old-new</span> last modified 2013-03-27.</li>
 <li>Copyright &copy; 2013, <a href="/about.html">Feherke</a></li>
 <li class=icon-cookie>Cookie not used</li>
 </ul>

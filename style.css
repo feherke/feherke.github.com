@@ -552,22 +552,24 @@ nav ul li li {
 
 /* highlight */
 
-.n { color: yellow; } /* normal ??? */
-.k { color: white; font-weight: bold; } /* keyword */
-.nb { color: white; } /* ??? */
-.s { color: lime; font-style: italic; } /* here document */
-.s1 { color: lime; font-style: italic; } /* single quoted string */
-.s2 { color: lime; font-style: italic; } /* double quoted string */
-.se { color: green; font-style: italic; } /* escaped character */
-.mi { color: fuchsia; } /* number */
-.o { color: aqua; } /* operator */
-.p { color: dodgerblue; } /* parenthesis ??? */
-.c { color: gray; } /* comment */
-.c1 { color: gray; } /* comment */
-.sb { color: aqua; } /* backtick */
-.nv { color: teal; } /* variable */
+div.highlight span {
+  color: red; /* unstyled syntax element */
+}
+.highlight .n { color: yellow; } /* normal ??? */
+.highlight .k, .highlight .kd { color: white; font-weight: bold; } /* keyword */
+.highlight .nb { color: white; } /* ??? */
+.highlight .s { color: lime; font-style: italic; } /* here document */
+.highlight .s1 { color: lime; font-style: italic; } /* single quoted string */
+.highlight .s2 { color: lime; font-style: italic; } /* double quoted string */
+.highlight .se { color: green; font-style: italic; } /* escaped character */
+.highlight .mi, .highlight .mf { color: fuchsia; } /* number ( integer, float ) */
+.highlight .o { color: aqua; } /* operator */
+.highlight .p { color: dodgerblue; } /* parenthesis ??? */
+.highlight .c, .highlight .c1 { color: gray; } /* comment ( any (?), single line ) */
+.highlight .sb { color: aqua; } /* backtick */
+.highlight .nv, .highlight .nx { color: teal; } /* variable */
 
-.pr { color: blue; } /* prompt */
+.highlight .pr { color: blue; } /* prompt */
 
 /* section */
 

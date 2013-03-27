@@ -206,13 +206,13 @@
 
   <url>
     <loc>http://feherke.github.com/javascript/greasemonkey/tipmaster-author-highlight.html</loc>
-    <lastmod>2012-10-09</lastmod>
+    <lastmod>2012-03-24</lastmod>
     <priority>0.1</priority>
   </url>
 
   <url>
     <loc>http://feherke.github.com/javascript/greasemonkey/tipmaster-markitup-setting.html</loc>
-    <lastmod>2012-10-15</lastmod>
+    <lastmod>2012-03-24</lastmod>
     <priority>0.1</priority>
   </url>
 
@@ -220,6 +220,12 @@
     <loc>http://feherke.github.com/javascript/greasemonkey/</loc>
     <lastmod>2011-05-07</lastmod>
     <priority>0.2</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.com/javascript/greasemonkey/tipmaster-no-old-new.html</loc>
+    <lastmod>2013-03-27</lastmod>
+    <priority>0.1</priority>
   </url>
 
   <url>
