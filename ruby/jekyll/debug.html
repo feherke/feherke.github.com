@@ -60,12 +60,13 @@ in all generated documents to check one value in each. That is why this plugin g
 <p><code>send</code> is a Liquid filter, so you just put it after the <code>{{ </code> and <code>}}</code> enclosed variable. The first parameter is the method name, the remaining
 parameters are passed forward to the called method :</p>
 
-<p class="precaption">sample code</p>
+<p class="precaption">sample code &ndash; Liquid template</p>
 
-<pre><code>Type of variable is {{ variable | send: 'class' | send: 'name' }}
-3rd letter of variable is {{ variable | send: '[]', 2 }}
-Print variable to stdout {{ variable | send: 'display' }}
+<div class="highlight"><pre><code class="jinja"><span class="x">Type of variable is </span><span class="cp">{{</span> <span class="nv">variable</span> <span class="o">|</span> <span class="nf">send</span><span class="o">:</span> <span class="s1">&#39;class&#39;</span> <span class="o">|</span> <span class="nf">send</span><span class="o">:</span> <span class="s1">&#39;name&#39;</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">3rd letter of variable is </span><span class="cp">{{</span> <span class="nv">variable</span> <span class="o">|</span> <span class="nf">send</span><span class="o">:</span> <span class="s1">&#39;[]&#39;</span><span class="o">,</span> <span class="m">2</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">Print variable to stdout </span><span class="cp">{{</span> <span class="nv">variable</span> <span class="o">|</span> <span class="nf">send</span><span class="o">:</span> <span class="s1">&#39;display&#39;</span> <span class="cp">}}</span><span class="x"></span>
 </code></pre>
+</div>
 
 <h2 id="configuration">Configuration</h2>
 
