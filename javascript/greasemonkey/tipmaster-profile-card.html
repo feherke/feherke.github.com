@@ -3,9 +3,9 @@
 
 <head>
 <meta charset=UTF-8>
-<title>Artwork</title>
-<meta name=description content="Various artistic manifestations.">
-<meta name=keyword content="artwork, art, graphics, drawing, font">
+<title>TipMaster - Profile Card</title>
+<meta name=description content="Display brief profile information on mouse over the member profile link.">
+<meta name=keyword content="profile, card, brief, member">
 <meta name=author content="Feherke">
 <meta name=generator content="Jekyll 0.11.2">
 <!--[if IE]>
@@ -36,20 +36,69 @@ Feherke's GitHub Site == glue between Feherke's GitHub hosted projects
 
 
 <div id=breadcrumb>
-<p><a href="/">Feherke&rsquo;s GitHub Site</a> / <a href="/artwork/">Artwork</a> / </p>
+<p><a href="/">Feherke&rsquo;s GitHub Site</a> / <a href="/javascript/">JavaScript</a> / <a href="/javascript/greasemonkey/">Greasemonkey</a> / </p>
 
 </div>
 
 
 
+<div id=taglist class=icon-tag>
+Tag :
+<a href="/tag.html#TipMaster">TipMaster</a>
+</div>
+
 
 <div class=clear></div>
 
-<h1 id="artwork">Artwork</h1>
+<h1 id="tipmaster---profile-card">TipMaster - Profile Card</h1>
 
-<p>Some design elements I put together.</p>
+<p>Improves the <a href="http://tipmaster.com/">TipMaster</a>&rsquo;s forums, <a href="http://tek-tips.com/">Tek-Tips</a> and <a href="http://eng-tips.com/">Eng-Tips</a>, by saving brief profile data when a
+member profile is visited then displaying them all over the site when a mouse pointer is moved over the given member&rsquo;s profile link.</p>
 
-<p>Do not expect too much.</p>
+<p>The times are displayed as fuzzy relative values. As the profiles contain only dates without time and the display is fuzzy anyway, I paid no care to timezone handling.
+I do not consider this a serious issue and I have no intention to fix it. ( Excepting if I manage to get negative times. )</p>
+
+<p>The script does not automatically refresh the profile card data. Although would be quite easy to implement I will not stress the server with such requests.</p>
+
+<h2 id="screenshot">Screenshot</h2>
+
+<p><img src="tipmaster-profile-card.png" alt="screenshot using the script" /></p>
+
+<h2 id="usage">Usage</h2>
+
+<p>Move the mouse pointer over a member profile link underlined with faded dark red bar to display the member&rsquo;s profile card.</p>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>Configuration not really supported.</p>
+
+<p>But you could simply comment out some <code>addprofiledata()</code> calls if you find the profile card too crowded.</p>
+
+<h2 id="versions">Versions</h2>
+
+<ul class="changelog">
+  <li>0.0 - March 2013
+    <ul>
+      <li class="added">Initial release.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="plans">Plans</h2>
+
+<ul>
+  <li>Add member type and most active forum name to the card.</li>
+  <li>Implement a manual and/or automatic way to delete old profile card data.</li>
+  <li>A filter to not even save the profile card data if for inactive members or if there are no common forums with the current member.</li>
+</ul>
+
+<h2 id="download">Download</h2>
+
+<p class="icon-directory">You can find the related files on GitHub in my <a href="http://github.com/feherke/Greasemonkey-script">Greasemonkey-script repository</a>&rsquo;s <a href="http://github.com/feherke/Greasemonkey-script/blob/master/tipmaster-profile-card/">tipmaster-profile-card directory</a> :</p>
+
+<ul class="download">
+  <li class="icon-file-script"><a href="http://github.com/feherke/Greasemonkey-script/blob/master/tipmaster-profile-card/TipMaster_-_Profile_Card.user.js">TipMaster_-_Profile_Card.user.js</a> - script</li>
+</ul>
 
 
 
@@ -126,7 +175,7 @@ Feherke's GitHub Site == glue between Feherke's GitHub hosted projects
 </ul>
 
 <ul>
-<li>Page <span title="index">index</span> last modified 2013-02-04.</li>
+<li>Page <span title="tipmaster-profile-card">tipmaster-profile-card</span> last modified 2013-03-29.</li>
 <li>Copyright &copy; 2013, <a href="/about.html">Feherke</a></li>
 <li class=icon-cookie>Cookie not used</li>
 </ul>
