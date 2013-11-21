@@ -2,4 +2,4 @@
 
 This repository stores the sources for my GitHub site.
 
-[[http://feherke.github.com/|My GitHub site]] == glue between [[http://github.com/feherke/|my GitHub hosted projects]].
+[[http://feherke.github.io/|My GitHub site]] == glue between [[http://github.com/feherke/|my GitHub hosted projects]].

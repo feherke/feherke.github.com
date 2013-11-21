@@ -177,6 +177,11 @@ pre {
   margin: 0;
 }
 
+.precaption[class*="screenshot"] {
+  left: +10px;
+  top: 0;
+}
+
 .precaption code {
   color: gray;
   font-style: normal;
@@ -563,11 +568,12 @@ div.highlight span {
 .highlight .m, .highlight .mi, .highlight .mf { color: fuchsia; } /* number ( any, integer, float ) */
 .highlight .o { color: aqua; } /* operator */
 .highlight .p { color: dodgerblue; } /* parenthesis ??? */
-.highlight .c, .highlight .c1 { color: gray; } /* comment ( any (?), single line ) */
+.highlight .c, .highlight .c1, .highlight .c-Singleline { color: gray; } /* comment ( any (?), single line ) */
 .highlight .sb { color: aqua; } /* backtick */
 .highlight .nv, .highlight .nx { color: teal; } /* variable */
 .highlight .cp { color: orange; } /* template markup (?) */
 .highlight .nf { color: darkgoldenrod; } /* function (?) */
+.highlight .nl { color: pink; } /* ??? */
 
 .highlight .pr { color: blue; } /* prompt */
 

@@ -5,8 +5,8 @@
 <meta charset=UTF-8>
 <title>buzz.sh</title>
 <meta name=description content="Schedules an at job to pop up a message using various commands.">
-<meta name=author content="Feherke">
-<meta name=generator content="Jekyll 0.11.2">
+<meta name=author content="Fehérke">
+<meta name=generator content="Jekyll 1.3.0">
 <!--[if IE]>
 <script src="/html5fordummies.js"></script>
 <![endif]-->
@@ -23,7 +23,7 @@
 </div>
 
 <div class=title>
-Feherke's GitHub Site == glue between Feherke's GitHub hosted projects
+Fehérke's GitHub Site == glue between Fehérke's GitHub hosted projects
 </div>
 
 </header>
@@ -35,7 +35,7 @@ Feherke's GitHub Site == glue between Feherke's GitHub hosted projects
 
 
 <div id=breadcrumb>
-<p><a href="/">Feherke&rsquo;s GitHub Site</a> / <a href="/bash/">Bash</a> / </p>
+<p><a href="/">Fehérke’s GitHub Site</a> / <a href="/bash/">Bash</a> / </p>
 
 </div>
 
@@ -55,7 +55,7 @@ Tag :
 But most of them are quite feature full and usually even if you can omit many of the details you still have to specify at least a message. Often I want an alert the same
 day, just to make me look at the clock and remember that I planed to do something. Using the usual tools for such simple task is like shooting sparrow with cannon.</p>
 
-<p>When using buzz.sh only the time is mandatory. The time format is very flexible, due to the <code>at</code> command&rsquo;s flexibility.</p>
+<p>When using buzz.sh only the time is mandatory. The time format is very flexible, due to the <code>at</code> command’s flexibility.</p>
 
 <p>The message can be displayed with the first command found in the list. Currently : <code>xmessage</code>, <code>Xdialog</code>, <code>kdialog</code>, <code>gdialog</code>, <code>zenity</code>, <code>yad</code>, <code>gxmessage</code>, <code>gtkdialog</code>,
 <code>xterm</code>, <code>eterm</code>, <code>aterm</code>, <code>terminal</code>, <code>konsole</code>, <code>vte</code>, <code>rxvt</code>, <code>gnome-terminal</code>. If none of the commands is found, the message will be simply output, so the <code>atd</code> will
@@ -79,7 +79,7 @@ Parameters :
     now + count time-unit
 </samp></pre>
 
-<p>The script&rsquo;s only functionality is scheduling a buzz. For scheduled job list manipulation use the <code>at</code>&rsquo;s utilities : <code>atq</code> for listing, <code>atrm</code> for revoking.</p>
+<p>The script’s only functionality is scheduling a buzz. For scheduled job list manipulation use the <code>at</code>’s utilities : <code>atq</code> for listing, <code>atrm</code> for revoking.</p>
 
 <p class="precaption icon-screen">sample output - <code>buzz.sh 18:45</code></p>
 
@@ -97,7 +97,7 @@ job 75 at Sat Aug 30 18:45:00 2008
 
 <p>But you could edit the order of preferred commands and the predefined message. Note that you can remove items from <code>commandlist</code>, but adding will not work.</p>
 
-<p class="precaption icon-file-text">buzz.sh - fragment with hardcoded configuration</p>
+<p class="precaption icon-file-script">buzz.sh - fragment with hardcoded configuration</p>
 
 <div class="highlight"><pre><code class="bash"><span class="c"># order of preferred commands</span>
 <span class="nv">commandlist</span><span class="o">=(</span> <span class="s1">&#39;xmessage&#39;</span> <span class="s1">&#39;Xdialog&#39;</span> <span class="s1">&#39;kdialog&#39;</span> <span class="s1">&#39;gdialog&#39;</span> <span class="s1">&#39;zenity&#39;</span> <span class="s1">&#39;yad&#39;</span> <span class="s1">&#39;gxmessage&#39;</span> <span class="s1">&#39;xterm&#39;</span> <span class="s1">&#39;eterm&#39;</span> <span class="s1">&#39;aterm&#39;</span> <span class="s1">&#39;terminal&#39;</span> <span class="s1">&#39;konsole&#39;</span> <span class="s1">&#39;vte&#39;</span> <span class="s1">&#39;rxvt&#39;</span> <span class="o">)</span>
@@ -114,8 +114,7 @@ job 75 at Sat Aug 30 18:45:00 2008
 <span class="s2"> *   --==[ \$( date +%H:%M:%S ) ]=--   *</span>
 
 <span class="s2">( Buzz was set at $( date +%H:%M:%S ). )&quot;</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <h2 id="versions">Versions</h2>
 
@@ -154,7 +153,7 @@ job 75 at Sat Aug 30 18:45:00 2008
 
 <h2 id="download">Download</h2>
 
-<p class="icon-directory">You can find the related files on GitHub in my <a href="http://github.com/feherke/Bash-script">Bash-script repository</a>&rsquo;s <a href="http://github.com/feherke/Bash-script/blob/master/buzz/">buzz directory</a> :</p>
+<p class="icon-directory">You can find the related files on GitHub in my <a href="http://github.com/feherke/Bash-script">Bash-script repository</a>’s <a href="http://github.com/feherke/Bash-script/blob/master/buzz/">buzz directory</a> :</p>
 
 <ul class="download">
   <li class="icon-file-script"><a href="http://github.com/feherke/Bash-script/blob/master/buzz/buzz.sh">buzz.sh</a> - script</li>
@@ -179,14 +178,16 @@ job 75 at Sat Aug 30 18:45:00 2008
       <li><a href="/artwork/icewm/" title="1 script">IceWM</a></li>
     </ul>
   </li>
-  <li><a href="/bash/" title="14 scripts">Bash</a></li>
+  <li><a href="/autohotkey/" title="1 script">AutoHotkey</a></li>
+  <li><a href="/bash/" title="15 scripts">Bash</a></li>
   <li><a href="/javascript/" title="0 script">JavaScript</a>
     <ul>
       <li><a href="/javascript/firegestures/" title="4 scripts">FireGestures</a></li>
+      <li><a href="/javascript/gadget/" title="1 script">Gadget</a></li>
       <li><a href="/javascript/greasemonkey/" title="7 scripts">Greasemonkey</a></li>
     </ul>
   </li>
-  <li><a href="/perl/" title="0 script">Perl</a>
+  <li><a href="/perl/" title="1 script">Perl</a>
     <ul>
       <li><a href="/perl/irssi/" title="3 scripts">Irssi</a></li>
     </ul>
@@ -203,13 +204,14 @@ job 75 at Sat Aug 30 18:45:00 2008
 
 <div id=tagcloud title="Tag cloud">
 <p><a href="/tag.html#BitlBee" title="1 script" style="font-size: 8pt">BitlBee</a>
-<a href="/tag.html#cleanup" title="3 scripts" style="font-size: 11pt">cleanup</a>
+<a href="/tag.html#cleanup" title="3 scripts" style="font-size: 8pt">cleanup</a>
 <a href="/tag.html#font" title="1 script" style="font-size: 8pt">font</a>
+<a href="/tag.html#frugalware" title="1 script" style="font-size: 8pt">frugalware</a>
 <a href="/tag.html#game" title="1 script" style="font-size: 8pt">game</a>
 <a href="/tag.html#media" title="1 script" style="font-size: 8pt">media</a>
-<a href="/tag.html#notification" title="3 scripts" style="font-size: 11pt">notification</a>
+<a href="/tag.html#notification" title="3 scripts" style="font-size: 8pt">notification</a>
 <a href="/tag.html#recovery" title="1 script" style="font-size: 8pt">recovery</a>
-<a href="/tag.html#search" title="2 scripts" style="font-size: 9pt">search</a>
+<a href="/tag.html#search" title="2 scripts" style="font-size: 8pt">search</a>
 <a href="/tag.html#theme" title="1 script" style="font-size: 8pt">theme</a>
 <a href="/tag.html#TipMaster" title="7 scripts" style="font-size: 18pt">TipMaster</a></p>
 
@@ -221,8 +223,8 @@ job 75 at Sat Aug 30 18:45:00 2008
 
 <ul>
 <li>Powered by <a href="http://ruby-lang.org/">Ruby</a> 1.9.2</li>
-<li>Generated by <a href="http://jekyllrb.com/">Jekyll</a> 0.11.2</li>
-<li>Processed by <a href="http://kramdown.rubyforge.org/">kramdown</a> 0.13.8</li>
+<li>Generated by <a href="http://jekyllrb.com/">Jekyll</a> 1.3.0</li>
+<li>Processed by <a href="http://kramdown.rubyforge.org/">kramdown</a> 1.2.0</li>
 </ul>
 
 <ul>
@@ -238,7 +240,7 @@ job 75 at Sat Aug 30 18:45:00 2008
 
 <ul>
 <li>Page <span title="buzz-sh">buzz-sh</span> last modified 2013-02-02.</li>
-<li>Copyright &copy; 2013, <a href="/about.html">Feherke</a></li>
+<li>Copyright &copy; 2013, <a href="/about.html">Fehérke</a></li>
 <li class=icon-cookie>Cookie not used</li>
 </ul>
 

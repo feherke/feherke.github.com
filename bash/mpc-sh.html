@@ -5,8 +5,8 @@
 <meta charset=UTF-8>
 <title>mpc.sh</title>
 <meta name=description content="Just a rudimental frontend for the most basic music playing functionalities.">
-<meta name=author content="Feherke">
-<meta name=generator content="Jekyll 0.11.2">
+<meta name=author content="Fehérke">
+<meta name=generator content="Jekyll 1.3.0">
 <!--[if IE]>
 <script src="/html5fordummies.js"></script>
 <![endif]-->
@@ -32,7 +32,7 @@
 </div>
 
 <div class=title>
-Feherke's GitHub Site == glue between Feherke's GitHub hosted projects
+Fehérke's GitHub Site == glue between Fehérke's GitHub hosted projects
 </div>
 
 </header>
@@ -44,7 +44,7 @@ Feherke's GitHub Site == glue between Feherke's GitHub hosted projects
 
 
 <div id=breadcrumb>
-<p><a href="/">Feherke&rsquo;s GitHub Site</a> / <a href="/bash/">Bash</a> / </p>
+<p><a href="/">Fehérke’s GitHub Site</a> / <a href="/bash/">Bash</a> / </p>
 
 </div>
 
@@ -71,7 +71,7 @@ client-server architecture. But I decided to not install, learn, run, maintain a
 
 <p>mpc.sh simply gets one key press and executes the <code>mpc</code> client passing the corresponding parameter :</p>
 
-<p class="precaption">sample output - <code>mpc.sh</code></p>
+<p class="precaption icon-screen">sample output - <code>mpc.sh</code></p>
 
 <pre><samp class="cli"><span class="y">[      no play in progress       ]</span>
 <span class="y">----------------------------------</span>
@@ -86,7 +86,7 @@ Of course, to be really handy I set the window manager to start it for a specifi
 
 <p>mpc.sh expects no command line parameters from the user. But it uses two special parameters when re-launching itself to display different interfaces :</p>
 
-<p class="precaption">sample output - <code>mpc.sh playlist</code></p>
+<p class="precaption icon-screen">sample output - <code>mpc.sh playlist</code></p>
 
 <pre><samp class="cli"><span class="y">a</span> At Work Channel
 <span class="y">b</span> Classical King FM
@@ -104,7 +104,7 @@ current playlist : <span class="r">4</span> entries
 load : a..z replace, A..Z append
 </samp></pre>
 
-<p class="precaption">sample output - <code>mpc.sh statinfo</code></p>
+<p class="precaption icon-screen">sample output - <code>mpc.sh statinfo</code></p>
 
 <pre><samp class="cli">mpd version     <span class="r">:</span> <span class="y">0.16.0</span>
 mpc version     <span class="r">:</span> <span class="y">0.20</span>
@@ -174,7 +174,7 @@ DB Play Time    <span class="r">:</span> <span class="y">#####</span>
     </tr>
     <tr>
       <td style="text-align: center"><kbd>a</kbd></td>
-      <td>Jumps back to current song&rsquo;s beginning.</td>
+      <td>Jumps back to current song’s beginning.</td>
       <td><code>seek</code></td>
     </tr>
     <tr>
@@ -312,16 +312,15 @@ DB Play Time    <span class="r">:</span> <span class="y">#####</span>
 
 <h2 id="plans">Plans</h2>
 
-<ul>
-  <li>A few minor configuration pieces for the terminal would be nice.</li>
-  <li><del><span>( Remove the playlist limitation, if I will have a good idea for it. )</span></del></li>
-  <li>Remove the playlist limitation, if I will have a good idea for it.</li>
-  <li>Implement some simple sticker operations.</li>
+<ul class="todo">
+  <li class="pending">A few minor configuration pieces for the terminal would be nice.</li>
+  <li class="done">Remove the playlist limitation, if I will have a good idea for it.</li>
+  <li class="pending">Implement some simple sticker operations.</li>
 </ul>
 
 <h2 id="download">Download</h2>
 
-<p class="icon-directory">You can find the related files on GitHub in my <a href="http://github.com/feherke/Bash-script">Bash-script repository</a>&rsquo;s <a href="http://github.com/feherke/Bash-script/blob/master/mpc/">mpc directory</a> :</p>
+<p class="icon-directory">You can find the related files on GitHub in my <a href="http://github.com/feherke/Bash-script">Bash-script repository</a>’s <a href="http://github.com/feherke/Bash-script/blob/master/mpc/">mpc directory</a> :</p>
 
 <ul class="download">
   <li class="icon-file-script"><a href="http://github.com/feherke/Bash-script/blob/master/mpc/mpc.sh">mpc.sh</a> - script</li>
@@ -346,14 +345,16 @@ DB Play Time    <span class="r">:</span> <span class="y">#####</span>
       <li><a href="/artwork/icewm/" title="1 script">IceWM</a></li>
     </ul>
   </li>
-  <li><a href="/bash/" title="14 scripts">Bash</a></li>
+  <li><a href="/autohotkey/" title="1 script">AutoHotkey</a></li>
+  <li><a href="/bash/" title="15 scripts">Bash</a></li>
   <li><a href="/javascript/" title="0 script">JavaScript</a>
     <ul>
       <li><a href="/javascript/firegestures/" title="4 scripts">FireGestures</a></li>
+      <li><a href="/javascript/gadget/" title="1 script">Gadget</a></li>
       <li><a href="/javascript/greasemonkey/" title="7 scripts">Greasemonkey</a></li>
     </ul>
   </li>
-  <li><a href="/perl/" title="0 script">Perl</a>
+  <li><a href="/perl/" title="1 script">Perl</a>
     <ul>
       <li><a href="/perl/irssi/" title="3 scripts">Irssi</a></li>
     </ul>
@@ -370,13 +371,14 @@ DB Play Time    <span class="r">:</span> <span class="y">#####</span>
 
 <div id=tagcloud title="Tag cloud">
 <p><a href="/tag.html#BitlBee" title="1 script" style="font-size: 8pt">BitlBee</a>
-<a href="/tag.html#cleanup" title="3 scripts" style="font-size: 11pt">cleanup</a>
+<a href="/tag.html#cleanup" title="3 scripts" style="font-size: 8pt">cleanup</a>
 <a href="/tag.html#font" title="1 script" style="font-size: 8pt">font</a>
+<a href="/tag.html#frugalware" title="1 script" style="font-size: 8pt">frugalware</a>
 <a href="/tag.html#game" title="1 script" style="font-size: 8pt">game</a>
 <a href="/tag.html#media" title="1 script" style="font-size: 8pt">media</a>
-<a href="/tag.html#notification" title="3 scripts" style="font-size: 11pt">notification</a>
+<a href="/tag.html#notification" title="3 scripts" style="font-size: 8pt">notification</a>
 <a href="/tag.html#recovery" title="1 script" style="font-size: 8pt">recovery</a>
-<a href="/tag.html#search" title="2 scripts" style="font-size: 9pt">search</a>
+<a href="/tag.html#search" title="2 scripts" style="font-size: 8pt">search</a>
 <a href="/tag.html#theme" title="1 script" style="font-size: 8pt">theme</a>
 <a href="/tag.html#TipMaster" title="7 scripts" style="font-size: 18pt">TipMaster</a></p>
 
@@ -388,8 +390,8 @@ DB Play Time    <span class="r">:</span> <span class="y">#####</span>
 
 <ul>
 <li>Powered by <a href="http://ruby-lang.org/">Ruby</a> 1.9.2</li>
-<li>Generated by <a href="http://jekyllrb.com/">Jekyll</a> 0.11.2</li>
-<li>Processed by <a href="http://kramdown.rubyforge.org/">kramdown</a> 0.13.8</li>
+<li>Generated by <a href="http://jekyllrb.com/">Jekyll</a> 1.3.0</li>
+<li>Processed by <a href="http://kramdown.rubyforge.org/">kramdown</a> 1.2.0</li>
 </ul>
 
 <ul>
@@ -405,7 +407,7 @@ DB Play Time    <span class="r">:</span> <span class="y">#####</span>
 
 <ul>
 <li>Page <span title="mpc-sh">mpc-sh</span> last modified 2011-05-28.</li>
-<li>Copyright &copy; 2013, <a href="/about.html">Feherke</a></li>
+<li>Copyright &copy; 2013, <a href="/about.html">Fehérke</a></li>
 <li class=icon-cookie>Cookie not used</li>
 </ul>
 

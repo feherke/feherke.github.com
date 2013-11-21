@@ -3,15 +3,33 @@
 
 <head>
 <meta charset=UTF-8>
-<title>TipMaster - Time Ago</title>
-<meta name=description content="Adds relative approximate equivalent after dates.">
-<meta name=keyword content="time ago">
+<title>CPU Graph</title>
+<meta name=description content="Highlights the OP's and own messages in a thread.">
+<meta name=keyword content="highlight, author, member, handle, own, original, op">
 <meta name=author content="Fehérke">
 <meta name=generator content="Jekyll 1.3.0">
 <!--[if IE]>
 <script src="/html5fordummies.js"></script>
 <![endif]-->
 <link rel=stylesheet href="/style.css">
+<style>
+.cpu, .ram, .disk {
+  color: yellow;
+  text-shadow: white -1px 0, olive 1px 0;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+.cpu {
+  background-color: maroon;
+}
+.ram {
+  background-color: green;
+}
+.disk {
+  background-color: navy;
+}
+
+</style>
 <link rel=icon href="/favicon.ico">
 </head>
 
@@ -36,76 +54,58 @@ Fehérke's GitHub Site == glue between Fehérke's GitHub hosted projects
 
 
 <div id=breadcrumb>
-<p><a href="/">Fehérke’s GitHub Site</a> / <a href="/javascript/">JavaScript</a> / <a href="/javascript/greasemonkey/">Greasemonkey</a> / </p>
+<p><a href="/">Fehérke’s GitHub Site</a> / <a href="/javascript/">JavaScript</a> / <a href="/javascript/gadget/">Gadget</a> / </p>
 
 </div>
 
 
-
-<div id=taglist class=icon-tag>
-Tag :
-<a href="/tag.html#TipMaster">TipMaster</a>
-</div>
 
 
 <div class=clear></div>
 
-<h1 id="tipmaster---time-ago">TipMaster - Time Ago</h1>
+<h1 id="cpu-graph">CPU Graph</h1>
 
-<p>Improves the <a href="http://tipmaster.com/">TipMaster</a>’s forums, <a href="http://tek-tips.com/">Tek-Tips</a> and <a href="http://eng-tips.com/">Eng-Tips</a>, by adding a relative fuzzy explanation
-after dates on the following pages :</p>
+<p>There is CPU Meter installed by default. It shows the current CPU usage level. I
+never understood why such tools are written. If you look at CPU Meter a second
+after the CPU-expansive process terminated, you can’t find out how high the peak
+was.</p>
 
-<ul>
-  <li>Thread list</li>
-  <li>Thread</li>
-  <li>FAQ list</li>
-  <li>MVP list</li>
-  <li>Search result</li>
-  <li>Started thread list</li>
-  <li>Replied to thread list</li>
-</ul>
-
-<p>The script does its best to correctly calculate the time. On the thread pages both date and time are specified, but on the other pages only the date. When time is known,
-the script calculates with the precision of minutes otherwise with days.</p>
-
-<p>On the thread pages the current server time specified in tooltips is used, otherwise is calculated knowing that TipMaster servers are located at GMT-5. An alternative
-would be to use <code>document.lastModified</code> to avoid calculations exposed to errors due to unsynchronized daylight saving times around the world. <code>document.lastModified</code>
-will certainly contain wrong data when the pages are reused from the browser cache, but as far as I observed, that happens only when the browser restores the previous
-session.</p>
+<p>So I wrote this little gadget, which displays the CPU usage similar to IceWM’s
+tray app.</p>
 
 <h2 id="screenshot">Screenshot</h2>
 
-<p class="precaption icon-screenshot">sample rendering <strong>without</strong> TipMaster - Time Ago</p>
+<p class="precaption icon-screenshot">CPU Graph</p>
 
-<p><img src="tipmaster-time-ago-before.png" alt="screenshot before applying the script" /></p>
-
-<p class="precaption icon-screenshot">sample rendering <strong>with</strong> TipMaster - Time Ago</p>
-
-<p><img src="tipmaster-time-ago-after.png" alt="screenshot after applying the script" /></p>
+<p><img src="cpu-graph.png" alt="screenshot" /></p>
 
 <h2 id="usage">Usage</h2>
 
-<p>None. There is nothing interactive.</p>
+<p>Just look and enjoy.</p>
+
+<p>The displayed areas :</p>
+
+<ul>
+  <li>CPU ( <span class="cpu">red</span> ) – updated twice each second</li>
+  <li>RAM ( <span class="ram">green</span> ) – updated each 3 seconds</li>
+  <li>Disk ( <span class="disk">blue</span> ) – updated each 3 minutes</li>
+</ul>
 
 <h2 id="configuration">Configuration</h2>
 
 <p>Configuration not really supported.</p>
 
-<p>But you could add ( or remove ) some of the time amounts declared in the <code>unit</code> array.</p>
-
-<p>This script may clash with other Greasemonkey scripts, so you may have to adjust the execution order in your browser :</p>
-
-<ul>
-  <li><a href="tipmaster-no-old-new.html">TipMaster - No Old New</a> parses the post time, so the relative time added by this script inside the same element will make the parsing fail.
-Set this script to run <em>after</em> TipMaster - No Old New.</li>
-</ul>
-
 <h2 id="versions">Versions</h2>
 
 <ul class="changelog">
-  <li>0.0 - February 2012
+  <li>0.0 - February 2013
     <ul>
       <li class="added">Initial release.</li>
+    </ul>
+  </li>
+  <li>0.1 - March 2013
+    <ul>
+      <li class="changed">Update the areas with different frequency.</li>
     </ul>
   </li>
 </ul>
@@ -113,16 +113,20 @@ Set this script to run <em>after</em> TipMaster - No Old New.</li>
 <h2 id="plans">Plans</h2>
 
 <ul class="todo">
-  <li class="pending">If other pages with dates are found, make the script to work on those too.</li>
-  <li class="pending">Maybe add an exact alternative of the original date in a tooltip.</li>
+  <li class="pending">A large size view, where CPU cores and disk partitions to be
+displayed separately.</li>
+  <li class="pending">Configuration to set the area sizes and update frequencies.</li>
 </ul>
 
 <h2 id="download">Download</h2>
 
-<p class="icon-directory">You can find the related files on GitHub in my <a href="http://github.com/feherke/Greasemonkey-script">Greasemonkey-script repository</a>’s <a href="http://github.com/feherke/Greasemonkey-script/blob/master/tipmaster-time-ago/">tipmaster-time-ago directory</a> :</p>
+<p class="icon-directory">You can find the related files on GitHub in my <a href="http://github.com/feherke/Desktop-gadget">Desktop-gadget repository</a>’s <a href="http://github.com/feherke/Desktop-gadget/blob/master/CPUGraph.Gadget/">CPUGraph.Gadget directory</a> :</p>
 
 <ul class="download">
-  <li class="icon-file-script"><a href="http://github.com/feherke/Greasemonkey-script/blob/master/tipmaster-time-ago/TipMaster_-_Time_Ago.user.js">TipMaster_-_Time_Ago.user.js</a> - script</li>
+  <li class="icon-file-css"><a href="http://github.com/feherke/Desktop-gadget/blob/master/CPUGraph.Gadget/cpugraph.css">cpugraph.css</a> - style</li>
+  <li class="icon-file-html"><a href="http://github.com/feherke/Desktop-gadget/blob/master/CPUGraph.Gadget/cpugraph.html">cpugraph.html</a> - document</li>
+  <li class="icon-file-script"><a href="http://github.com/feherke/Desktop-gadget/blob/master/CPUGraph.Gadget/cpugraph.js">cpugraph.js</a> - script</li>
+  <li class="icon-file-html"><a href="http://github.com/feherke/Desktop-gadget/blob/master/CPUGraph.Gadget/gadget.xml">gadget.xml</a> - data</li>
 </ul>
 
 
@@ -203,7 +207,7 @@ Set this script to run <em>after</em> TipMaster - No Old New.</li>
 </ul>
 
 <ul>
-<li>Page <span title="tipmaster-time-ago">tipmaster-time-ago</span> last modified 2012-02-16.</li>
+<li>Page <span title="cpu-graph">cpu-graph</span> last modified 2013-11-17.</li>
 <li>Copyright &copy; 2013, <a href="/about.html">Fehérke</a></li>
 <li class=icon-cookie>Cookie not used</li>
 </ul>

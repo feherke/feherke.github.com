@@ -1,9 +1,9 @@
 
 Team
 ----
-  Script developer   : Feherke
-  Content author     : Feherke
-  Site webmaster     : Feherke
+  Script developer   : Fehérke
+  Content author     : Fehérke
+  Site webmaster     : Fehérke
   Graphic designer   : uhm, no, that is too embarassing
 
 Site

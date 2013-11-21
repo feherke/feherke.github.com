@@ -5,8 +5,8 @@
 <meta charset=UTF-8>
 <title>killrenegade.sh</title>
 <meta name=description content="Kill the processes with given name which use to much resources.">
-<meta name=author content="Feherke">
-<meta name=generator content="Jekyll 0.11.2">
+<meta name=author content="Fehérke">
+<meta name=generator content="Jekyll 1.3.0">
 <!--[if IE]>
 <script src="/html5fordummies.js"></script>
 <![endif]-->
@@ -23,7 +23,7 @@
 </div>
 
 <div class=title>
-Feherke's GitHub Site == glue between Feherke's GitHub hosted projects
+Fehérke's GitHub Site == glue between Fehérke's GitHub hosted projects
 </div>
 
 </header>
@@ -35,7 +35,7 @@ Feherke's GitHub Site == glue between Feherke's GitHub hosted projects
 
 
 <div id=breadcrumb>
-<p><a href="/">Feherke&rsquo;s GitHub Site</a> / <a href="/bash/">Bash</a> / </p>
+<p><a href="/">Fehérke’s GitHub Site</a> / <a href="/bash/">Bash</a> / </p>
 
 </div>
 
@@ -60,7 +60,7 @@ daily incident even without closing the browser. So I needed something to check 
 
 <p>Was designed to run daemonically, so is not interactive. The hunting is controlled through a setting file, and the activity is logged.</p>
 
-<p class="precaption">sample output - <code>killrenegade.sh --help</code></p>
+<p class="precaption icon-screen">sample output - <code>killrenegade.sh --help</code></p>
 
 <pre><samp class="cli">killrenegade   version 1.2   august 2008   written by Feherke
 kill the processes with given name which use to much resources
@@ -73,7 +73,7 @@ Parameters :
 
 <p>By default killrenegade.sh is not too conversational :</p>
 
-<p class="precaption">sample output - <code>killrenegade.sh</code></p>
+<p class="precaption icon-screen">sample output - <code>killrenegade.sh</code></p>
 
 <pre><samp class="cli">killrenegade   version 1.1   july 2005   written by Feherke
 reading settings... ok, 3 sections found
@@ -82,7 +82,7 @@ running as feherke, restrictions applied
 started on Mon Jul 25 13:09:18 EEST 2005, Ctrl-C to stop...
 </samp></pre>
 
-<p>Anyway, it&rsquo;s more then killstatistic.awk&rsquo;s output. Which spokes none but works well. Transforms a 10000 record log of 15 users, 20 commands and 31 signals in bit more
+<p>Anyway, it’s more then killstatistic.awk’s output. Which spokes none but works well. Transforms a 10000 record log of 15 users, 20 commands and 31 signals in bit more
 then 5 seconds. During this, reads 1 file of 0.5 Mbytes and creates 512 files of totally 8 Mbytes. ( And this is the reason why I do not post a statistic sample. )</p>
 
 <h2 id="configuration">Configuration</h2>
@@ -97,55 +97,55 @@ then 5 seconds. During this, reads 1 file of 0.5 Mbytes and creates 512 files of
   <li>has <a href="http://en.wikipedia.org/wiki/INI_file">INI</a> format</li>
 </ul>
 
-<p class="precaption">killrenegade.ini - sample configuration</p>
+<p class="precaption icon-file-config">killrenegade.ini - sample configuration</p>
 
-<div class="highlight"><pre><code class="ini"><span class="c"># killrenegade   version 1.1   july 2005   written by Feherke</span>
-<span class="c"># kill the processes with given name which use to much resources</span>
+<div class="highlight"><pre><code class="ini"><span class="c1"># killrenegade   version 1.1   july 2005   written by Feherke</span>
+<span class="c1"># kill the processes with given name which use to much resources</span>
 
-<span class="c"># general options</span>
+<span class="c1"># general options</span>
 <span class="k">[general]</span>
-<span class="c"># plain text log file of the kills</span>
-<span class="c"># empty means no log</span>
+<span class="c1"># plain text log file of the kills</span>
+<span class="c1"># empty means no log</span>
 <span class="na">logfile</span><span class="o">=</span><span class="s">killrenegade.log</span>
-<span class="c"># directory for HTML version of the kill log</span>
-<span class="c"># empty means no statistics</span>
+<span class="c1"># directory for HTML version of the kill log</span>
+<span class="c1"># empty means no statistics</span>
 <span class="na">htmldir</span><span class="o">=</span><span class="s">public_html/killrenegade</span>
-<span class="c"># rebuild the HTML statistics after this time</span>
-<span class="c"># units : seconds</span>
+<span class="c1"># rebuild the HTML statistics after this time</span>
+<span class="c1"># units : seconds</span>
 <span class="na">build</span><span class="o">=</span><span class="s">30</span>
 
-<span class="c"># default settings for values not set in sections</span>
+<span class="c1"># default settings for values not set in sections</span>
 <span class="k">[default]</span>
-<span class="c"># command name to kill</span>
-<span class="c"># can not be empty</span>
-<span class="c"># default : none</span>
+<span class="c1"># command name to kill</span>
+<span class="c1"># can not be empty</span>
+<span class="c1"># default : none</span>
 <span class="na">command</span><span class="o">=</span>
-<span class="c"># list of users distinguished from others</span>
-<span class="c"># dash ( &#39;-&#39; ) means empty list</span>
-<span class="c"># separator : space</span>
-<span class="c"># default : root</span>
+<span class="c1"># list of users distinguished from others</span>
+<span class="c1"># dash ( &#39;-&#39; ) means empty list</span>
+<span class="c1"># separator : space</span>
+<span class="c1"># default : root</span>
 <span class="na">user</span><span class="o">=</span><span class="s">root</span>
-<span class="c"># ownership relation of users and processes</span>
-<span class="c">#  yes : kill only processes owned by users is list</span>
-<span class="c">#  no : do not kill processes owned by users in list</span>
-<span class="c"># default : no</span>
+<span class="c1"># ownership relation of users and processes</span>
+<span class="c1">#  yes : kill only processes owned by users is list</span>
+<span class="c1">#  no : do not kill processes owned by users in list</span>
+<span class="c1"># default : no</span>
 <span class="na">belong</span><span class="o">=</span><span class="s">no</span>
-<span class="c"># percentage of processor used</span>
-<span class="c"># type : integer</span>
-<span class="c"># default : 10</span>
+<span class="c1"># percentage of processor used</span>
+<span class="c1"># type : integer</span>
+<span class="c1"># default : 10</span>
 <span class="na">processor</span><span class="o">=</span><span class="s">10</span>
-<span class="c"># percentage of memory used</span>
-<span class="c"># type : integer</span>
-<span class="c"># default : 25</span>
+<span class="c1"># percentage of memory used</span>
+<span class="c1"># type : integer</span>
+<span class="c1"># default : 25</span>
 <span class="na">memory</span><span class="o">=</span><span class="s">25</span>
-<span class="c"># list of signals to send to the processes</span>
-<span class="c"># separator : space</span>
-<span class="c"># type : number or name</span>
-<span class="c"># default : SIGTERM</span>
+<span class="c1"># list of signals to send to the processes</span>
+<span class="c1"># separator : space</span>
+<span class="c1"># type : number or name</span>
+<span class="c1"># default : SIGTERM</span>
 <span class="na">signal</span><span class="o">=</span><span class="s">SIGTERM</span>
-<span class="c"># sleeping interval between checks</span>
-<span class="c"># units : seconds</span>
-<span class="c"># default : 60</span>
+<span class="c1"># sleeping interval between checks</span>
+<span class="c1"># units : seconds</span>
+<span class="c1"># default : 60</span>
 <span class="na">interval</span><span class="o">=</span><span class="s">60</span>
 
 <span class="k">[omw]</span>
@@ -154,8 +154,7 @@ then 5 seconds. During this, reads 1 file of 0.5 Mbytes and creates 512 files of
 <span class="na">memory</span><span class="o">=</span><span class="s">30</span>
 <span class="na">signal</span><span class="o">=</span><span class="s">SIGKILL</span>
 <span class="na">interval</span><span class="o">=</span><span class="s">3</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <h2 id="versions">Versions</h2>
 
@@ -181,13 +180,13 @@ then 5 seconds. During this, reads 1 file of 0.5 Mbytes and creates 512 files of
 
 <h2 id="plans">Plans</h2>
 
-<ul>
-  <li>Maybe a clemency option, to not kill processes the first time they are caught over limit.</li>
+<ul class="todo">
+  <li class="pending">Maybe a clemency option, to not kill processes the first time they are caught over limit.</li>
 </ul>
 
 <h2 id="download">Download</h2>
 
-<p class="icon-directory">You can find the related files on GitHub in my <a href="http://github.com/feherke/Bash-script">Bash-script repository</a>&rsquo;s <a href="http://github.com/feherke/Bash-script/blob/master/killrenegade/">killrenegade directory</a> :</p>
+<p class="icon-directory">You can find the related files on GitHub in my <a href="http://github.com/feherke/Bash-script">Bash-script repository</a>’s <a href="http://github.com/feherke/Bash-script/blob/master/killrenegade/">killrenegade directory</a> :</p>
 
 <ul class="download">
   <li class="icon-file-script"><a href="http://github.com/feherke/Bash-script/blob/master/killrenegade/killrenegade.sh">killrenegade.sh</a> - script</li>
@@ -214,14 +213,16 @@ then 5 seconds. During this, reads 1 file of 0.5 Mbytes and creates 512 files of
       <li><a href="/artwork/icewm/" title="1 script">IceWM</a></li>
     </ul>
   </li>
-  <li><a href="/bash/" title="14 scripts">Bash</a></li>
+  <li><a href="/autohotkey/" title="1 script">AutoHotkey</a></li>
+  <li><a href="/bash/" title="15 scripts">Bash</a></li>
   <li><a href="/javascript/" title="0 script">JavaScript</a>
     <ul>
       <li><a href="/javascript/firegestures/" title="4 scripts">FireGestures</a></li>
+      <li><a href="/javascript/gadget/" title="1 script">Gadget</a></li>
       <li><a href="/javascript/greasemonkey/" title="7 scripts">Greasemonkey</a></li>
     </ul>
   </li>
-  <li><a href="/perl/" title="0 script">Perl</a>
+  <li><a href="/perl/" title="1 script">Perl</a>
     <ul>
       <li><a href="/perl/irssi/" title="3 scripts">Irssi</a></li>
     </ul>
@@ -238,13 +239,14 @@ then 5 seconds. During this, reads 1 file of 0.5 Mbytes and creates 512 files of
 
 <div id=tagcloud title="Tag cloud">
 <p><a href="/tag.html#BitlBee" title="1 script" style="font-size: 8pt">BitlBee</a>
-<a href="/tag.html#cleanup" title="3 scripts" style="font-size: 11pt">cleanup</a>
+<a href="/tag.html#cleanup" title="3 scripts" style="font-size: 8pt">cleanup</a>
 <a href="/tag.html#font" title="1 script" style="font-size: 8pt">font</a>
+<a href="/tag.html#frugalware" title="1 script" style="font-size: 8pt">frugalware</a>
 <a href="/tag.html#game" title="1 script" style="font-size: 8pt">game</a>
 <a href="/tag.html#media" title="1 script" style="font-size: 8pt">media</a>
-<a href="/tag.html#notification" title="3 scripts" style="font-size: 11pt">notification</a>
+<a href="/tag.html#notification" title="3 scripts" style="font-size: 8pt">notification</a>
 <a href="/tag.html#recovery" title="1 script" style="font-size: 8pt">recovery</a>
-<a href="/tag.html#search" title="2 scripts" style="font-size: 9pt">search</a>
+<a href="/tag.html#search" title="2 scripts" style="font-size: 8pt">search</a>
 <a href="/tag.html#theme" title="1 script" style="font-size: 8pt">theme</a>
 <a href="/tag.html#TipMaster" title="7 scripts" style="font-size: 18pt">TipMaster</a></p>
 
@@ -256,8 +258,8 @@ then 5 seconds. During this, reads 1 file of 0.5 Mbytes and creates 512 files of
 
 <ul>
 <li>Powered by <a href="http://ruby-lang.org/">Ruby</a> 1.9.2</li>
-<li>Generated by <a href="http://jekyllrb.com/">Jekyll</a> 0.11.2</li>
-<li>Processed by <a href="http://kramdown.rubyforge.org/">kramdown</a> 0.13.8</li>
+<li>Generated by <a href="http://jekyllrb.com/">Jekyll</a> 1.3.0</li>
+<li>Processed by <a href="http://kramdown.rubyforge.org/">kramdown</a> 1.2.0</li>
 </ul>
 
 <ul>
@@ -273,7 +275,7 @@ then 5 seconds. During this, reads 1 file of 0.5 Mbytes and creates 512 files of
 
 <ul>
 <li>Page <span title="killrenegade-sh">killrenegade-sh</span> last modified 2005-07-24.</li>
-<li>Copyright &copy; 2013, <a href="/about.html">Feherke</a></li>
+<li>Copyright &copy; 2013, <a href="/about.html">Fehérke</a></li>
 <li class=icon-cookie>Cookie not used</li>
 </ul>
 

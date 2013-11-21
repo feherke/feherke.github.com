@@ -2,288 +2,324 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>http://feherke.github.com/bash/buzz-sh.html</loc>
+    <loc>http://feherke.github.io/bash/buzz-sh.html</loc>
     <lastmod>2013-02-02</lastmod>
     <priority>0.1</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/bash/seq-sh.html</loc>
+    <loc>http://feherke.github.io/bash/seq-sh.html</loc>
     <lastmod>2004-12-25</lastmod>
     <priority>0.1</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/bash/minesweeper-sh.html</loc>
+    <loc>http://feherke.github.io/bash/minesweeper-sh.html</loc>
     <lastmod>2005-12-27</lastmod>
     <priority>0.1</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/bash/cookieclean-sh.html</loc>
+    <loc>http://feherke.github.io/bash/cookieclean-sh.html</loc>
     <lastmod>2008-09-05</lastmod>
     <priority>0.1</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/bash/mpc-sh.html</loc>
+    <loc>http://feherke.github.io/bash/mpc-sh.html</loc>
     <lastmod>2011-05-28</lastmod>
     <priority>0.1</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/bash/onceaday-sh.html</loc>
+    <loc>http://feherke.github.io/bash/onceaday-sh.html</loc>
     <lastmod>2008-08-30</lastmod>
     <priority>0.1</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/bash/mksfx-sh.html</loc>
+    <loc>http://feherke.github.io/bash/mksfx-sh.html</loc>
     <lastmod>2005-07-07</lastmod>
     <priority>0.1</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/bash/killrenegade-sh.html</loc>
+    <loc>http://feherke.github.io/bash/killrenegade-sh.html</loc>
     <lastmod>2005-07-24</lastmod>
     <priority>0.1</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/bash/termclock-sh.html</loc>
+    <loc>http://feherke.github.io/bash/pacman-sh.html</loc>
+    <lastmod>2013-11-17</lastmod>
+    <priority>0.1</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.io/bash/termclock-sh.html</loc>
     <lastmod>2008-09-10</lastmod>
     <priority>0.1</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/bash/taborder-sh.html</loc>
+    <loc>http://feherke.github.io/bash/taborder-sh.html</loc>
     <lastmod>2010-09-20</lastmod>
     <priority>0.1</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/bash/lyndex-sh.html</loc>
+    <loc>http://feherke.github.io/bash/lyndex-sh.html</loc>
     <lastmod>2005-10-05</lastmod>
     <priority>0.1</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/bash/psqall-sh.html</loc>
+    <loc>http://feherke.github.io/bash/psqall-sh.html</loc>
     <lastmod>2012-11-13</lastmod>
     <priority>0.1</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/bash/</loc>
+    <loc>http://feherke.github.io/bash/</loc>
     <lastmod>2008-12-21</lastmod>
     <priority>0.2</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/bash/duplicated-sh.html</loc>
+    <loc>http://feherke.github.io/bash/duplicated-sh.html</loc>
     <lastmod>2007-03-26</lastmod>
     <priority>0.1</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/bash/symlink_ntfs-sh.html</loc>
+    <loc>http://feherke.github.io/bash/symlink_ntfs-sh.html</loc>
     <lastmod>2011-05-01</lastmod>
     <priority>0.1</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/perl/irssi/osd-c.html</loc>
+    <loc>http://feherke.github.io/perl/irssi/osd-c.html</loc>
     <lastmod>2012-02-21</lastmod>
     <priority>0.1</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/perl/irssi/bitlbee-catch-command.html</loc>
+    <loc>http://feherke.github.io/perl/irssi/bitlbee-catch-command.html</loc>
     <lastmod>2012-02-24</lastmod>
     <priority>0.1</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/perl/irssi/man.html</loc>
+    <loc>http://feherke.github.io/perl/irssi/man.html</loc>
     <lastmod>2012-02-21</lastmod>
     <priority>0.1</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/perl/irssi/</loc>
+    <loc>http://feherke.github.io/perl/irssi/</loc>
     <lastmod>2012-02-21</lastmod>
     <priority>0.2</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/perl/</loc>
-    <lastmod>2012-02-21</lastmod>
+    <loc>http://feherke.github.io/perl/</loc>
+    <lastmod>2013-11-17</lastmod>
     <priority>0.2</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/ruby/jekyll/debug.html</loc>
-    <lastmod>2012-02-20</lastmod>
+    <loc>http://feherke.github.io/perl/astrocal.html</loc>
+    <lastmod>2013-11-17</lastmod>
     <priority>0.1</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/ruby/jekyll/</loc>
+    <loc>http://feherke.github.io/ruby/jekyll/debug.html</loc>
+    <lastmod>2013-11-17</lastmod>
+    <priority>0.1</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.io/ruby/jekyll/</loc>
     <lastmod>2012-02-09</lastmod>
     <priority>0.2</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/ruby/jekyll/version.html</loc>
+    <loc>http://feherke.github.io/ruby/jekyll/version.html</loc>
     <lastmod>2012-02-20</lastmod>
     <priority>0.1</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/ruby/</loc>
+    <loc>http://feherke.github.io/ruby/</loc>
     <lastmod>2012-02-09</lastmod>
     <priority>0.2</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/sitemap.xml</loc>
+    <loc>http://feherke.github.io/sitemap.xml</loc>
     <priority>0.1</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/about.html</loc>
+    <loc>http://feherke.github.io/autohotkey/</loc>
+    <lastmod>2013-11-17</lastmod>
+    <priority>0.2</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.io/autohotkey/key-compose.html</loc>
+    <lastmod>2013-11-17</lastmod>
+    <priority>0.1</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.io/about.html</loc>
     <lastmod>2012-02-04</lastmod>
     <priority>0.1</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/javascript/firegestures/popup-change-protocol.html</loc>
+    <loc>http://feherke.github.io/javascript/firegestures/popup-change-protocol.html</loc>
     <lastmod>2012-02-07</lastmod>
     <priority>0.1</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/javascript/firegestures/1-click-2-search-4-word.html</loc>
+    <loc>http://feherke.github.io/javascript/firegestures/1-click-2-search-4-word.html</loc>
     <lastmod>2012-02-02</lastmod>
     <priority>0.1</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/javascript/firegestures/change-http-https.html</loc>
+    <loc>http://feherke.github.io/javascript/firegestures/change-http-https.html</loc>
     <lastmod>2011-05-07</lastmod>
     <priority>0.1</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/javascript/firegestures/popup-hybrid-copy-url-and-title.html</loc>
+    <loc>http://feherke.github.io/javascript/firegestures/popup-hybrid-copy-url-and-title.html</loc>
     <lastmod>2011-05-08</lastmod>
     <priority>0.1</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/javascript/firegestures/</loc>
+    <loc>http://feherke.github.io/javascript/firegestures/</loc>
     <lastmod>2011-05-07</lastmod>
     <priority>0.2</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/javascript/greasemonkey/tipmaster-profile-card.html</loc>
+    <loc>http://feherke.github.io/javascript/greasemonkey/tipmaster-profile-card.html</loc>
     <lastmod>2013-03-29</lastmod>
     <priority>0.1</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/javascript/greasemonkey/tipmaster-time-ago.html</loc>
+    <loc>http://feherke.github.io/javascript/greasemonkey/tipmaster-time-ago.html</loc>
     <lastmod>2012-02-16</lastmod>
     <priority>0.1</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/javascript/greasemonkey/tipmaster-reply-with-quote.html</loc>
+    <loc>http://feherke.github.io/javascript/greasemonkey/tipmaster-reply-with-quote.html</loc>
     <lastmod>2012-10-09</lastmod>
     <priority>0.1</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/javascript/greasemonkey/tipmaster-show-hide-spoiler.html</loc>
+    <loc>http://feherke.github.io/javascript/greasemonkey/tipmaster-show-hide-spoiler.html</loc>
     <lastmod>2012-03-07</lastmod>
     <priority>0.1</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/javascript/greasemonkey/tipmaster-author-highlight.html</loc>
+    <loc>http://feherke.github.io/javascript/greasemonkey/tipmaster-author-highlight.html</loc>
     <lastmod>2012-03-24</lastmod>
     <priority>0.1</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/javascript/greasemonkey/tipmaster-markitup-setting.html</loc>
-    <lastmod>2012-03-24</lastmod>
+    <loc>http://feherke.github.io/javascript/greasemonkey/tipmaster-markitup-setting.html</loc>
+    <lastmod>2012-04-28</lastmod>
     <priority>0.1</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/javascript/greasemonkey/</loc>
+    <loc>http://feherke.github.io/javascript/greasemonkey/</loc>
     <lastmod>2011-05-07</lastmod>
     <priority>0.2</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/javascript/greasemonkey/tipmaster-no-old-new.html</loc>
+    <loc>http://feherke.github.io/javascript/greasemonkey/tipmaster-no-old-new.html</loc>
     <lastmod>2013-03-27</lastmod>
     <priority>0.1</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/javascript/</loc>
-    <lastmod>2012-02-07</lastmod>
+    <loc>http://feherke.github.io/javascript/gadget/cpu-graph.html</loc>
+    <lastmod>2013-11-17</lastmod>
+    <priority>0.1</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.io/javascript/gadget/</loc>
+    <lastmod>2013-11-17</lastmod>
     <priority>0.2</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/tag.html</loc>
+    <loc>http://feherke.github.io/javascript/</loc>
+    <lastmod>2013-11-17</lastmod>
+    <priority>0.2</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.io/tag.html</loc>
     <lastmod>2012-02-04</lastmod>
     <priority>0.1</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/404.html</loc>
+    <loc>http://feherke.github.io/404.html</loc>
     <lastmod>2012-04-20</lastmod>
     <priority>0.1</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/</loc>
-    <lastmod>2012-02-07</lastmod>
+    <loc>http://feherke.github.io/</loc>
+    <lastmod>2013-11-17</lastmod>
     <priority>0.2</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/artwork/font/</loc>
+    <loc>http://feherke.github.io/artwork/font/</loc>
     <lastmod>2013-02-04</lastmod>
     <priority>0.2</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/artwork/font/font-awesome-adjusted.html</loc>
+    <loc>http://feherke.github.io/artwork/font/font-awesome-adjusted.html</loc>
     <lastmod>2013-02-04</lastmod>
     <priority>0.1</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/artwork/icewm/mars-text.html</loc>
+    <loc>http://feherke.github.io/artwork/icewm/mars-text.html</loc>
     <lastmod>2013-02-10</lastmod>
     <priority>0.1</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/artwork/icewm/</loc>
+    <loc>http://feherke.github.io/artwork/icewm/</loc>
     <lastmod>2013-02-10</lastmod>
     <priority>0.2</priority>
   </url>
 
   <url>
-    <loc>http://feherke.github.com/artwork/</loc>
+    <loc>http://feherke.github.io/artwork/</loc>
     <lastmod>2013-02-04</lastmod>
     <priority>0.2</priority>
   </url>

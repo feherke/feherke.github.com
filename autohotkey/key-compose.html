@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+<meta charset=UTF-8>
+<title>Key Compose</title>
+<meta name=description content="Key compose without compose key and key combination.">
+<meta name=keywords content="key, compose, keyboard">
+<meta name=author content="Fehérke">
+<meta name=generator content="Jekyll 1.3.0">
+<!--[if IE]>
+<script src="/html5fordummies.js"></script>
+<![endif]-->
+<link rel=stylesheet href="/style.css">
+<link rel=icon href="/favicon.ico">
+</head>
+
+<body>
+
+<header>
+
+<div id=skip>
+<a href="#content" accesskey=c>skip to content</a>
+</div>
+
+<div class=title>
+Fehérke's GitHub Site == glue between Fehérke's GitHub hosted projects
+</div>
+
+</header>
+
+<div id=wrapper>
+
+<section id=content>
+
+
+
+<div id=breadcrumb>
+<p><a href="/">Fehérke’s GitHub Site</a> / <a href="/autohotkey/">AutoHotkey</a> / </p>
+
+</div>
+
+
+
+
+<div class=clear></div>
+
+<h1 id="key-compose">Key Compose</h1>
+
+<p>All started with Alex Benenson’s great extension for Firefox,
+<a href="https://addons.mozilla.org/en-US/firefox/addon/transliterator/">Transliterator</a>.
+With that writing letters with diacritical marks became fast and easy.</p>
+
+<p>When I met AutoHotkey, my first question was, could I write something similar to
+Transliterator, but not limited to the browser ? Well, I think yes.</p>
+
+<h2 id="screenshot">Screenshot</h2>
+
+<p><img src="key-compose-current.png" alt="screenshot right after changing the mode" /></p>
+
+<h2 id="usage">Usage</h2>
+
+<p>Once started, KeyCompose just sits in the system tray and waits. Then when you
+type a key sequence for which a replacement was set, it does its job.</p>
+
+<p>There can be more modes defined and you can change between them :</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Action</th>
+      <th>Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><kbd>Alt</kbd>-<kbd>Ctrl</kbd>-<kbd>F2</kbd></td>
+      <td>next mode</td>
+    </tr>
+    <tr>
+      <td><kbd>Alt</kbd>-<kbd>Ctrl</kbd>-<kbd>Shift</kbd>-<kbd>F2</kbd></td>
+      <td>previous mode</td>
+    </tr>
+    <tr>
+      <td>double-click on the tray icon</td>
+      <td>next mode</td>
+    </tr>
+    <tr>
+      <td>click on a mode name in the context menu</td>
+      <td>that mode</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>To cancel a replacement, press <kbd>Shift</kbd>-<kbd>Shift</kbd> before
+finishing the triggering sequence. ( I mean, press both <kbd>Shift</kbd> keys
+simultaneously. )</p>
+
+<h3 id="context-menu">Context menu</h3>
+
+<p class="precaption icon-screenshot">menu</p>
+
+<p><img src="key-compose-menu.png" alt="screenshot of the context menu" /></p>
+
+<p>In the top part of the context menu there are enumerated the currently defined
+modes. ( The one with the checkmark is the active one, the one in bold is the
+mode to which you can change by double-clicking the tray icon. )</p>
+
+<p>The other command, below the list of modes :</p>
+
+<ul>
+  <li>
+    <p>Show compose… – displays the list of modes and hotstring definitions for each</p>
+
+    <p class="precaption icon-screenshot">Show key compose</p>
+
+    <p><img src="key-compose-show.png" alt="screenshot of the Show key compose window" /></p>
+  </li>
+  <li>Edit compose… – opens the KeyCompose-conf.ahk file in the associated editor</li>
+  <li>Start automatically – creates or deletes a shortcut to itself in the Startup menu</li>
+  <li>About… – displays information about itself</li>
+</ul>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>Sadly the hotstring definition in AutoHotkey accepts only barewords, no
+variables. So the configuration must be an AutoHotkey script itself.</p>
+
+<p>Anyway, I tried to reduce its format to the minimum, so the configuration not
+requires programmer skills. Things to keep in mind :</p>
+
+<ul>
+  <li><code>;</code> starts a comment – comments are ignored to the end of their line</li>
+  <li><code>#If compose==<em>number</em></code> starts a mode definition – the following lines until the next similar <code>#If</code> will pertain to that mode</li>
+  <li><code>::<em>sequence</em>::<em>character</em></code> defines a hotstring – each replacement in a separate line</li>
+</ul>
+
+<p>And some explanations on the syntax elements :</p>
+
+<ul>
+  <li>The <em>number</em> is the order number of the mode. Not really meaningful, just keep
+the numbering continuous, starting from 0.</li>
+  <li>The <em>sequence</em> is the list of keys that needs to be pressed one after the
+other to trigger the replacement.</li>
+  <li>The <em>character</em> in this case will be the character to replace with, but
+actually can be longer string too.</li>
+</ul>
+
+<p class="precaption icon-file">file fragment - KeyCompose-conf.ahk</p>
+
+<div class="highlight"><pre><code class="autohotkey"><span class="c-Singleline">; Key Compose   version 0.2   february 2013   written by Fehérke</span>
+<span class="c-Singleline">; key compose functionality and more</span>
+<span class="c-Singleline">; configuration file</span>
+
+<span class="n">#If</span> <span class="n">compose</span><span class="o">==</span><span class="mi">0</span><span class="c-Singleline"> ; None</span>
+
+<span class="n">#If</span> <span class="n">compose</span><span class="o">&gt;=</span><span class="mi">1</span><span class="c-Singleline"> ; Diacritical</span>
+  <span class="nl">::a&#39;::</span><span class="err">á</span><span class="c-Singleline"> ; a with acute</span>
+  <span class="nl">::a`::</span><span class="err">à</span><span class="c-Singleline"> ; a with grave</span>
+  <span class="nl">::a^::</span><span class="err">â</span><span class="c-Singleline"> ; a with circumflex</span>
+  <span class="nl">::a;::</span><span class="err">ä</span><span class="c-Singleline"> ; a with diaeresis</span>
+  <span class="nl">::a~::</span><span class="err">ã</span><span class="c-Singleline"> ; a with tilde</span>
+  <span class="nl">::ae::</span><span class="err">æ</span><span class="c-Singleline"> ; ae</span>
+</code></pre></div>
+
+<p>The configuration file is also read by KeyCompose to display the definitions in
+the Show key compose. So better do not add more complex expressions, even if you
+know AutoHotkey.</p>
+
+<p>With the configuration shipped with the script there are some particularities :</p>
+
+<ul>
+  <li>The first mode has no hotstring definition, so it actually turns off the
+functionality. You may add definitions there too, if you want.</li>
+  <li>The definitions are cumulative : when mode <em>n</em> is active, all definitions of
+modes 0..<em>n</em> are available. To change this to restrict each mode to its own
+definitions only, replace the <code>&gt;=</code> operators to <code>==</code> in the <code>#If</code> directives.</li>
+</ul>
+
+<h2 id="versions">Versions</h2>
+
+<ul class="changelog">
+  <li>0.0 - February 2013
+    <ul>
+      <li class="added">Initial release.</li>
+    </ul>
+  </li>
+  <li>0.1 - February 2013
+    <ul>
+      <li class="changed">Separated the hotstring list into 3 modes : None, Primary, Secondary.</li>
+      <li class="added">Key <kbd>Ctrl</kbd>-<kbd>F2</kbd> to change the mode.</li>
+    </ul>
+  </li>
+  <li>0.2 - February 2013
+    <ul>
+      <li class="changed">Moved the hotstring definitions into a configuration file.</li>
+      <li class="added">New menu command <em>Edit compose…</em>.</li>
+      <li class="changed">Key <kbd>Alt</kbd>-<kbd>Ctrl</kbd>-<kbd>F2</kbd> to change the mode.</li>
+      <li class="added">Key <kbd>Alt</kbd>-<kbd>Ctrl</kbd>-<kbd>Shift</kbd>-<kbd>F2</kbd> to change the mode backward.</li>
+    </ul>
+  </li>
+  <li>0.3 - July 2013
+    <ul>
+      <li class="added">Key <kbd>Shift</kbd>-<kbd>Shift</kbd> to cancel a compose.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="plans">Plans</h2>
+
+<ul class="todo">
+  <li class="pending">A configuration editor combined with CharMap.exe would be great.</li>
+</ul>
+
+<h2 id="download">Download</h2>
+
+<p class="icon-directory">You can find the related files on GitHub in my <a href="http://github.com/feherke/AutoHotkey-script">AutoHotkey-script repository</a>’s <a href="http://github.com/feherke/AutoHotkey-script/blob/master/key-compose/">key-compose directory</a> :</p>
+
+<ul class="download">
+  <li class="icon-file-script"><a href="http://github.com/feherke/AutoHotkey-script/blob/master/key-compose/KeyCompose.ahk">KeyCompose.ahk</a> - script</li>
+  <li class="icon-file-script"><a href="http://github.com/feherke/AutoHotkey-script/blob/master/key-compose/KeyCompose-conf.ahk">KeyCompose-conf.ahk</a> - settings</li>
+  <li class="icon-file-unknown"><a href="http://github.com/feherke/AutoHotkey-script/blob/master/key-compose/KeyCompose0.ico">KeyCompose0.ico</a> - image</li>
+  <li class="icon-file-unknown"><a href="http://github.com/feherke/AutoHotkey-script/blob/master/key-compose/KeyCompose1.ico">KeyCompose1.ico</a> - image</li>
+  <li class="icon-file-unknown"><a href="http://github.com/feherke/AutoHotkey-script/blob/master/key-compose/KeyCompose2.ico">KeyCompose2.ico</a> - image</li>
+  <li class="icon-file-unknown"><a href="http://github.com/feherke/AutoHotkey-script/blob/master/key-compose/KeyCompose3.ico">KeyCompose3.ico</a> - image</li>
+  <li class="icon-file-unknown"><a href="http://github.com/feherke/AutoHotkey-script/blob/master/key-compose/KeyCompose4.ico">KeyCompose4.ico</a> - image</li>
+  <li class="icon-file-unknown"><a href="http://github.com/feherke/AutoHotkey-script/blob/master/key-compose/KeyCompose5.ico">KeyCompose5.ico</a> - image</li>
+  <li class="icon-file-unknown"><a href="http://github.com/feherke/AutoHotkey-script/blob/master/key-compose/KeyCompose6.ico">KeyCompose6.ico</a> - image</li>
+</ul>
+
+
+
+</section>
+
+</div> <!-- #wrapper -->
+
+<div id=sidebar>
+
+<nav>
+
+<ul>
+  <li><a href="/artwork/" title="0 script">Artwork</a>
+    <ul>
+      <li><a href="/artwork/font/" title="1 script">Font</a></li>
+      <li><a href="/artwork/icewm/" title="1 script">IceWM</a></li>
+    </ul>
+  </li>
+  <li><a href="/autohotkey/" title="1 script">AutoHotkey</a></li>
+  <li><a href="/bash/" title="15 scripts">Bash</a></li>
+  <li><a href="/javascript/" title="0 script">JavaScript</a>
+    <ul>
+      <li><a href="/javascript/firegestures/" title="4 scripts">FireGestures</a></li>
+      <li><a href="/javascript/gadget/" title="1 script">Gadget</a></li>
+      <li><a href="/javascript/greasemonkey/" title="7 scripts">Greasemonkey</a></li>
+    </ul>
+  </li>
+  <li><a href="/perl/" title="1 script">Perl</a>
+    <ul>
+      <li><a href="/perl/irssi/" title="3 scripts">Irssi</a></li>
+    </ul>
+  </li>
+  <li><a href="/ruby/" title="0 script">Ruby</a>
+    <ul>
+      <li><a href="/ruby/jekyll/" title="2 scripts">Jekyll</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+</nav>
+
+<div id=tagcloud title="Tag cloud">
+<p><a href="/tag.html#BitlBee" title="1 script" style="font-size: 8pt">BitlBee</a>
+<a href="/tag.html#cleanup" title="3 scripts" style="font-size: 8pt">cleanup</a>
+<a href="/tag.html#font" title="1 script" style="font-size: 8pt">font</a>
+<a href="/tag.html#frugalware" title="1 script" style="font-size: 8pt">frugalware</a>
+<a href="/tag.html#game" title="1 script" style="font-size: 8pt">game</a>
+<a href="/tag.html#media" title="1 script" style="font-size: 8pt">media</a>
+<a href="/tag.html#notification" title="3 scripts" style="font-size: 8pt">notification</a>
+<a href="/tag.html#recovery" title="1 script" style="font-size: 8pt">recovery</a>
+<a href="/tag.html#search" title="2 scripts" style="font-size: 8pt">search</a>
+<a href="/tag.html#theme" title="1 script" style="font-size: 8pt">theme</a>
+<a href="/tag.html#TipMaster" title="7 scripts" style="font-size: 18pt">TipMaster</a></p>
+
+</div>
+
+</div> <!-- #sidebar -->
+
+<footer>
+
+<ul>
+<li>Powered by <a href="http://ruby-lang.org/">Ruby</a> 1.9.2</li>
+<li>Generated by <a href="http://jekyllrb.com/">Jekyll</a> 1.3.0</li>
+<li>Processed by <a href="http://kramdown.rubyforge.org/">kramdown</a> 1.2.0</li>
+</ul>
+
+<ul>
+<li>Edited with <a href="http://midnight-commander.org/">MCEdit</a></li>
+<li class=icon-github>Hosted on <a href="http://github.com/">GitHub</a></li>
+</ul>
+
+<ul>
+<li class=icon-html5>Valid <a href="http://w3c.org/TR/html5/">HTML 5</a></li>
+<li class=icon-css3>Valid <a href="http://w3c.org/TR/CSS/#css3">CSS 3</a></li>
+<li>Valid <a href="http://w3c.org/WAI/">WAI AA</a></li>
+</ul>
+
+<ul>
+<li>Page <span title="key-compose">key-compose</span> last modified 2013-11-17.</li>
+<li>Copyright &copy; 2013, <a href="/about.html">Fehérke</a></li>
+<li class=icon-cookie>Cookie not used</li>
+</ul>
+
+<div class=logo>F<sup>G</sup><sub>H</sub>S</div>
+
+<div class=clear></div>
+
+</footer>
+
+<!--[if lte IE 6]>
+<p>
+Please consider changing your Explorer 6 to a newer and/or better browser.
+For reasons and guidance read "<a href="http://quirksmode.org/upgrade.html">Upgrade your browser!</a>" by Peter-Paul Koch.
+</p>
+<![endif]-->
+
+</body>
+
+</html>

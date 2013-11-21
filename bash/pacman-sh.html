@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+<meta charset=UTF-8>
+<title>pacman.sh</title>
+<meta name=description content="Adds some frequently needed minor functionalities to pacman-g2.">
+<meta name=keywords content="pacman, pacman-g2, wrapper, frugalware">
+<meta name=author content="Fehérke">
+<meta name=generator content="Jekyll 1.3.0">
+<!--[if IE]>
+<script src="/html5fordummies.js"></script>
+<![endif]-->
+<link rel=stylesheet href="/style.css">
+<link rel=icon href="/favicon.ico">
+</head>
+
+<body>
+
+<header>
+
+<div id=skip>
+<a href="#content" accesskey=c>skip to content</a>
+</div>
+
+<div class=title>
+Fehérke's GitHub Site == glue between Fehérke's GitHub hosted projects
+</div>
+
+</header>
+
+<div id=wrapper>
+
+<section id=content>
+
+
+
+<div id=breadcrumb>
+<p><a href="/">Fehérke’s GitHub Site</a> / <a href="/bash/">Bash</a> / </p>
+
+</div>
+
+
+
+<div id=taglist class=icon-tag>
+Tag :
+<a href="/tag.html#frugalware">frugalware</a>
+</div>
+
+
+<div class=clear></div>
+
+<h1 id="pacmansh---adds-some-frequently-needed-minor-functionalities">pacman.sh - adds some frequently needed minor functionalities</h1>
+
+<p><code>pacman-g2</code> does a lot of things. Sometimes it does too much. For example its
+package searches always search in the descriptions too. Even when you want to
+search only in the package names. So you have to filter the output to reduce the
+result list to the desired packages only. pacman.sh is a wrapper which helps to
+accomplish such simple tasks with fewer typing and typos.</p>
+
+<h2 id="usage">Usage</h2>
+
+<p>You can use pacman.sh as a standalone script or as a wrapper. In the later case
+create an alias to it :</p>
+
+<p class="precaption">Bash code - create a wrapper</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nb">alias </span><span class="nv">pacman</span><span class="o">=</span>/path/to/pacman.sh
+</code></pre></div>
+
+<p>Operations implemented in the wrapper will be executed, other operations will be
+passed forward to <code>pacman-g2</code>.</p>
+
+<p class="warn icon-warning">Warning !<br />
+Although pacman.sh performs only read operations, is still better to <b>NOT</b>
+use it when you have write access to the <code>pacman-g2</code> database. Avoid using it
+as superuser. Create the alias to it only in your ~/.bashrc .</p>
+
+<p class="precaption icon-screen">sample output - <code>pacman.sh -W?</code></p>
+
+<pre><samp class="cli">usage:
+  pacman.sh -Wu  regexp     - search for uninstalled package
+  pacman.sh -Wsn regexp     - search for package name
+  pacman.sh -Wqn regexp     - search for installed package name
+  pacman.sh -Wun regexp     - search for uninstalled package name
+  pacman.sh -Wc  package(s) - list changelog-like files
+  pacman.sh -Wcv package(s) - view changelog-like files with $PAGER
+  pacman.sh -Wx  package(s) - list executable files
+  pacman.sh -Wxp package(s) - list executable files on $PATH
+  pacman.sh -Wd  package(s) - list recursive dependencies
+  pacman.sh -Wdt package(s) - tree recursive dependencies
+  pacman.sh -Wox command(s) - print the owner of the commands on $PATH
+  pacman.sh -Wh  package    - package operation history
+  pacman.sh -Wn             - show some statistical number
+  pacman.sh -Wv             - print wrapper version
+  pacman.sh -W?             - print ( this ) wrapper help
+</samp></pre>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>No own configuration.</p>
+
+<p>From the /etc/pacman-g2.conf configuration file uses some options for the <code>-Wh</code> ( <code>LogFile</code> ) and <code>-Wn</code> ( <code>HoldPkg</code>, <code>IgnorePkg</code>, <code>CacheDir</code>, <code>Server</code>, <code>DBPath</code>, <code>UpgradeDelay</code>, <code>OldDelay</code> ) operations.</p>
+
+<h2 id="versions">Versions</h2>
+
+<ul class="changelog">
+  <li>0.1 - September 2011
+    <ul>
+      <li class="added">Initial release.</li>
+    </ul>
+  </li>
+  <li>0.2 - September 2011
+    <ul>
+      <li class="changed">Unified the wrapper command ( <code>-W</code> ).</li>
+      <li class="added">Search uninstalled package description and name ( <code>-Wu</code>, <code>-Wun</code> ).</li>
+      <li class="added">Search package history ( <code>-Wh</code> ).</li>
+    </ul>
+  </li>
+  <li>0.3 - September 2011
+    <ul>
+      <li class="added">Print the owner of the commands on <code>$PATH</code> ( <code>-Wox</code> ).</li>
+      <li class="added">List package dependencies recursively ( <code>-Wd</code> ).</li>
+      <li class="added">Show some statistical number ( <code>-Wn</code> ).</li>
+    </ul>
+  </li>
+  <li>0.4 - September 2011
+    <ul>
+      <li class="added">Tree package dependencies recursively ( <code>-Wdt</code> ).</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="plans">Plans</h2>
+
+<ul class="todo">
+  <li class="done">Arrange the recursive dependencies in a tree. ( Done in 0.4 – see <code>-Wdt</code> option. )</li>
+  <li class="pending">Add more statistical information.</li>
+  <li class="pending">List summarized recursive dependencies.</li>
+</ul>
+
+<h2 id="download">Download</h2>
+
+<p class="icon-directory">You can find the related files on GitHub in my <a href="http://github.com/feherke/bash-script">bash-script repository</a>’s <a href="http://github.com/feherke/bash-script/blob/master/pacman/">pacman directory</a> :</p>
+
+<ul class="download">
+  <li class="icon-file-script"><a href="http://github.com/feherke/bash-script/blob/master/pacman/pacman.sh">pacman.sh</a> - script</li>
+  <li class="icon-file-man"><a href="http://github.com/feherke/bash-script/blob/master/pacman/pacman.sh.1">pacman.sh.1</a> - man page</li>
+  <li class="icon-file-pod"><a href="http://github.com/feherke/bash-script/blob/master/pacman/pacman.sh.pod">pacman.sh.pod</a> - man page source</li>
+</ul>
+
+
+
+</section>
+
+</div> <!-- #wrapper -->
+
+<div id=sidebar>
+
+<nav>
+
+<ul>
+  <li><a href="/artwork/" title="0 script">Artwork</a>
+    <ul>
+      <li><a href="/artwork/font/" title="1 script">Font</a></li>
+      <li><a href="/artwork/icewm/" title="1 script">IceWM</a></li>
+    </ul>
+  </li>
+  <li><a href="/autohotkey/" title="1 script">AutoHotkey</a></li>
+  <li><a href="/bash/" title="15 scripts">Bash</a></li>
+  <li><a href="/javascript/" title="0 script">JavaScript</a>
+    <ul>
+      <li><a href="/javascript/firegestures/" title="4 scripts">FireGestures</a></li>
+      <li><a href="/javascript/gadget/" title="1 script">Gadget</a></li>
+      <li><a href="/javascript/greasemonkey/" title="7 scripts">Greasemonkey</a></li>
+    </ul>
+  </li>
+  <li><a href="/perl/" title="1 script">Perl</a>
+    <ul>
+      <li><a href="/perl/irssi/" title="3 scripts">Irssi</a></li>
+    </ul>
+  </li>
+  <li><a href="/ruby/" title="0 script">Ruby</a>
+    <ul>
+      <li><a href="/ruby/jekyll/" title="2 scripts">Jekyll</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+</nav>
+
+<div id=tagcloud title="Tag cloud">
+<p><a href="/tag.html#BitlBee" title="1 script" style="font-size: 8pt">BitlBee</a>
+<a href="/tag.html#cleanup" title="3 scripts" style="font-size: 8pt">cleanup</a>
+<a href="/tag.html#font" title="1 script" style="font-size: 8pt">font</a>
+<a href="/tag.html#frugalware" title="1 script" style="font-size: 8pt">frugalware</a>
+<a href="/tag.html#game" title="1 script" style="font-size: 8pt">game</a>
+<a href="/tag.html#media" title="1 script" style="font-size: 8pt">media</a>
+<a href="/tag.html#notification" title="3 scripts" style="font-size: 8pt">notification</a>
+<a href="/tag.html#recovery" title="1 script" style="font-size: 8pt">recovery</a>
+<a href="/tag.html#search" title="2 scripts" style="font-size: 8pt">search</a>
+<a href="/tag.html#theme" title="1 script" style="font-size: 8pt">theme</a>
+<a href="/tag.html#TipMaster" title="7 scripts" style="font-size: 18pt">TipMaster</a></p>
+
+</div>
+
+</div> <!-- #sidebar -->
+
+<footer>
+
+<ul>
+<li>Powered by <a href="http://ruby-lang.org/">Ruby</a> 1.9.2</li>
+<li>Generated by <a href="http://jekyllrb.com/">Jekyll</a> 1.3.0</li>
+<li>Processed by <a href="http://kramdown.rubyforge.org/">kramdown</a> 1.2.0</li>
+</ul>
+
+<ul>
+<li>Edited with <a href="http://midnight-commander.org/">MCEdit</a></li>
+<li class=icon-github>Hosted on <a href="http://github.com/">GitHub</a></li>
+</ul>
+
+<ul>
+<li class=icon-html5>Valid <a href="http://w3c.org/TR/html5/">HTML 5</a></li>
+<li class=icon-css3>Valid <a href="http://w3c.org/TR/CSS/#css3">CSS 3</a></li>
+<li>Valid <a href="http://w3c.org/WAI/">WAI AA</a></li>
+</ul>
+
+<ul>
+<li>Page <span title="pacman-sh">pacman-sh</span> last modified 2013-11-17.</li>
+<li>Copyright &copy; 2013, <a href="/about.html">Fehérke</a></li>
+<li class=icon-cookie>Cookie not used</li>
+</ul>
+
+<div class=logo>F<sup>G</sup><sub>H</sub>S</div>
+
+<div class=clear></div>
+
+</footer>
+
+<!--[if lte IE 6]>
+<p>
+Please consider changing your Explorer 6 to a newer and/or better browser.
+For reasons and guidance read "<a href="http://quirksmode.org/upgrade.html">Upgrade your browser!</a>" by Peter-Paul Koch.
+</p>
+<![endif]-->
+
+</body>
+
+</html>

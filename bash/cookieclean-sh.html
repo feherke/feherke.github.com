@@ -5,8 +5,8 @@
 <meta charset=UTF-8>
 <title>cookieclean.sh</title>
 <meta name=description content="Cleans up the Mozilla cookie file removing unwanted items.">
-<meta name=author content="Feherke">
-<meta name=generator content="Jekyll 0.11.2">
+<meta name=author content="Fehérke">
+<meta name=generator content="Jekyll 1.3.0">
 <!--[if IE]>
 <script src="/html5fordummies.js"></script>
 <![endif]-->
@@ -23,7 +23,7 @@
 </div>
 
 <div class=title>
-Feherke's GitHub Site == glue between Feherke's GitHub hosted projects
+Fehérke's GitHub Site == glue between Fehérke's GitHub hosted projects
 </div>
 
 </header>
@@ -35,7 +35,7 @@ Feherke's GitHub Site == glue between Feherke's GitHub hosted projects
 
 
 <div id=breadcrumb>
-<p><a href="/">Feherke&rsquo;s GitHub Site</a> / <a href="/bash/">Bash</a> / </p>
+<p><a href="/">Fehérke’s GitHub Site</a> / <a href="/bash/">Bash</a> / </p>
 
 </div>
 
@@ -61,7 +61,7 @@ existence of <code>grep</code>, I will not check neither for <code>sqlite3</code
 
 <h2 id="usage">Usage</h2>
 
-<p>This script was designed to be run from <code>cron</code>, so it outputs its messages to a log file. Excepting of course unexpected and unhandled errors&hellip;</p>
+<p>This script was designed to be run from <code>cron</code>, so it outputs its messages to a log file. Excepting of course unexpected and unhandled errors…</p>
 
 <p>It is as least communicative as possible. It does not accept any parameter and outputs nothing to the standard output or error.</p>
 
@@ -77,51 +77,50 @@ existence of <code>grep</code>, I will not check neither for <code>sqlite3</code
   <li>has <a href="http://en.wikipedia.org/wiki/INI_file">INI</a> format without sections</li>
 </ul>
 
-<p class="precaption">cookieclean.ini - sample configuration</p>
+<p class="precaption icon-file-config">cookieclean.ini - sample configuration</p>
 
-<div class="highlight"><pre><code class="ini"><span class="c"># Cookie Clean   version 1.3   august 2008   written by Feherke</span>
-<span class="c"># cleans up the Mozilla cookie file removing unwanted items</span>
-<span class="c"># - configuration file -</span>
+<div class="highlight"><pre><code class="ini"><span class="c1"># Cookie Clean   version 1.3   august 2008   written by Feherke</span>
+<span class="c1"># cleans up the Mozilla cookie file removing unwanted items</span>
+<span class="c1"># - configuration file -</span>
 
-<span class="c"># all values are subject of variable expansion :</span>
-<span class="c">#  - $scriptname - the name of the script without .sh extension</span>
-<span class="c">#  - $scriptdir - the directory where the script resides</span>
-<span class="c">#  - $HOME, $TEMP, ... - usual environment variables</span>
+<span class="c1"># all values are subject of variable expansion :</span>
+<span class="c1">#  - $scriptname - the name of the script without .sh extension</span>
+<span class="c1">#  - $scriptdir - the directory where the script resides</span>
+<span class="c1">#  - $HOME, $TEMP, ... - usual environment variables</span>
 
-<span class="c"># path to the profile directory ( deprecated, use profile key )</span>
-<span class="c">#mozilla=/home/master/.mozilla/default/v5rkwo4n.slt/</span>
+<span class="c1"># path to the profile directory ( deprecated, use profile key )</span>
+<span class="c1">#mozilla=/home/master/.mozilla/default/v5rkwo4n.slt/</span>
 
-<span class="c"># path to the profile directory</span>
-<span class="c"># you can use multiple profile keys</span>
+<span class="c1"># path to the profile directory</span>
+<span class="c1"># you can use multiple profile keys</span>
 <span class="na">profile</span><span class="o">=</span><span class="s">/home/master/.mozilla/firefox/xie5eflf.default/</span>
 <span class="na">profile</span><span class="o">=</span><span class="s">/home/master/.mozilla/seamonkey/e81zpwiz.default/</span>
 <span class="na">profile</span><span class="o">=</span><span class="s">/home/master/.phoenix/default/10z08gzf.slt/</span>
 <span class="na">profile</span><span class="o">=</span><span class="s">/home/master/.gnome2/epiphany/</span>
 
-<span class="c"># list of permitted hosts</span>
+<span class="c1"># list of permitted hosts</span>
 <span class="na">okfile</span><span class="o">=</span><span class="s">${scriptdir}/cookieclean.ok</span>
 
-<span class="c"># found unpermitted hosts</span>
+<span class="c1"># found unpermitted hosts</span>
 <span class="na">badfile</span><span class="o">=</span><span class="s">${scriptdir}/cookies---.bad</span>
 
-<span class="c"># activity log</span>
+<span class="c1"># activity log</span>
 <span class="na">logfile</span><span class="o">=</span><span class="s">${scriptdir}/${scriptname}.log</span>
 
-<span class="c"># permitted hosts cache file</span>
+<span class="c1"># permitted hosts cache file</span>
 <span class="na">cachefile</span><span class="o">=</span><span class="s">/tmp/${scriptname}-cache.txt</span>
 <span class="na">cachefile3</span><span class="o">=</span><span class="s">/tmp/${scriptname}-cache3.txt</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <p>The white list is an enumeration of allowed domains. I mean, the <em>exact</em> domains, as set by the cookies. So no wildcard, regular expression or partial name is available.</p>
 
-<p class="precaption">cookieclean.ok - sample configuration</p>
+<p class="precaption icon-file-config">cookieclean.ok - sample configuration</p>
 
-<div class="highlight"><pre><code class="ini"><span class="c"># Cookie Clean   version 1.3   august 2008   written by Feherke</span>
-<span class="c"># cleans up the Mozilla cookie file removing unwanted items</span>
-<span class="c"># - accepted hosts list -</span>
+<div class="highlight"><pre><code class="ini"><span class="c1"># Cookie Clean   version 1.3   august 2008   written by Feherke</span>
+<span class="c1"># cleans up the Mozilla cookie file removing unwanted items</span>
+<span class="c1"># - accepted hosts list -</span>
 
-<span class="c"># empty lines are discarded, use a single dash ( - ) to say no host</span>
+<span class="c1"># empty lines are discarded, use a single dash ( - ) to say no host</span>
 
 <span class="err">-</span>
 <span class="err">.google.com</span>
@@ -130,8 +129,7 @@ existence of <code>grep</code>, I will not check neither for <code>sqlite3</code
 <span class="err">tek-tips.com</span>
 <span class="err">.tek-tips.com</span>
 <span class="err">www.tek-tips.com</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <h2 id="versions">Versions</h2>
 
@@ -160,7 +158,7 @@ existence of <code>grep</code>, I will not check neither for <code>sqlite3</code
 
 <h2 id="plans">Plans</h2>
 
-<p>In meantime Mozillas&rsquo; cookie handling and the available extensions evolved, so this script became somehow deprecated. There is good chance the plans will remain plans
+<p>In meantime Mozillas’ cookie handling and the available extensions evolved, so this script became somehow deprecated. There is good chance the plans will remain plans
 forever.</p>
 
 <ul class="todo">
@@ -171,7 +169,7 @@ forever.</p>
 
 <h2 id="download">Download</h2>
 
-<p class="icon-directory">You can find the related files on GitHub in my <a href="http://github.com/feherke/Bash-script">Bash-script repository</a>&rsquo;s <a href="http://github.com/feherke/Bash-script/blob/master/cookieclean/">cookieclean directory</a> :</p>
+<p class="icon-directory">You can find the related files on GitHub in my <a href="http://github.com/feherke/Bash-script">Bash-script repository</a>’s <a href="http://github.com/feherke/Bash-script/blob/master/cookieclean/">cookieclean directory</a> :</p>
 
 <ul class="download">
   <li class="icon-file-script"><a href="http://github.com/feherke/Bash-script/blob/master/cookieclean/cookieclean.sh">cookieclean.sh</a> - script</li>
@@ -198,14 +196,16 @@ forever.</p>
       <li><a href="/artwork/icewm/" title="1 script">IceWM</a></li>
     </ul>
   </li>
-  <li><a href="/bash/" title="14 scripts">Bash</a></li>
+  <li><a href="/autohotkey/" title="1 script">AutoHotkey</a></li>
+  <li><a href="/bash/" title="15 scripts">Bash</a></li>
   <li><a href="/javascript/" title="0 script">JavaScript</a>
     <ul>
       <li><a href="/javascript/firegestures/" title="4 scripts">FireGestures</a></li>
+      <li><a href="/javascript/gadget/" title="1 script">Gadget</a></li>
       <li><a href="/javascript/greasemonkey/" title="7 scripts">Greasemonkey</a></li>
     </ul>
   </li>
-  <li><a href="/perl/" title="0 script">Perl</a>
+  <li><a href="/perl/" title="1 script">Perl</a>
     <ul>
       <li><a href="/perl/irssi/" title="3 scripts">Irssi</a></li>
     </ul>
@@ -222,13 +222,14 @@ forever.</p>
 
 <div id=tagcloud title="Tag cloud">
 <p><a href="/tag.html#BitlBee" title="1 script" style="font-size: 8pt">BitlBee</a>
-<a href="/tag.html#cleanup" title="3 scripts" style="font-size: 11pt">cleanup</a>
+<a href="/tag.html#cleanup" title="3 scripts" style="font-size: 8pt">cleanup</a>
 <a href="/tag.html#font" title="1 script" style="font-size: 8pt">font</a>
+<a href="/tag.html#frugalware" title="1 script" style="font-size: 8pt">frugalware</a>
 <a href="/tag.html#game" title="1 script" style="font-size: 8pt">game</a>
 <a href="/tag.html#media" title="1 script" style="font-size: 8pt">media</a>
-<a href="/tag.html#notification" title="3 scripts" style="font-size: 11pt">notification</a>
+<a href="/tag.html#notification" title="3 scripts" style="font-size: 8pt">notification</a>
 <a href="/tag.html#recovery" title="1 script" style="font-size: 8pt">recovery</a>
-<a href="/tag.html#search" title="2 scripts" style="font-size: 9pt">search</a>
+<a href="/tag.html#search" title="2 scripts" style="font-size: 8pt">search</a>
 <a href="/tag.html#theme" title="1 script" style="font-size: 8pt">theme</a>
 <a href="/tag.html#TipMaster" title="7 scripts" style="font-size: 18pt">TipMaster</a></p>
 
@@ -240,8 +241,8 @@ forever.</p>
 
 <ul>
 <li>Powered by <a href="http://ruby-lang.org/">Ruby</a> 1.9.2</li>
-<li>Generated by <a href="http://jekyllrb.com/">Jekyll</a> 0.11.2</li>
-<li>Processed by <a href="http://kramdown.rubyforge.org/">kramdown</a> 0.13.8</li>
+<li>Generated by <a href="http://jekyllrb.com/">Jekyll</a> 1.3.0</li>
+<li>Processed by <a href="http://kramdown.rubyforge.org/">kramdown</a> 1.2.0</li>
 </ul>
 
 <ul>
@@ -257,7 +258,7 @@ forever.</p>
 
 <ul>
 <li>Page <span title="cookieclean-sh">cookieclean-sh</span> last modified 2008-09-05.</li>
-<li>Copyright &copy; 2013, <a href="/about.html">Feherke</a></li>
+<li>Copyright &copy; 2013, <a href="/about.html">Fehérke</a></li>
 <li class=icon-cookie>Cookie not used</li>
 </ul>
 

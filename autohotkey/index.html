@@ -3,8 +3,9 @@
 
 <head>
 <meta charset=UTF-8>
-<title>taborder.sh</title>
-<meta name=description content="Reorders the controls in the XFM file based on the declarations in the Pas file.">
+<title>AutoHotkey</title>
+<meta name=description content="Various scripts written in AutoHotkey">
+<meta name=keyword content="AutoHotKey, script, automation, Windows">
 <meta name=author content="Fehérke">
 <meta name=generator content="Jekyll 1.3.0">
 <!--[if IE]>
@@ -35,7 +36,7 @@ Fehérke's GitHub Site == glue between Fehérke's GitHub hosted projects
 
 
 <div id=breadcrumb>
-<p><a href="/">Fehérke’s GitHub Site</a> / <a href="/bash/">Bash</a> / </p>
+<p><a href="/">Fehérke’s GitHub Site</a> / <a href="/autohotkey/">AutoHotkey</a> / </p>
 
 </div>
 
@@ -44,69 +45,20 @@ Fehérke's GitHub Site == glue between Fehérke's GitHub hosted projects
 
 <div class=clear></div>
 
-<h1 id="tabordersh---changes-the-taborder-in-form">taborder.sh - changes the <code>TabOrder</code> in form</h1>
+<h1 id="autohotkey">AutoHotkey</h1>
 
-<p>When a form has more than 100 controls, setting the tabbing order through the Delphi/Kylix IDE form designer’s Edit Tab Order dialog becomes abit tedious.</p>
+<p>On Windows some features are hard to access. Others are too easy. Some features
+are not working properly. Others are working, but you wish they would not.</p>
 
-<p>This script helps abit to automate the manual taborder changing. First the component declarations have to be put in the desired order in the source file ( .pas ),
-then this script rearranges the form file ( .xfm ) moving the sections of each component in the same order as they are in the source file and edits the <code>TabOrder</code>
-property values according to the new order. Unless altered later by some editing, the received order is trustfully constant.</p>
+<p>Many features, many users, extremely few customization possibilities.</p>
 
-<p>taborder.sh is not configurable, its only parameter is the file name. Additionally it checks some environment variables to see where to put temporary data.</p>
+<p>And here comes AutoHotkey to save the day : just automate what you want.</p>
 
-<p class="precaption icon-screen">sample output - <code>taborder.sh ~/project/src/uhugeform</code></p>
-
-<pre><samp class="cli">TabOrder   version 2.0   august 2010   written by Feherke
-reorders the controls in the XFM file based on the declarations in the Pas file
-identifying the form... ok, uhugeform
-checking the files... ok
-checking the structure... ok
-identifying the class... ok, Tfrmhugeform
-checking consistency... ok
-creating temporary directory... ok, /tmp/taborder-5Kxx9Y
-creating control list... ok, 323
-splitting up... ok
-rebuilding &amp; renumbering... ok
-renaming the original... ok, 0
-recreating the file... ok, uhugeform.xfm
-deleting temporary files... ok
-</samp></pre>
-
-<p>Of course, this script can be easily fooled if the .pas file is messed up. But I do not intend to write a full featured Pascal parser.</p>
-
-<h2 id="configuration">Configuration</h2>
-
-<h2 id="versions">Versions</h2>
-
-<ul class="changelog">
-  <li>1.0
-    <ul>
-      <li class="added">Initial release.</li>
-    </ul>
-  </li>
-  <li>2.0 - August 2010
-    <ul>
-      <li class="added">Complete rewrite, for Bash 4.</li>
-    </ul>
-  </li>
-</ul>
-
-<h2 id="plans">Plans</h2>
-
-<ul class="todo">
-  <li class="pending">Read pieces up to a semicolor ( ; ), not to line end.</li>
-  <li class="pending">Handle comments.</li>
-</ul>
-
-<h2 id="download">Download</h2>
-
-<p class="icon-directory">You can find the related files on GitHub in my <a href="http://github.com/feherke/bash-script">bash-script repository</a>’s <a href="http://github.com/feherke/bash-script/blob/master/taborder/">taborder directory</a> :</p>
-
-<ul class="download">
-  <li class="icon-file-script"><a href="http://github.com/feherke/bash-script/blob/master/taborder/taborder.sh">taborder.sh</a> - script</li>
-  <li class="icon-file-man"><a href="http://github.com/feherke/bash-script/blob/master/taborder/taborder.sh.1">taborder.sh.1</a> - man page</li>
-  <li class="icon-file-pod"><a href="http://github.com/feherke/bash-script/blob/master/taborder/taborder.sh.pod">taborder.sh.pod</a> - man page source</li>
-</ul>
+<dl>
+  <dt><a href="key-compose.html">Key Compose</a></dt>
+  <dd>2013-11-17 </dd>
+  <dd>Key compose without compose key and key combination.</dd>
+</dl>
 
 
 
@@ -186,7 +138,7 @@ deleting temporary files... ok
 </ul>
 
 <ul>
-<li>Page <span title="taborder-sh">taborder-sh</span> last modified 2010-09-20.</li>
+<li>Page <span title="index">index</span> last modified 2013-11-17.</li>
 <li>Copyright &copy; 2013, <a href="/about.html">Fehérke</a></li>
 <li class=icon-cookie>Cookie not used</li>
 </ul>
