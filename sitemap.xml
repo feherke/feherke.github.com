@@ -134,8 +134,20 @@
   </url>
 
   <url>
+    <loc>http://feherke.github.io/ruby/logger.html</loc>
+    <lastmod>2013-12-03</lastmod>
+    <priority>0.1</priority>
+  </url>
+
+  <url>
     <loc>http://feherke.github.io/ruby/jekyll/debug.html</loc>
     <lastmod>2013-11-17</lastmod>
+    <priority>0.1</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.io/ruby/jekyll/relative.html</loc>
+    <lastmod>2013-12-31</lastmod>
     <priority>0.1</priority>
   </url>
 
@@ -147,7 +159,7 @@
 
   <url>
     <loc>http://feherke.github.io/ruby/jekyll/version.html</loc>
-    <lastmod>2012-02-20</lastmod>
+    <lastmod>2013-11-20</lastmod>
     <priority>0.1</priority>
   </url>
 
@@ -200,7 +212,7 @@
 
   <url>
     <loc>http://feherke.github.io/javascript/firegestures/popup-hybrid-copy-url-and-title.html</loc>
-    <lastmod>2011-05-08</lastmod>
+    <lastmod>2014-01-30</lastmod>
     <priority>0.1</priority>
   </url>
 
@@ -277,6 +289,24 @@
   </url>
 
   <url>
+    <loc>http://feherke.github.io/python/django/</loc>
+    <lastmod>2014-01-26</lastmod>
+    <priority>0.2</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.io/python/django/sketch.html</loc>
+    <lastmod>2014-01-26</lastmod>
+    <priority>0.1</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.io/python/</loc>
+    <lastmod>2014-01-26</lastmod>
+    <priority>0.2</priority>
+  </url>
+
+  <url>
     <loc>http://feherke.github.io/tag.html</loc>
     <lastmod>2012-02-04</lastmod>
     <priority>0.1</priority>
@@ -290,7 +320,7 @@
 
   <url>
     <loc>http://feherke.github.io/</loc>
-    <lastmod>2013-11-17</lastmod>
+    <lastmod>2014-01-26</lastmod>
     <priority>0.2</priority>
   </url>
 
@@ -322,6 +352,12 @@
     <loc>http://feherke.github.io/artwork/</loc>
     <lastmod>2013-02-04</lastmod>
     <priority>0.2</priority>
+  </url>
+
+  <url>
+    <loc>http://feherke.github.io/status.html</loc>
+    <lastmod>2013-12-03</lastmod>
+    <priority>0.1</priority>
   </url>
 
 </urlset>

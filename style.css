@@ -85,6 +85,9 @@ header, footer, nav, section, article, aside {
 .icon-file-config::before { content: "\f249"; }
 .icon-file-man::before { content: "\f24a"; }
 .icon-file-pod::before { content: "\f24b"; }
+.icon-file-image::before { content: "\f244"; } /* for now same as icon-file-binary */
+
+.icon-see::before { content: "\f06e"; }
 
 /* general */
 
@@ -140,7 +143,8 @@ samp {
   font-family: Andale Mono WT,Bitstream Vera Sans Mono,DejaVu Sans Mono,Courier,monospace;
 }
 
-pre {
+pre,
+.precaption+p {
   background-color: black;
   border-style: solid;
   border-width: 1px;
@@ -357,6 +361,10 @@ section {
   margin-bottom: 15px;
 }
 
+div#attribute {
+  text-align: center;
+}
+
 div#breadcrumb {
   float: left;
   font-size: small;
@@ -387,6 +395,21 @@ div#taglist {
   margin-bottom: 5px;
   padding: 5px;
   padding-left: 50px;
+}
+
+div#status {
+  display: inline-block;
+  font-size: small;
+  border-style: solid;
+  border-top-style: none;
+  border-width: 1px;
+  border-color: #339;
+  border-bottom-left-radius: 150px 50px;
+  border-bottom-right-radius: 150px 50px;
+  margin-bottom: 5px;
+  padding: 5px;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 
 /* header */
@@ -497,6 +520,15 @@ div#tagcloud p { /* idiot markdown, idiot converter */
   margin: 0;
 }
 
+div#statuslist {
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 20px;
+/* box-shadow: black 4px 4px, blue 20px 20px 0 -15px, black 9px 9px, blue 30px 30px 0 -20px, black -4px -4px, blue -20px -20px 0 -15px, black -9px -9px, blue -30px -30px 0 -20px; */
+  box-shadow: black 28px 0 2px -25px, black 0 28px 2px -25px, black -28px 0 2px -25px, black 0 -28px 2px -25px, #339 32px 0 2px -25px, #339 0 32px 2px -25px, #339 -32px 0 2px -25px, #339 0 -32px 2px -25px, black 35px 0 0 -25px, black 0 35px 0 -25px, black -35px 0 0 -25px, black 0 -35px 0 -25px, #114 0px 0px 0 10px;
+}
+
 /* menu */
 
 nav {
@@ -570,10 +602,11 @@ div.highlight span {
 .highlight .p { color: dodgerblue; } /* parenthesis ??? */
 .highlight .c, .highlight .c1, .highlight .c-Singleline { color: gray; } /* comment ( any (?), single line ) */
 .highlight .sb { color: aqua; } /* backtick */
-.highlight .nv, .highlight .nx { color: teal; } /* variable */
+.highlight .nv, .highlight .nx, .highlight .vg { color: teal; } /* variable, ???, global variable */
 .highlight .cp { color: orange; } /* template markup (?) */
 .highlight .nf { color: darkgoldenrod; } /* function (?) */
 .highlight .nl { color: pink; } /* ??? */
+.highlight .no { color: cornflowerblue; } /* class/module/constant (?) */
 
 .highlight .pr { color: blue; } /* prompt */
 

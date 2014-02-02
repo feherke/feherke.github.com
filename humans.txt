@@ -16,3 +16,4 @@ Thanks
 ------
   Project hosting    : GitHub ( http://github.com/ )
   Icon font          : Font Awesome ( http://fortawesome.github.com/Font-Awesome/ )
+  Domain provider    : Gabonese Republic ( http://freenom.com/ )

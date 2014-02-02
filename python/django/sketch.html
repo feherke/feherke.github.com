@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+<meta charset=UTF-8>
+<title>Sketch</title>
+<meta name=description content="Provides image and text placeholders to fill web page sketches with temporary data.">
+<meta name=keyword content="Django, template, filter, tag">
+<meta name=author content="Fehérke">
+<meta name=generator content="Jekyll 1.3.0">
+<!--[if IE]>
+<script src="/html5fordummies.js"></script>
+<![endif]-->
+<link rel=stylesheet href="/style.css">
+<link rel=icon href="/favicon.ico">
+</head>
+
+<body>
+
+<header>
+
+<div id=skip>
+<a href="#content" accesskey=c>skip to content</a>
+</div>
+
+<div class=title>
+Fehérke's GitHub Site == glue between Fehérke's GitHub hosted projects
+</div>
+
+</header>
+
+<div id=wrapper>
+
+<section id=content>
+
+<div id=attribute>
+
+
+
+<div id=breadcrumb>
+<p><a href="/">Fehérke’s GitHub Site</a> / <a href="/python/">Python</a> / <a href="/python/django/">Django</a> / </p>
+
+</div>
+
+
+
+<div id=taglist class=icon-tag>
+Tag :
+<a href="/tag.html#filter">filter</a>,
+<a href="/tag.html#tag">tag</a>
+
+</div>
+
+
+
+<div id=status>
+Status :
+<a href="/status.html#stable" title="As far as I know it is functional.">stable</a>,
+<a href="/status.html#inactive" title="Neither developed or tested regularly, but I keep an eye on it.">inactive</a>
+
+</div>
+
+
+</div>
+
+<div class=clear></div>
+
+<h1 id="sketch">Sketch</h1>
+
+<p>Not an outstanding name. Not an outstanding idea. There are already enough similar softwares and online services on the web. I wrote a couple of similar things myself too. Including in Python. The only new element was involving Django.</p>
+
+<p>To make them available in multiple circumstances, I tried to make them as flexible as possible. So the placeholders can be generated through views, template filters and template tags. Of course, there are small differences between those
+calling methods, but those are mostly imposed by the circumstances.</p>
+
+<h2 id="usage">Usage</h2>
+
+<h3 id="image-placeholder">Image placeholder</h3>
+
+<p>The image placeholder is just an image of a certain size.
+Inspired by free online services like <a href="http://cambelt.co/">Cambelt</a>, <a href="http://dummyimage.com/">Dynamic Dummy Image Generator</a>, <a href="http://fakeimg.pl/">Fake images please?</a>, <a href="http://fpoimg.com/">FPOImg ( “For Placement Only” )</a>,
+<a href="http://ipsumimage.appspot.com/">Ipsum Image</a>, <a href="http://lorempixel.com/">Lorem Pixel</a>, <a href="http://placehold.it/">Placehold it</a>, <a href="http://ima.gs/">Yet Another Placeholder Generator</a> ( in alphabetical order, no personal preference involved ).</p>
+
+<p class="precaption icon-file-image">image placeholder</p>
+
+<p><img src="sketch-image-placeholder.png" alt="generated image placeholder" /></p>
+
+<p class="icon-see">Live <a href="http://feherke.pythonanywhere.com/sketch/image-demo/">image placeholder</a> demo, thanks to <a href="http://pythonanywhere.com/">PythonAnywhere</a>.</p>
+
+<p>It has few parameters :</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>width</code></td>
+      <td>Image width</td>
+      <td>Integer</td>
+      <td>640</td>
+    </tr>
+    <tr>
+      <td><code>height</code></td>
+      <td>Image height</td>
+      <td>Integer</td>
+      <td>480</td>
+    </tr>
+    <tr>
+      <td><code>front</code></td>
+      <td>Text color</td>
+      <td>Name or hexadecimal code</td>
+      <td>#666</td>
+    </tr>
+    <tr>
+      <td><code>back</code></td>
+      <td>Background color</td>
+      <td>Name or hexadecimal code</td>
+      <td>#999</td>
+    </tr>
+    <tr>
+      <td><code>text</code></td>
+      <td>Inscription on the image</td>
+      <td>Text with placeholders</td>
+      <td>%(width)s x %(height)s</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>General notes :</p>
+
+<ul>
+  <li>All parameters are optional.</li>
+  <li>Parameters can appear in any order.</li>
+  <li>The placeholders are string formatting conversion specifiers <code>%(...)s</code> and the mapping keys are the parameter names.</li>
+</ul>
+
+<h4 id="url-with-verbose-parameters">URL with verbose parameters</h4>
+
+<p>Suitable to be used from outside the Django application, typically in static HTML documents.</p>
+
+<pre><code>/sketch/iph.png?width=400&amp;height=100&amp;front=fuchsia&amp;back=purple&amp;text=%25(width)px%20wide%20image
+</code></pre>
+
+<p>Additional notes :</p>
+
+<ul>
+  <li>If the <code>front</code> and <code>back</code> parameter contains hexadecimal color code, “#” must be written URL encoded as %23.</li>
+  <li>If the <code>text</code> parameter contains placeholder, “%” must be written URL encoded as %25.</li>
+  <li>If the <code>text</code> parameter contains space, it must be written URL encoded as %20.</li>
+</ul>
+
+<h4 id="friendly-url">Friendly URL</h4>
+
+<pre><code>/sketch/iph/400/100/fuchsia/purple/%25(width)px%20wide%20image
+</code></pre>
+
+<p>Additional notes :</p>
+
+<ul>
+  <li>The parameters must occur exactly in this order : <code>width</code>, <code>height</code>, <code>front</code>, <code>back</code> and <code>text</code>.</li>
+  <li>The parameters can miss only from the <em>end</em> of path. So when a parameter is present, all the preceding parameters must also be present.</li>
+</ul>
+
+<p>The notes from the above URL with verbose parameters section also applies.</p>
+
+<h4 id="template-filter">Template filter</h4>
+
+<p>Suitable for the rare case when you have the HTML <code>img</code> tag’s source code in a template variable.</p>
+
+<div class="highlight"><pre><code class="jinja"><span class="cp">{{</span> <span class="s1">&#39;&lt;img src=&quot;/whatever.png&quot; width=100 height=50 front=fuchsia back=purple alt=&quot;%(width)spx wide image&quot;&gt;&#39;</span> <span class="o">|</span> <span class="nf">imgplace</span> <span class="cp">}}</span><span class="x"></span>
+<span class="cp">{{</span> <span class="s1">&#39;&lt;img src=&quot;/whatever.png&quot; width=100 height=50 alt=&quot;%(width)spx wide image&quot;&gt;&#39;</span> <span class="o">|</span> <span class="nf">imgplace</span><span class="s2">:&quot;front=fuchsia back=purple&quot;</span> <span class="cp">}}</span><span class="x"></span>
+</code></pre></div>
+
+<p>Additional notes :</p>
+
+<ul>
+  <li>The <code>src</code> parameter’s value will be replaced with the path to the generated image in the /static/ directory.</li>
+  <li>The <code>front</code> and <code>back</code> parameters will not be passed over to the HTML code.</li>
+  <li>The <code>text</code> parameter will take value from the <code>alt</code> HTML attribute, if needed and possible.</li>
+  <li>Parameters needed for the placeholder but not needed for the HTML source code can be passed as filter parameters.</li>
+</ul>
+
+<h4 id="template-tag">Template tag</h4>
+
+<div class="highlight"><pre><code class="jinja"><span class="cp">{%</span> <span class="k">imgplace</span> <span class="nv">width</span><span class="o">=</span><span class="m">100</span> <span class="nv">height</span><span class="o">=</span><span class="m">50</span> <span class="nv">front</span><span class="o">=</span><span class="s2">&quot;fuchsia&quot;</span> <span class="nv">back</span><span class="o">=</span><span class="s2">&quot;purple&quot;</span> <span class="nv">text</span><span class="o">=</span><span class="s2">&quot;%(width)px wide image&quot;</span> <span class="cp">%}</span><span class="x"></span>
+</code></pre></div>
+
+<p>Additional notes :</p>
+
+<ul>
+  <li>Although template tag parameters are usually quoted as "foo=bar", for similarity with HTML syntax, quoting like foo="bar" is also accepted.</li>
+</ul>
+
+<h3 id="text-placeholder">Text placeholder</h3>
+
+<p>The text placeholder is just a text of a certain length.
+Inspired by free online services like <a href="http://dummytextgenerator.com/">Dummy Text Generator</a>, <a href="http://lorizzle.nl/">Gangsta Lorem Ipsum dummy text generator</a>, <a href="http://lorem-ipsum.perbang.dk/">Lorem Ipsum Generator</a>,
+<a href="http://lipsum.com/">Lorem Ipsum</a>, <a href="http://generator.lorem-ipsum.info/">professional lorem ipsum generator for typographers</a> ( in alphabetical order, no personal preference involved ).</p>
+
+<p class="precaption icon-file-text">text placeholder</p>
+
+<p>Em mefahu sigelesimit esin ube.  Er elire ovexas ese ipa fe eni elalo ir eteg ihi inehediyalofin.  Abapisulesi ton le aheben mositataho.  Ciraca ah ut pogoceyepi ipas.  Toh bewayobepe erivite moru sey im sasusunefetane adenirere ale epeyat.  Werile gana neras cehe ineban rer ege bahet etecac beret ne enoyic.  Eni itesu webe etebene neremexa.  At iretib obaretol dosiri yareseto.  Or bef onasut res pot.  Iden i oliy raleye rugomisu.</p>
+
+<p class="icon-see">Live <a href="http://feherke.pythonanywhere.com/sketch/text-demo/">text placeholder</a> demo, thanks to <a href="http://pythonanywhere.com/">PythonAnywhere</a>.</p>
+
+<p>It has few parameters :</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Description</th>
+      <th>Type</th>
+      <th>Default</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>entity</code></td>
+      <td>Units of text to generate</td>
+      <td>text, paragraph, sentence or word</td>
+      <td>text</td>
+    </tr>
+    <tr>
+      <td><code>length</code></td>
+      <td>Subunit count in the generated text</td>
+      <td>Integer</td>
+      <td>Random or 5</td>
+    </tr>
+    <tr>
+      <td><code>sample</code></td>
+      <td>Sample text to analyze</td>
+      <td>Text</td>
+      <td>The Zen of Python</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>General notes :</p>
+
+<ul>
+  <li>All parameters are optional.</li>
+  <li>Parameters can appear in any order.</li>
+  <li>The <code>length</code> parameters’s default value is 5 only for <code>entity</code> text, otherwise is randomly chosen based on the analyzed text.</li>
+  <li>The <code>sample</code> is not really a parameter. It is a sample text to be used later by the random generator. In most cases there is no way to provide it.</li>
+</ul>
+
+<h4 id="url-with-verbose-parameters-1">URL with verbose parameters</h4>
+
+<p>Suitable to be used from outside the Django application, typically in static HTML documents.</p>
+
+<pre><code>/sketch/blah.txt?entity=paragraph&amp;length=10
+</code></pre>
+
+<h4 id="friendly-url-1">Friendly URL</h4>
+
+<pre><code>/sketch/blah/paragraph/10
+</code></pre>
+
+<p>Additional notes :</p>
+
+<ul>
+  <li>The parameters must occur exactly in this order : <code>entity</code> and <code>length</code>.</li>
+  <li>The parameters can miss only from the <em>end</em> of path. So when a parameter is present, all the preceding parameters must also be present.</li>
+</ul>
+
+<h4 id="template-filter-1">Template filter</h4>
+
+<p>Suitable for the <code>sample</code> to analyze is in a template variable.</p>
+
+<div class="highlight"><pre><code class="jinja"><span class="cp">{{</span> <span class="s1">&#39;Hello World&#39;</span> <span class="o">|</span> <span class="nf">blahblah</span><span class="s2">:&quot;paragraph 10&quot;</span> <span class="cp">}}</span><span class="x"></span>
+</code></pre></div>
+
+<p>Additional notes :</p>
+
+<ul>
+  <li>The parameters must occur exactly in this order : <code>entity</code> and <code>length</code>.</li>
+  <li>The <code>entity</code> parameter is mandatory.</li>
+</ul>
+
+<h4 id="template-tag-1">Template tag</h4>
+
+<div class="highlight"><pre><code class="jinja"><span class="cp">{%</span> <span class="k">blahblah</span> <span class="s2">&quot;paragraph&quot;</span> <span class="m">10</span> <span class="cp">%}</span><span class="x"></span>
+</code></pre></div>
+
+<h4 id="template-block-tag">Template block tag</h4>
+
+<div class="highlight"><pre><code class="jinja"><span class="cp">{%</span> <span class="k">blahblock</span> <span class="s2">&quot;paragraph&quot;</span> <span class="m">10</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">Hello World</span>
+<span class="cp">{%</span> <span class="k">endblahblock</span> <span class="cp">%}</span><span class="x"></span>
+</code></pre></div>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>You have to add sketch to the <code>INSTALLED_APPS</code> in your Django project’s settings :</p>
+
+<p class="precaption icon-file-script">your_django_project/settings.py</p>
+
+<div class="highlight"><pre><code class="python"><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s">&#39;your_django_project.sketch&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>You have to <code>include()</code> the sketch urls into your Django project’s urls :</p>
+
+<p class="precaption icon-file-script">your_django_project/urls.py</p>
+
+<div class="highlight"><pre><code class="python"><span class="n">urlpatterns</span> <span class="o">=</span> <span class="n">patterns</span><span class="p">(</span><span class="s">&#39;&#39;</span><span class="p">,</span>
+    <span class="n">url</span><span class="p">(</span><span class="s">r&#39;^sketch/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s">&#39;your_django_project.sketch.urls&#39;</span><span class="p">)),</span>
+<span class="p">)</span>
+</code></pre></div>
+
+<p>And generally you have to replace all occurences of “your_django_project” with… well, the name of your Django project.</p>
+
+<p>Proper configuration not really supported.</p>
+
+<p>One thing you may have to configure is the font used for the image placeholder’s text. You can set it by editing the <code>image_placeholder()</code> function’s first line :</p>
+
+<p class="precaption icon-file-script">sketch/image_placeholder.py</p>
+
+<div class="highlight"><pre><code class="python"><span class="k">def</span> <span class="nf">image_placeholder</span><span class="p">(</span><span class="n">param</span><span class="p">):</span>
+    <span class="n">fontfile</span> <span class="o">=</span> <span class="s">&#39;/usr/share/fonts/X11/TTF/arialbd.ttf&#39;</span>
+    <span class="n">minsize</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="n">maxsize</span> <span class="o">=</span> <span class="mi">500</span>
+</code></pre></div>
+
+<p>The next two lines are the lower and upper limits between which a suitable font size is checked. The largest font size which still fits the image size will be used. Just so you know it. Hopefully you will never need to change those limits.</p>
+
+<h2 id="versions">Versions</h2>
+
+<ul class="changelog">
+  <li>0.0 - January 2014
+    <ul>
+      <li class="added">Initial release.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="plans">Plans</h2>
+
+<ul class="todo">
+  <li class="pending">Specify image file format using the extension of iph.png. ( First of all GIF and JPEG, then maybe others too. )</li>
+  <li class="pending">Specify text data structure using the extension of blah.txt. ( First of all HTML, XML and JSON, then maybe others too. )</li>
+  <li class="pending">Clarify the img HTML tag-based syntax for the imgplace tag. ( foo=bar, foo=”bar”, “foo=bar”, “foo=’bar’” - when is bar string literal and when template variable name. )</li>
+  <li class="pending">Implement multi-line text for image placeholder. ( Maybe with alignment too : “&lt;left aligned”, “&gt;right aligned”, “centered”. )</li>
+  <li class="pending">Maybe when the src attribute is specified for imgplace filter and tag, create the placeholder in that given place. ( May not be a good idea. )</li>
+  <li class="pending">Think about implementing border for image placeholder. ( Either just 1 pixel of front color, or something customizable. )</li>
+</ul>
+
+<h2 id="download">Download</h2>
+
+<p class="icon-directory">You can find the related files on GitHub in my <a href="http://github.com/feherke/Django-application">Django-application repository</a>’s <a href="http://github.com/feherke/Django-application/blob/master/sketch/">sketch directory</a> :</p>
+
+<ul class="download">
+  <li class="icon-file-unknown"><a href="http://github.com/feherke/Django-application/blob/master/sketch/__init__.py">__init__.py</a> - script</li>
+  <li class="icon-file-unknown"><a href="http://github.com/feherke/Django-application/blob/master/sketch/forms.py">forms.py</a> - script</li>
+  <li class="icon-file-unknown"><a href="http://github.com/feherke/Django-application/blob/master/sketch/image_placeholder.py">image_placeholder.py</a> - script</li>
+  <li class="icon-file-unknown"><a href="http://github.com/feherke/Django-application/blob/master/sketch/text_placeholder.py">text_placeholder.py</a> - script</li>
+  <li class="icon-file-unknown"><a href="http://github.com/feherke/Django-application/blob/master/sketch/urls.py">urls.py</a> - script</li>
+  <li class="icon-file-unknown"><a href="http://github.com/feherke/Django-application/blob/master/sketch/views.py">views.py</a> - script</li>
+  <li class="icon-file-css"><a href="http://github.com/feherke/Django-application/blob/master/sketch/static/demo.css">static/demo.css</a> - style sheet</li>
+  <li class="icon-file-html"><a href="http://github.com/feherke/Django-application/blob/master/sketch/static/index.html">static/index.html</a> - HTML document</li>
+  <li class="icon-file-unknown"><a href="http://github.com/feherke/Django-application/blob/master/sketch/templates/demo.djt">templates/demo.djt</a> - Django template</li>
+  <li class="icon-file-unknown"><a href="http://github.com/feherke/Django-application/blob/master/sketch/templatetags/__init__.py">templatetags/__init__.py</a> - script</li>
+  <li class="icon-file-unknown"><a href="http://github.com/feherke/Django-application/blob/master/sketch/templatetags/image_placeholder.py">templatetags/image_placeholder.py</a> - script</li>
+  <li class="icon-file-unknown"><a href="http://github.com/feherke/Django-application/blob/master/sketch/templatetags/text_placeholder.py">templatetags/text_placeholder.py</a> - script</li>
+</ul>
+
+
+
+</section>
+
+</div> <!-- #wrapper -->
+
+<div id=sidebar>
+
+<nav>
+
+<ul>
+  <li><a href="/artwork/" title="0 script">Artwork</a>
+    <ul>
+      <li><a href="/artwork/font/" title="1 script">Font</a></li>
+      <li><a href="/artwork/icewm/" title="1 script">IceWM</a></li>
+    </ul>
+  </li>
+  <li><a href="/autohotkey/" title="1 script">AutoHotkey</a></li>
+  <li><a href="/bash/" title="15 scripts">Bash</a></li>
+  <li><a href="/javascript/" title="0 script">JavaScript</a>
+    <ul>
+      <li><a href="/javascript/firegestures/" title="4 scripts">FireGestures</a></li>
+      <li><a href="/javascript/gadget/" title="1 script">Gadget</a></li>
+      <li><a href="/javascript/greasemonkey/" title="7 scripts">Greasemonkey</a></li>
+    </ul>
+  </li>
+  <li><a href="/perl/" title="1 script">Perl</a>
+    <ul>
+      <li><a href="/perl/irssi/" title="3 scripts">Irssi</a></li>
+    </ul>
+  </li>
+  <li><a href="/python/" title="0 script">Python</a>
+    <ul>
+      <li><a href="/python/django/" title="1 script">Django</a></li>
+    </ul>
+  </li>
+  <li><a href="/ruby/" title="1 script">Ruby</a>
+    <ul>
+      <li><a href="/ruby/jekyll/" title="3 scripts">Jekyll</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+</nav>
+
+<div id=tagcloud title="Tag cloud">
+<p><a href="/tag.html#BitlBee" title="1 script" style="font-size: 8pt">BitlBee</a>
+<a href="/tag.html#cleanup" title="3 scripts" style="font-size: 8pt">cleanup</a>
+<a href="/tag.html#filter" title="3 scripts" style="font-size: 8pt">filter</a>
+<a href="/tag.html#font" title="1 script" style="font-size: 8pt">font</a>
+<a href="/tag.html#frugalware" title="1 script" style="font-size: 8pt">frugalware</a>
+<a href="/tag.html#game" title="1 script" style="font-size: 8pt">game</a>
+<a href="/tag.html#media" title="1 script" style="font-size: 8pt">media</a>
+<a href="/tag.html#module" title="1 script" style="font-size: 8pt">module</a>
+<a href="/tag.html#notification" title="3 scripts" style="font-size: 8pt">notification</a>
+<a href="/tag.html#recovery" title="1 script" style="font-size: 8pt">recovery</a>
+<a href="/tag.html#search" title="2 scripts" style="font-size: 8pt">search</a>
+<a href="/tag.html#tag" title="2 scripts" style="font-size: 8pt">tag</a>
+<a href="/tag.html#theme" title="1 script" style="font-size: 8pt">theme</a>
+<a href="/tag.html#TipMaster" title="7 scripts" style="font-size: 18pt">TipMaster</a></p>
+
+</div>
+
+<div id=statuslist title="Status list">
+<p><a href="/status.html#stable" title="36 scripts">stable</a>
+<a href="/status.html#active" title="24 scripts">active</a>
+<a href="/status.html#inactive" title="9 scripts">inactive</a>
+<a href="/status.html#dormant" title="4 scripts">dormant</a>
+<a href="/status.html#outdated" title="3 scripts">outdated</a>
+<a href="/status.html#abandoned" title="2 scripts">abandoned</a></p>
+
+</div>
+
+</div> <!-- #sidebar -->
+
+<footer>
+
+<ul>
+<li>Powered by <a href="http://ruby-lang.org/">Ruby</a> 1.9.2</li>
+<li>Generated by <a href="http://jekyllrb.com/">Jekyll</a> 1.3.0</li>
+<li>Processed by <a href="http://kramdown.gettalong.org/">kramdown</a> 1.2.0</li>
+</ul>
+
+<ul>
+<li>Edited with <a href="http://midnight-commander.org/">MCEdit</a></li>
+<li class=icon-github>Hosted on <a href="http://github.com/">GitHub</a></li>
+</ul>
+
+<ul>
+<li class=icon-html5>Valid <a href="http://w3c.org/TR/html5/">HTML 5</a></li>
+<li class=icon-css3>Valid <a href="http://w3c.org/TR/CSS/#css3">CSS 3</a></li>
+<li>Valid <a href="http://w3c.org/WAI/">WAI AA</a></li>
+</ul>
+
+<ul>
+<li>Page <span title="sketch">sketch</span> last modified <span title="7 days ago">2014-01-26</span>.</li>
+<li>Copyright &copy; 2014, <a href="/about.html">Fehérke</a></li>
+<li class=icon-cookie>Cookie not used</li>
+</ul>
+
+<div class=logo>F<sup>G</sup><sub>H</sub>S</div>
+
+<div class=clear></div>
+
+</footer>
+
+<!--[if lte IE 6]>
+<p>
+Please consider changing your Explorer 6 to a newer and/or better browser.
+For reasons and guidance read "<a href="http://quirksmode.org/upgrade.html">Upgrade your browser!</a>" by Peter-Paul Koch.
+</p>
+<![endif]-->
+
+</body>
+
+</html>

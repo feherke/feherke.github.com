@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang=en>
+
+<head>
+<meta charset=UTF-8>
+<title>Logger</title>
+<meta name=description content="Logger class tailored for personal taste.">
+<meta name=keyword content="logger">
+<meta name=author content="Fehérke">
+<meta name=generator content="Jekyll 1.3.0">
+<!--[if IE]>
+<script src="/html5fordummies.js"></script>
+<![endif]-->
+<link rel=stylesheet href="/style.css">
+<script>
+window.addEventListener('load', function() {
+  var http = new XMLHttpRequest()
+  http.open('GET', 'https://api.github.com/search/repositories?q=logger+language:ruby&per_page=1', false)
+  http.addEventListener('load', function(e) {
+    var data = JSON.parse(e.target.response)
+    if (! data) return
+    if (! ('total_count' in data)) return
+
+    var many = document.getElementById('many')
+    if (! many) return
+
+    many.textContent = data.total_count
+  }, false)
+  http.send(null)
+}, false)
+
+</script>
+<link rel=icon href="/favicon.ico">
+</head>
+
+<body>
+
+<header>
+
+<div id=skip>
+<a href="#content" accesskey=c>skip to content</a>
+</div>
+
+<div class=title>
+Fehérke's GitHub Site == glue between Fehérke's GitHub hosted projects
+</div>
+
+</header>
+
+<div id=wrapper>
+
+<section id=content>
+
+<div id=attribute>
+
+
+
+<div id=breadcrumb>
+<p><a href="/">Fehérke’s GitHub Site</a> / <a href="/ruby/">Ruby</a> / </p>
+
+</div>
+
+
+
+<div id=taglist class=icon-tag>
+Tag :
+<a href="/tag.html#module">module</a>
+</div>
+
+
+
+<div id=status>
+Status :
+<a href="/status.html#outdated" title="Once stable, now needs update to be stable again.">outdated</a>,
+<a href="/status.html#inactive" title="Neither developed or tested regularly, but I keep an eye on it.">inactive</a>
+
+</div>
+
+
+</div>
+
+<div class=clear></div>
+
+<h1 id="logger">Logger</h1>
+
+<p>My first serious encounter with logging was in Java. There logging is like
+exception handling : so complex that you actually have to build up a secondary
+logic beside the main flow.</p>
+
+<p>So in Ruby I wanted something closer to Ruby’s way : lightweight and efficient.</p>
+
+<p>Probably there are dozens of loggers out there… ( Wait a moment. Let us see
+how many <a href="https://github.com/search?l=Ruby&amp;q=logger&amp;type=Repositories">logger repositories are on GitHub</a>.
+Well, there are <span id="many">many</span>. )</p>
+
+<h2 id="usage">Usage</h2>
+
+<p>Just instantiate a <code>Logger</code> object, set it up as you need, then call its methods whenever you fill appropriate :</p>
+
+<p class="precaption icon-code">sample code – using <code>Logger</code></p>
+
+<div class="highlight"><pre><code class="ruby"><span class="n">require_relative</span> <span class="s1">&#39;logger&#39;</span>
+
+<span class="c1"># default logger : writes to STDOUT messages of level INFO and above</span>
+<span class="vg">$log</span> <span class="o">=</span> <span class="no">Logger</span><span class="o">.</span><span class="n">new</span>
+
+<span class="c1"># this will be logged</span>
+<span class="vg">$log</span><span class="o">.</span><span class="n">log</span> <span class="no">Logger</span><span class="o">::</span><span class="no">INFO</span><span class="p">,</span> <span class="s2">&quot;Hello World !&quot;</span>
+
+<span class="c1"># this not as message&#39;s level is inferior to logger&#39;s level</span>
+<span class="vg">$log</span><span class="o">.</span><span class="n">debug</span> <span class="s2">&quot;Waiting for response...&quot;</span>
+
+<span class="c1"># but if we adjust the level...</span>
+<span class="vg">$log</span><span class="o">.</span><span class="n">level</span> <span class="o">=</span> <span class="no">Logger</span><span class="o">::</span><span class="no">TRACE</span>
+
+<span class="c1"># ... then DEBUG messages will also be logged</span>
+<span class="vg">$log</span><span class="o">.</span><span class="n">debug</span> <span class="s2">&quot;Loosing my patience...&quot;</span>
+
+<span class="c1"># or we can adjust the log line format</span>
+<span class="vg">$log</span><span class="o">.</span><span class="n">logformat</span> <span class="o">=</span> <span class="s2">&quot;on %d{\%d %B at %H:%M} the %x running with PID %p generated exception %e with message %m&quot;</span>
+
+<span class="c1"># and can log unconditionally, without specifying a message level</span>
+<span class="vg">$log</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;Goodbye, cruel World :(&quot;</span>
+
+<span class="c1"># after a caught exception the %e placehold will have a value</span>
+<span class="mi">0</span> <span class="o">/</span> <span class="mi">0</span> <span class="k">rescue</span> <span class="vg">$log</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;Goodbye again :((&quot;</span>
+
+<span class="c1"># but not in the later message</span>
+<span class="vg">$log</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;That&#39;s All Folks&quot;</span>
+
+<span class="c1"># well, not really necessary if you log to STDOUT, but a good practice</span>
+<span class="vg">$log</span><span class="o">.</span><span class="n">close</span>
+</code></pre></div>
+
+<p class="precaption icon-file">sample log</p>
+
+<pre><code>2013-12-03 16:56:59     INFO    Hello World !
+2013-12-03 16:56:59     DEBUG   Waiting for response...
+2013-12-03 16:56:59     DEBUG   Loosing my patience...
+on 03 December at 16:56 the sample.rb running with PID 8728 generated exception  with message Goodbye, cruel World :(
+on 03 December at 16:56 the sample.rb running with PID 8728 generated exception divided by 0 with message Goodbye again :((
+on 03 December at 16:56 the sample.rb running with PID 8728 generated exception  with message That's All Folks
+</code></pre>
+
+<h2 id="configuration">Configuration</h2>
+
+<p>None.</p>
+
+<h2 id="versions">Versions</h2>
+
+<ul class="changelog">
+  <li>0.0 - April 2009
+    <ul>
+      <li class="added">Initial release.</li>
+    </ul>
+  </li>
+  <li>0.1 - December 2013
+    <ul>
+      <li class="changed">Adjusted to Ruby syntax changes.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="plans">Plans</h2>
+
+<ul class="todo">
+  <li class="pending">Conditional fragments, similar to WinAmp ATF : “[] means «don’t display unless metadata was found».”</li>
+  <li class="pending">ANSI colored log levels when logging to STDOUT.</li>
+  <li class="pending">Access instances through the <code>Logger</code> class to avoid using global variables.</li>
+</ul>
+
+<h2 id="download">Download</h2>
+
+<p class="icon-directory">You can find the related files on GitHub in my <a href="http://github.com/feherke/Ruby-script">Ruby-script repository</a>’s <a href="http://github.com/feherke/Ruby-script/blob/master/logger/">logger directory</a> :</p>
+
+<ul class="download">
+  <li class="icon-file-script"><a href="http://github.com/feherke/Ruby-script/blob/master/logger/logger.rb">logger.rb</a> - script</li>
+</ul>
+
+
+
+</section>
+
+</div> <!-- #wrapper -->
+
+<div id=sidebar>
+
+<nav>
+
+<ul>
+  <li><a href="/artwork/" title="0 script">Artwork</a>
+    <ul>
+      <li><a href="/artwork/font/" title="1 script">Font</a></li>
+      <li><a href="/artwork/icewm/" title="1 script">IceWM</a></li>
+    </ul>
+  </li>
+  <li><a href="/autohotkey/" title="1 script">AutoHotkey</a></li>
+  <li><a href="/bash/" title="15 scripts">Bash</a></li>
+  <li><a href="/javascript/" title="0 script">JavaScript</a>
+    <ul>
+      <li><a href="/javascript/firegestures/" title="4 scripts">FireGestures</a></li>
+      <li><a href="/javascript/gadget/" title="1 script">Gadget</a></li>
+      <li><a href="/javascript/greasemonkey/" title="7 scripts">Greasemonkey</a></li>
+    </ul>
+  </li>
+  <li><a href="/perl/" title="1 script">Perl</a>
+    <ul>
+      <li><a href="/perl/irssi/" title="3 scripts">Irssi</a></li>
+    </ul>
+  </li>
+  <li><a href="/python/" title="0 script">Python</a>
+    <ul>
+      <li><a href="/python/django/" title="1 script">Django</a></li>
+    </ul>
+  </li>
+  <li><a href="/ruby/" title="1 script">Ruby</a>
+    <ul>
+      <li><a href="/ruby/jekyll/" title="3 scripts">Jekyll</a></li>
+    </ul>
+  </li>
+</ul>
+
+
+</nav>
+
+<div id=tagcloud title="Tag cloud">
+<p><a href="/tag.html#BitlBee" title="1 script" style="font-size: 8pt">BitlBee</a>
+<a href="/tag.html#cleanup" title="3 scripts" style="font-size: 8pt">cleanup</a>
+<a href="/tag.html#filter" title="3 scripts" style="font-size: 8pt">filter</a>
+<a href="/tag.html#font" title="1 script" style="font-size: 8pt">font</a>
+<a href="/tag.html#frugalware" title="1 script" style="font-size: 8pt">frugalware</a>
+<a href="/tag.html#game" title="1 script" style="font-size: 8pt">game</a>
+<a href="/tag.html#media" title="1 script" style="font-size: 8pt">media</a>
+<a href="/tag.html#module" title="1 script" style="font-size: 8pt">module</a>
+<a href="/tag.html#notification" title="3 scripts" style="font-size: 8pt">notification</a>
+<a href="/tag.html#recovery" title="1 script" style="font-size: 8pt">recovery</a>
+<a href="/tag.html#search" title="2 scripts" style="font-size: 8pt">search</a>
+<a href="/tag.html#tag" title="2 scripts" style="font-size: 8pt">tag</a>
+<a href="/tag.html#theme" title="1 script" style="font-size: 8pt">theme</a>
+<a href="/tag.html#TipMaster" title="7 scripts" style="font-size: 18pt">TipMaster</a></p>
+
+</div>
+
+<div id=statuslist title="Status list">
+<p><a href="/status.html#stable" title="36 scripts">stable</a>
+<a href="/status.html#active" title="24 scripts">active</a>
+<a href="/status.html#inactive" title="9 scripts">inactive</a>
+<a href="/status.html#dormant" title="4 scripts">dormant</a>
+<a href="/status.html#outdated" title="3 scripts">outdated</a>
+<a href="/status.html#abandoned" title="2 scripts">abandoned</a></p>
+
+</div>
+
+</div> <!-- #sidebar -->
+
+<footer>
+
+<ul>
+<li>Powered by <a href="http://ruby-lang.org/">Ruby</a> 1.9.2</li>
+<li>Generated by <a href="http://jekyllrb.com/">Jekyll</a> 1.3.0</li>
+<li>Processed by <a href="http://kramdown.gettalong.org/">kramdown</a> 1.2.0</li>
+</ul>
+
+<ul>
+<li>Edited with <a href="http://midnight-commander.org/">MCEdit</a></li>
+<li class=icon-github>Hosted on <a href="http://github.com/">GitHub</a></li>
+</ul>
+
+<ul>
+<li class=icon-html5>Valid <a href="http://w3c.org/TR/html5/">HTML 5</a></li>
+<li class=icon-css3>Valid <a href="http://w3c.org/TR/CSS/#css3">CSS 3</a></li>
+<li>Valid <a href="http://w3c.org/WAI/">WAI AA</a></li>
+</ul>
+
+<ul>
+<li>Page <span title="logger">logger</span> last modified <span title="2 months ago">2013-12-03</span>.</li>
+<li>Copyright &copy; 2014, <a href="/about.html">Fehérke</a></li>
+<li class=icon-cookie>Cookie not used</li>
+</ul>
+
+<div class=logo>F<sup>G</sup><sub>H</sub>S</div>
+
+<div class=clear></div>
+
+</footer>
+
+<!--[if lte IE 6]>
+<p>
+Please consider changing your Explorer 6 to a newer and/or better browser.
+For reasons and guidance read "<a href="http://quirksmode.org/upgrade.html">Upgrade your browser!</a>" by Peter-Paul Koch.
+</p>
+<![endif]-->
+
+</body>
+
+</html>

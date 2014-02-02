@@ -1,0 +1,6 @@
+* Specify image file format using the extension of iph.png. ( First of all GIF and JPEG, then maybe others too. )
+* Specify text data structure using the extension of blah.txt. ( First of all HTML, XML and JSON, then maybe others too. )
+* Clarify the img HTML tag-based syntax for the imgplace tag. ( foo=bar, foo="bar", "foo=bar", "foo='bar'" - when is bar string literal and when template variable name. )
+* Implement multi-line text for image placeholder. ( Maybe with alignment too : "<left aligned", ">right aligned", "centered". )
+* Maybe when the src attribute is specified for imgplace filter and tag, create the placeholder in that given place. ( May not be a good idea. )
+* Think about implementing border for image placeholder. ( Either just 1 pixel of front color, or something customizable. )
